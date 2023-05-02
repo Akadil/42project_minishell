@@ -1,23 +1,5 @@
 import sys
 
-# args = sys.argv
-
-# left = []
-# operand = None
-# right = []
-
-# i = 1
-# while (args[i] not in ['&&', '||', '|']):
-#     left.append(args[i])
-#     i += 1
-# operand = args[i]
-# for i in range(i + 1, len(args)):
-#     right.append(args[i])
-#     i += 1
-
-# print("Left side ", left)
-# print("operand ", operand)
-# print("Right side", right)
 
 class   Node:
     left = None
@@ -27,14 +9,11 @@ class   Node:
 
 
 def my_recursion(args: list) -> Node:
-    # if len(args) <= 1:
-    #     ret = Node()
-    #     ret.name = args[0]
-    #     return ret
-    
+
     ret = Node()
     left = []
     right = []
+
     i = 0
     while (i < len(args) and args[i] not in ['&&', '||', '|']):
         if args[i] == '(':
@@ -51,11 +30,11 @@ def my_recursion(args: list) -> Node:
         ret.type = 1
         ret.name = str(left)
         return ret
-    if (args[i] == "&&"):
+    elif (args[i] == "&&"):
         ret.type = 2
     elif (args[i] == "||"):
         ret.type = 3
-    elif (args[i] == "|"):
+    else:                       # "|" case
         ret.type = 4
 
     ret.name = args[i]

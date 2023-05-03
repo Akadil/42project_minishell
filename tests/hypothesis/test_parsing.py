@@ -1,12 +1,10 @@
 import sys
 
-
 class   Node:
     left = None
     right = None
     name = ""
     type = 1
-
 
 def my_recursion(args: list) -> Node:
 

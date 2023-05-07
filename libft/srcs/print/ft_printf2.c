@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 12:55:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 19:12:06 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/13 19:09:41 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/07 16:41:17 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,30 @@
 
 static int	ft_handle_percent(va_list ptr, char c)
 {
-	int	ret;
+	int	size;
 
 	if (c == 'c')
-		ret = ft_putchar_fd_upd(va_arg(ptr, int), 1);
+		size = ft_putchar_fd(va_arg(ptr, int), 2);
 	else if (c == 's')
-		ret = ft_putstr_fd_upd(va_arg(ptr, char *), 1);
+		size = ft_putstr_fd(va_arg(ptr, char *), 2);
 	else if (c == 'p')
-		ret = ft_putptr(va_arg(ptr, long unsigned int), 1);
+		size = ft_putptr(va_arg(ptr, long unsigned int), 2);
 	else if (c == 'd')
-		ret = ft_putnbr_fd_upd(va_arg(ptr, int), 1);
+		size = ft_putnbr_fd_2(va_arg(ptr, int), 2);
 	else if (c == 'i')
-		ret = ft_putnbr_fd_upd(va_arg(ptr, int), 1);
+		size = ft_putnbr_fd_2(va_arg(ptr, int), 2);
 	else if (c == 'u')
-		ret = ft_putunbr(va_arg(ptr, unsigned int), 1);
+		size = ft_putunbr(va_arg(ptr, unsigned int), 2);
 	else if (c == 'x')
-		ret = ft_puthex(va_arg(ptr, unsigned int), 'x', 1);
+		size = ft_puthex(va_arg(ptr, unsigned int), 'x', 2);
 	else if (c == 'X')
-		ret = ft_puthex(va_arg(ptr, unsigned int), 'X', 1);
+		size = ft_puthex(va_arg(ptr, unsigned int), 'X', 2);
 	else
-		ret = ft_putchar_fd_upd('%', 1);
-	return (ret);
+		size = ft_putchar_fd('%', 2);
+	return (size);
 }
 
-int	ft_printf(const char *s, ...)
+int	ft_printf2(const char *s, ...)
 {
 	va_list	ptr;
 	int		i;
@@ -51,7 +51,7 @@ int	ft_printf(const char *s, ...)
 	{
 		if (s[i] != '%')
 		{
-			ft_putchar_fd(s[i], 1);
+			ft_putchar_fd(s[i], 2);
 			i++;
 			len++;
 		}

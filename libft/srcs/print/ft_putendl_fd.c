@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd_upd.c                                :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 19:14:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 19:12:28 by akalimol         ###   ########.fr       */
+/*   Created: 2022/12/03 12:31:30 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/07 16:38:42 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putchar_fd_upd(char c, int std)
+void	ft_putendl_fd(char *s, int fd)
 {
-	ft_putchar_fd(c, std);
-	return (1);
+	int	size;
+
+	size = 0;
+	if (s)
+	{
+		size += ft_putstr_fd(s, fd);
+		size += ft_putchar_fd('\n', fd);
+	}
+	return (size);
 }

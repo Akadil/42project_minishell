@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd_upd.c                                 :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 19:14:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 19:13:03 by akalimol         ###   ########.fr       */
+/*   Created: 2022/12/16 17:34:22 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/07 16:40:38 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putstr_fd_upd(char *s, int std)
+static void	ft_putdigit(int n, int fd)
+{
+	char	c;
+
+	c = n + 48;
+	write(fd, &c, 1);
+}
+
+int	ft_putunbr(unsigned int nbr, int fd)
 {
 	int	len;
 
 	len = 0;
-	if (!s)
-		len += ft_putstr_fd_upd("(null)", std);
+	if (nbr > 9)
+	{
+		len += ft_putunbr(nbr / 10, fd);
+		len += ft_putunbr(nbr % 10, fd);
+	}
 	else
 	{
-		while (s[len])
-		{
-			ft_putchar_fd(s[len], std);
-			len++;
-		}
+		ft_putdigit(nbr, fd);
+		len++;
 	}
 	return (len);
 }

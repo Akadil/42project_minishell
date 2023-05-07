@@ -1,25 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   test_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 12:31:41 by akalimol          #+#    #+#             */
-/*   Updated: 2022/12/12 12:56:14 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/05 19:57:38 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/05 19:58:09 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr_fd(char *s, int fd)
+int main(int argc, char **argv)
 {
-	int	i;
-
-	if (s)
-	{
-		i = 0;
-		while (s[i++])
-			ft_putchar_fd(s[i - 1], fd);
-	}
+    
+    return (0);
 }

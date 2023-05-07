@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 12:29:42 by akalimol          #+#    #+#             */
-/*   Updated: 2022/12/03 12:29:44 by akalimol         ###   ########.fr       */
+/*   Created: 2022/12/03 12:31:15 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/07 16:37:45 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-t_list	*ft_lstnew(void *content)
+void	ft_putchar_fd(char c, int fd)
 {
-	t_list	*returner;
+	int	size;
 
-	returner = (t_list *)malloc(sizeof(t_list));
-	if (!returner)
-		return (NULL);
-	returner->content = content;
-	returner->next = NULL;
-	return (returner);
+	size = write (fd, &c, 1);
+	return (size);
 }

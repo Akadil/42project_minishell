@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 12:31:15 by akalimol          #+#    #+#             */
-/*   Updated: 2022/12/03 12:31:17 by akalimol         ###   ########.fr       */
+/*   Created: 2022/12/03 12:31:41 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/07 16:13:44 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
-	write (fd, &c, 1);
+	int	size;
+
+	if (!s)
+	{
+		size = ft_putstr_fd("(null)", fd);
+	}
+	else
+	{
+		size = 0;
+		while (s[size])
+		{
+			ft_putchar_fd(s[size], fd);
+			size++;
+		}
+	}
+	return (size);
 }

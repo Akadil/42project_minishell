@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   test_static_function_usage2.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 17:34:22 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 19:14:30 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/07 16:15:20 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/07 16:19:54 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-static void	ft_putdigit(int n, int std)
+static void  ft_function(void)
 {
-	char	c;
-
-	c = n + 48;
-	write(std, &c, 1);
+    printf("function from port\n");
 }
 
-int	ft_putunbr(unsigned int nbr, int std)
+void    ft_port(void)
 {
-	int	len;
-
-	len = 0;
-	if (nbr > 9)
-	{
-		len += ft_putunbr(nbr / 10, std);
-		len += ft_putunbr(nbr % 10, std);
-	}
-	else
-	{
-		ft_putdigit(nbr, std);
-		len++;
-	}
-	return (len);
+    ft_function();
 }

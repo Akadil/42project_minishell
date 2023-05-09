@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:34:22 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/07 16:40:38 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:40:04 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_putdigit(int n, int fd)
+static int	ft_putdigit(int n, int fd)
 {
 	char	c;
 
 	c = n + 48;
-	write(fd, &c, 1);
+	return (write(fd, &c, 1));
 }
 
 int	ft_putunbr(unsigned int nbr, int fd)
@@ -31,9 +31,6 @@ int	ft_putunbr(unsigned int nbr, int fd)
 		len += ft_putunbr(nbr % 10, fd);
 	}
 	else
-	{
-		ft_putdigit(nbr, fd);
-		len++;
-	}
+		len += ft_putdigit(nbr, fd);
 	return (len);
 }

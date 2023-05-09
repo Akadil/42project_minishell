@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:09:41 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/07 16:41:17 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:48:54 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	ft_handle_percent(va_list ptr, char c)
 	else if (c == 'p')
 		size = ft_putptr(va_arg(ptr, long unsigned int), 2);
 	else if (c == 'd')
-		size = ft_putnbr_fd_2(va_arg(ptr, int), 2);
+		size = ft_putnbr_fd(va_arg(ptr, int), 2);
 	else if (c == 'i')
-		size = ft_putnbr_fd_2(va_arg(ptr, int), 2);
+		size = ft_putnbr_fd(va_arg(ptr, int), 2);
 	else if (c == 'u')
 		size = ft_putunbr(va_arg(ptr, unsigned int), 2);
 	else if (c == 'x')

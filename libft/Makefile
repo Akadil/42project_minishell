@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+         #
+#    By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 12:54:42 by akalimol          #+#    #+#              #
-#    Updated: 2023/05/07 15:56:54 by akalimol         ###   ########.fr        #
+#    Updated: 2023/05/09 16:50:56 by akadilkalim      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,14 +29,15 @@ SRCS	= 	other/ft_atoi.c				\
 			mem_alloc/ft_memcpy.c				\
 			mem_alloc/ft_memmove.c				\
 			mem_alloc/ft_memset.c				\
-		
-			printf/ft_putchar_fd.c			\
-			ft_putendl_fd.c			\
-			ft_putnbr_fd.c			\
-			ft_putstr_fd.c			\
-			ft_putchar_fd_upd.c ft_puthex.c ft_putnbr_fd_upd.c ft_putptr.c \
-		  ft_putstr_fd_upd.c ft_putunbr.c ft_printf.c ft_printf_stderror.c \
-	
+			print/ft_putchar_fd.c			\
+			print/ft_putendl_fd.c			\
+			print/ft_putnbr_fd.c			\
+			print/ft_putstr_fd.c			\
+			print/ft_puthex.c \
+			print/ft_putptr.c \
+			print/ft_putunbr.c \
+			print/ft_printf.c \
+			print/ft_printf2.c \
 			string/ft_split.c				\
 			string/ft_strchr.c				\
 			string/ft_striteri.c			\
@@ -50,6 +51,7 @@ SRCS	= 	other/ft_atoi.c				\
 			string/ft_strrchr.c			\
 			string/ft_strtrim.c			\
 			string/ft_substr.c				\
+			string/ft_strstr.c	\
 			linked_list/ft_lstadd_back.c    	\
 			linked_list/ft_lstadd_front.c		\
 			linked_list/ft_lstclear.c			\
@@ -59,10 +61,8 @@ SRCS	= 	other/ft_atoi.c				\
 			linked_list/ft_lstmap.c				\
 			linked_list/ft_lstnew.c				\
 			linked_list/ft_lstsize.c			\
-
-SRCS		= 
-		  
-		  get_next_line.c get_next_line_utils.c ft_strstr.c ft_free_array.c
+		  	get_next_line/get_next_line.c 		\
+			get_next_line/get_next_line_utils.c  \
 
 SRCS_DIR	= ./srcs
 BUILD_DIR	= ./.build

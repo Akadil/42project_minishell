@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:04:38 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/07 16:44:42 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:36:51 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static	int	ft_transformer(unsigned int nbr, char *base, int fd)
 {
-	static int	size;
+	int	size;
 
+	size = 0;
 	if (nbr > 15)
 	{
-		ft_transformer(nbr / 16, base, fd);
-		ft_transformer(nbr % 16, base, fd);
+		size += ft_transformer(nbr / 16, base, fd);
+		size += ft_transformer(nbr % 16, base, fd);
 	}
 	else
 	{
-		size++;
-		ft_putchar_fd(base[nbr % 16], fd);
+		size += ft_putchar_fd(base[nbr % 16], fd);
 	}
 	return (size);
 }

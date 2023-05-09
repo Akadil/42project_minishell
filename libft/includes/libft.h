@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:34:56 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/07 16:39:19 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:50:34 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ int			ft_printf_stderr(const char *s, ...);
 int			ft_putunbr(unsigned int nbr, int std);
 int			ft_putptr(long unsigned int nbr, int std);
 int			ft_puthex(unsigned int nbr, char c, int std);
-void		ft_putchar_fd(char c, int fd);
+int			ft_putchar_fd(char c, int fd);
 int			ft_putstr_fd(char *s, int fd);
-void		ft_putendl_fd(char *s, int fd);
-void		ft_putnbr_fd(int n, int fd);
+int			ft_putendl_fd(char *s, int fd);
+int			ft_putnbr_fd(int n, int fd);
 
 /* ------------------------------------------------------------------------- */
 /* ----------------------------- get next line ----------------------------- */

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+         #
+#    By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 12:54:42 by akalimol          #+#    #+#              #
-#    Updated: 2023/05/09 16:50:56 by akadilkalim      ###   ########.fr        #
+#    Updated: 2023/05/10 21:22:23 by akalimol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS	= 	other/ft_atoi.c				\
 			string/ft_strlcpy.c			\
 			string/ft_strlen.c				\
 			string/ft_strmapi.c			\
+			string/ft_strcmp.c			\
 			string/ft_strncmp.c			\
 			string/ft_strnstr.c			\
 			string/ft_strrchr.c			\

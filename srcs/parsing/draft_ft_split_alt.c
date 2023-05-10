@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draft_ft_split_alt.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:58:23 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/10 14:12:49 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/10 19:48:54 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,13 @@ void    ft_add_word(t_list **head, char *str, int beg, int end)
     char        *content;
     int         i;
 
+    if (/* spaces */)
+        /* skip */
     if (beg == end && str[beg] == '|')
     {
         node = ft_lstlast(*head);
     }
 
-    node = (t_list *)malloc(sizeof(t_list));
-    if (!node)
-        printf("Error ! remove");
     content = (char *)malloc(sizeof(char) * (end - beg + 1));
     if (!content)
         printf("Error! improve");
@@ -82,42 +81,16 @@ void    ft_add_word(t_list **head, char *str, int beg, int end)
         content[i] = str[i + beg];
         i++;
     }
-    content[i] = '\0';
-    node->content = content;
-    node->type = -1;
-    node->next = NULL;
-    if (*head == NULL)
-        *head = node;
-    else
-    {
-        temp = *head;
-        while (temp->next)
-            temp = temp->next;
-        temp->next = node;
-    }
+
 }
 
 /*
-    Description:
-        Same as ft_split, but 
-            1. separates into new structure, not char *
-            2. Separates not only by spaces, but 
-                a) double quotes
-                b) single quotes
-                c) parenthesis
-
-    Status:
-        1. Checked, working
-        2. have unprotected mallocs
-        3. Unclosed quotes not handled
-
-    Further:
-        1. Derivate the functions
-        2. Make an expansion
-        3. Remove the quotes
+    Description:    The lexical analyzer or tokenization.
+                    Here firstly, I will divide the string to tokens, and
+                    secondly, give each of them some type
 
 */
-t_list  *ft_split_alt(char *s)
+t_list  *ft_tokenization(char *s)
 {
     t_list  *head;
     int i_beg;

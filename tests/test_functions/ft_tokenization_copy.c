@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tokenization.c                                  :+:      :+:    :+:   */
+/*   ft_tokenization_copy.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:49:06 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 00:04:20 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/10 23:52:34 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int     ft_isspace(char c)
     return (0);
 }
 
-int     ft_istoken(char c, char c2, int checker)
+int     ft_istoken(char c, int checker)
 {
     static char mode;
 
@@ -41,6 +41,7 @@ int     ft_istoken(char c, char c2, int checker)
             mode = 'd';
         else if (c == '\"')
             mode = 0;
+        return (1);
     }
     if (mode == 's' || (c == '\'' && mode == 0))
     {
@@ -48,14 +49,15 @@ int     ft_istoken(char c, char c2, int checker)
             mode = 's';
         else if (c == '\'')
             mode = 0;
+        return (1);
     }
-    if (c2 == '|' || c2 == '&' || c2 == '(' || c2 == ')')
+    if (c == '|' || c == '&' || c == '(' || c == ')')
         return (0);
-    if (c2 == '<' || c2 == '>')
+    if (c == '<' || c == '>')
         return (0);
-    if (c2 == ' ' || c2 == '\f' || c2 == '\n')
+    if (c == ' ' || c == '\f' || c == '\n')
         return (0);
-    if (c2 == '\r' || c2 == '\t' || c2 == '\v')
+    if (c == '\r' || c == '\t' || c == '\v')
         return (0);
     return (1);
 }
@@ -170,12 +172,12 @@ t_list    *ft_tokenization(char *str)
             continue;
         }
         i_end = i_beg;
-        while (str[i_end] && str[i_end + 1] && ft_istoken(str[i_end], str[i_end + 1], 0))
+        while (str[i_end] && str[i_end] && ft_istoken(str[i_end], 0))
             i_end++;
         ft_addword(&head, str, i_beg, i_end);
         i_beg = i_end + 1;
     }
-    if (ft_istoken(0, 0, 1) == 0)
+    if (ft_istoken(0, 1) == 0)
         printf("Error, syntax error. unclosed quotes");
     return (head);
 }

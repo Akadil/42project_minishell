@@ -1,0 +1,15 @@
+a.out
+outfile
+test_int_return.c
+test_param.c
+test_parsing.c
+test_parsing.py
+test_program_rec.c
+test_static_function_usage.c
+test_static_function_usage2.c
+test_static_var_in_recursion.c
+test_staticvar_next_call.c
+test_struct_location_1.c
+test_struct_location_2.c
+test_structs.c
+test_structs2.c

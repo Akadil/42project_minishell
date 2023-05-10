@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   test_struct_location_2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/09 17:30:31 by akadilkalim      ###   ########.fr       */
+/*   Created: 2023/05/06 17:45:14 by akadilkalim       #+#    #+#             */
+/*   Updated: 2023/05/06 17:48:57 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
-
-# include "linked_list.h"
-
-typedef struct s_data
+typedef struct s_str
 {
-    t_list  *env;
-}   t_data;
+    int a;
+    int b;
+}   t_str;
 
-#endif
+void    ft_function(t_str *str)
+{
+    str->a = 5;
+}

@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   test_param.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/09 17:30:31 by akadilkalim      ###   ########.fr       */
+/*   Created: 2023/05/06 14:55:59 by akadilkalim       #+#    #+#             */
+/*   Updated: 2023/05/06 15:01:43 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#include <stdio.h>
 
-# include "linked_list.h"
+/*
+    Hypothesis:     Can I send uninitialized structure to function
+
+    Result:         Yes
+*/
 
 typedef struct s_data
 {
-    t_list  *env;
-}   t_data;
+    int a;
+    int b;
+}       t_data;
 
-#endif
+void    ft_function(t_data *data);
+
+int main(void)
+{
+    t_data  data;
+
+    ft_function(&data);
+    return (0);
+}
+
+void    ft_function(t_data *data)
+{
+    printf("%d\n", data->a);
+}

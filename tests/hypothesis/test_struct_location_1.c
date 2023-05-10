@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   test_struct_location_1.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/09 17:30:31 by akadilkalim      ###   ########.fr       */
+/*   Created: 2023/05/06 17:43:38 by akadilkalim       #+#    #+#             */
+/*   Updated: 2023/05/06 17:48:51 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#include <stdio.h>
 
-# include "linked_list.h"
+/*
+    Hypothesis: Can I have several definition of the same struct throughout 
+                different files
 
-typedef struct s_data
+    Results     Yes
+*/
+
+typedef struct s_str
 {
-    t_list  *env;
-}   t_data;
+    int a;
+}   t_str;
 
-#endif
+void    ft_function(t_str *str);
+
+int main(void)
+{
+    t_str   str;
+
+    str.a = 2;
+    ft_function(&str);
+    printf("%d\n", str.a);
+    return (0);
+}

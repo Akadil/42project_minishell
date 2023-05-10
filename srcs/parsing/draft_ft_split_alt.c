@@ -1,75 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_alt.c                                     :+:      :+:    :+:   */
+/*   draft_ft_split_alt.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:58:23 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/05 23:40:13 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:12:49 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-
-typedef struct s_list_alt
-{
-    char                *content;
-    int                 type;
-    struct s_list_alt   *next;
-}                       t_list_alt;
+#include "libft.h"
+#include "linked_list.h"
 
 int is_token_part_spec(char  *mode, char c)
 {
-    static  int p_counter;
-
     if (*mode == 0)
     {
         if (c == '\"')
             *mode = 'd';
-        else if (c == '\'')
-            *mode = 's';
         else
-        {
-            p_counter++;
-            *mode = 'p';
-        }
+            *mode = 's';
     }
     else if (*mode == 'd')
     {
         if (c == '\"')
             *mode = 0;
     }
-    else if (*mode == 's')
+    else
     {
         if (c == '\'')
             *mode = 0;
     }
-    else
-    {
-        if (c == '(')
-            p_counter++;
-        else if(c == ')')
-        {
-            p_counter--;
-            if (p_counter == 0)
-                *mode = 0;
-        }
-    }
     return (1);
 }
 
-int is_token_part(char c)
+int is_token_part(char c, int check_mode)
 {
     static char  mode;
 
+    if (check_mode == 1)
+        return(mode = 0);
     if (mode == 'd' || (c == '\"' && mode == 0))
         return (is_token_part_spec(&mode, c));
     if (mode == 's' || (c == '\'' && mode == 0))
         return (is_token_part_spec(&mode, c));
-    if (mode == 'p' || (c == '(' && mode == 0))
-        return (is_token_part_spec(&mode, c));
+    if (c == '('  || c ==  ')')
+        return (0);
+    if (c == '|' || c == '&')
+        return (0);
     if (c == ' ' || c == '\f' || c == '\n')
         return (0);
     if (c == '\r' || c == '\t' || c == '\v')
@@ -77,14 +58,19 @@ int is_token_part(char c)
     return (1);
 }
 
-void    ft_add_word(t_list_alt **head, char *str, int beg, int end)
+void    ft_add_word(t_list **head, char *str, int beg, int end)
 {
-    t_list_alt  *node;
-    t_list_alt  *temp;
+    t_list  *node;
+    t_list  *temp;
     char        *content;
     int         i;
 
-    node = (t_list_alt *)malloc(sizeof(t_list_alt));
+    if (beg == end && str[beg] == '|')
+    {
+        node = ft_lstlast(*head);
+    }
+
+    node = (t_list *)malloc(sizeof(t_list));
     if (!node)
         printf("Error ! remove");
     content = (char *)malloc(sizeof(char) * (end - beg + 1));
@@ -123,15 +109,17 @@ void    ft_add_word(t_list_alt **head, char *str, int beg, int end)
     Status:
         1. Checked, working
         2. have unprotected mallocs
+        3. Unclosed quotes not handled
 
     Further:
         1. Derivate the functions
-        2. Add unclosed problem
+        2. Make an expansion
+        3. Remove the quotes
 
 */
-t_list_alt  *ft_split_alt(char *s)
+t_list  *ft_split_alt(char *s)
 {
-    t_list_alt  *head;
+    t_list  *head;
     int i_beg;
     int i_end;
 
@@ -140,13 +128,12 @@ t_list_alt  *ft_split_alt(char *s)
     while (s[i_beg])
     {
         i_end = i_beg;
-        while (s[i_end] && is_token_part(s[i_end]))
+        while (s[i_end] && is_token_part(s[i_end], 0))
             i_end++;
-        if (i_beg != i_end)
-            ft_add_word(&head, s, i_beg, i_end);
-        while (s[i_beg] && i_beg != i_end)
-            i_beg++;
-        i_beg++;
+        ft_add_word(&head, s, i_beg, i_end);
+        i_beg = i_end + 1;
     }
+    if (is_token_part(0, 1) != 0)
+        printf("Error! improve!");
     return (head);
 }

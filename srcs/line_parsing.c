@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   line_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/09 17:30:31 by akadilkalim      ###   ########.fr       */
+/*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
+/*   Updated: 2023/05/06 15:04:49 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#include "data.h"
 
-# include "linked_list.h"
-
-typedef struct s_data
+void    line_parsing(t_data *data, char *cmd_line)
 {
-    t_list  *env;
-}   t_data;
-
-#endif
+    
+}

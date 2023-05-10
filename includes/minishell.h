@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/09 17:30:31 by akadilkalim      ###   ########.fr       */
+/*   Created: 2023/05/06 13:24:48 by akadilkalim       #+#    #+#             */
+/*   Updated: 2023/05/06 14:53:29 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-# include "linked_list.h"
-
-typedef struct s_data
-{
-    t_list  *env;
-}   t_data;
+# include <stdio.h>
+# include "data.h"
 
 #endif

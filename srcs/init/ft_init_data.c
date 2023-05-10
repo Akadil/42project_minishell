@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   ft_init_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/09 17:30:31 by akadilkalim      ###   ########.fr       */
+/*   Created: 2023/05/06 16:59:31 by akadilkalim       #+#    #+#             */
+/*   Updated: 2023/05/09 18:49:07 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#include "data.h"
+#include <stdio.h>
 
-# include "linked_list.h"
-
-typedef struct s_data
+void    ft_init_data(int argc, char **argv, char **env, t_data *data)
 {
-    t_list  *env;
-}   t_data;
-
-#endif
+    if (argc != 1)
+        printf("Error, wrong arguments !");
+    
+    data->env = NULL;
+    ft_init_env(data, env);   
+}

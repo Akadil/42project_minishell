@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   line_parsing.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/11 18:30:46 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/11 14:48:54 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/11 15:23:49 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#ifndef LINE_PARSING_H
+# define LINE_PARSING_H
 
-# include "linked_list.h"
+#include "data.h"
+#include "linked_list.h"
 
-typedef struct s_data
-{
-    t_list  *env;
-}   t_data;
+t_list    *ft_tokenization(char *str);
+char    *ft_add_spaces(char *str);
 
-typedef struct s_node
-{
-    t_list  *elems;
-    int     exit_code;
-
-    int     in_fd;
-    int     out_fd;
-
-    struct s_node   *parent;
-    struct s_node   *left;
-    struct s_node   *right;
-
-}   t_node;
 
 #endif

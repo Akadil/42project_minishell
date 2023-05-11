@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:59:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 01:24:29 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:08:48 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include <readline/history.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+/*
+    Tester:     cc -Wall -Wextra -Werror tests/test_add_spaces.c srcs/parsing/ft_add_spaces.c -lreadline && ./a.out && rm a.out
+*/
 
 char    *ft_add_spaces(char *str);
 

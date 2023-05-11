@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:17 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 01:24:59 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:25:35 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ char    *ft_add_spaces(char *str)
     while (str[i])
     {
         if (str[i] == ' ' || str[i] == '\f' || str[i] == '\n')
-            string[i] = ' ';
+            string[j++] = ' ';
         else if (str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
-            string[i] = ' ';
+            string[j++] = ' ';
         else if (str[i] == '|' && str[i + 1] == '|')
         {
             string[j++] = ' ';
@@ -108,11 +108,11 @@ char    *ft_add_spaces(char *str)
     j = 0;
     while (string[i])
     {
-        if (string[i] == ' ' && i != 0 && string[j - 1] == ' ')
-            continue;
-        else
+        if (string[i] != ' ' || (i != 0 && string[j - 1] != ' '))
             string[j++] = string[i];
         i++;
     }
+    string[j] = '\0';
+    free(str);
     return (string);
 }

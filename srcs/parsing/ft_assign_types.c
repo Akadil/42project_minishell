@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:28:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 16:08:12 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:21:30 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,23 @@ void    ft_assign_types(t_list *node)
     {
         if (is_filename == 1 && is_filename--)
             node->type = FILENAME;
-        if (ft_strcmp(node->content, "|"))
+        else if (!ft_strcmp(node->content, "|"))
             node->type = PIPE;
-        else if(ft_strcmp(node->content, "||"))
+        else if(!ft_strcmp(node->content, "||"))
             node->type = OR;
-        else if (ft_strcmp(node->content, "&&"))
+        else if (!ft_strcmp(node->content, "&&"))
             node->type = AND;
-        else if (ft_strcmp(node->content, "("))
+        else if (!ft_strcmp(node->content, "("))
             node->type = LEFT_P;
-        else if (ft_strcmp(node->content, ")"))
+        else if (!ft_strcmp(node->content, ")"))
             node->type = RIGHT_P;
-        else if (ft_strcmp(node->content, "<") && is_filename++)
+        else if (!ft_strcmp(node->content, "<") && is_filename++)
             node->type = REDIRECT_IN;
-        else if (ft_strcmp(node->content, "<<") && is_filename++)
+        else if (!ft_strcmp(node->content, "<<") && is_filename++)
             node->type = HEREDOC;
-        else if (ft_strcmp(node->content, ">") && is_filename++)
+        else if (!ft_strcmp(node->content, ">") && is_filename++)
             node->type = REDIRECT_OUT;
-        else if (ft_strcmp(node->content, ">>") && is_filename++)
+        else if (!ft_strcmp(node->content, ">>") && is_filename++)
             node->type = REDIRECT_OUT2;
         else 
             node->type = PARAMETER;

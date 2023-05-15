@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:13:46 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 16:23:10 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/15 14:26:30 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@
 
 /*
     tester: 
-    cc -g -I includes -Wall -Wextra -Werror tests/test_assgn_types.c srcs/parsing/ft_add_spaces.c srcs/parsing/ft_tokenization.c srcs/parsing/ft_assign_types.c -lreadline -Llibft -lft; ./a.out; rm a.out
+            cc -g -I includes -Wall -Wextra -Werror tests/test_assgn_types.c srcs/parsing/ft_add_spaces.c srcs/parsing/ft_tokenization.c srcs/parsing/ft_assign_types.c -lreadline -Llibft -lft; ./a.out; rm a.out
 
+    Possible tests:
+
+            1. (cat|ls)&&pwd
+            2. (cat|ls -la < Makefile > outfile.txt)&&pwd
+            
 */
 
 t_list    *ft_tokenization(char *str);

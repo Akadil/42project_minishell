@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:25:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/12 17:07:08 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:59:59 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ t_node  *ft_treenode_new(t_list *token, t_node *parent)
     return (node);
 }
 
+/*
+    Here, I have to add a point, where I am saying if the left or right side is the whole
+*/
 t_node  *ft_make_tree(t_list *token, t_node *parent)
 {
     t_node  *node;

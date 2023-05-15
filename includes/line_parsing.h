@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:48:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 15:23:49 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:42:23 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 #include "data.h"
 #include "linked_list.h"
+#include <stdio.h>
 
 t_list    *ft_tokenization(char *str);
 char    *ft_add_spaces(char *str);
+t_node  *ft_make_tree(t_list *token, t_node *parent);
 
 
 #endif

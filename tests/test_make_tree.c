@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:20:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/12 17:50:52 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/13 14:00:41 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int main(void)
         node = ft_make_tree(head, NULL);
 
         ft_set_the_level(node, 0);
-        printf("\n-----------------\n");
+        
         ft_print_tree(node);
-        printf("\n\n");
+        printf("\n-----------------\n");
 
         int i = 0;
         while (i < max_level + 1)

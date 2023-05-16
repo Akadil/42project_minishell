@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:20:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/13 14:00:41 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:05:03 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include "linked_list.h"
 #include "libft.h"
+#include "data.h"
 #include <string.h>
 
 /*
@@ -23,22 +24,6 @@
 */
 
 int max_level = 0;
-
-typedef struct s_node
-{
-    t_list  *elems;
-    int     exit_code;
-
-    int     level;
-
-    int     in_fd;
-    int     out_fd;
-
-    struct s_node   *parent;
-    struct s_node   *left;
-    struct s_node   *right;
-
-}   t_node;
 
 t_list    *ft_tokenization(char *str);
 void    print_tokens(t_list *token);
@@ -56,6 +41,7 @@ int main(void)
     t_node  *node;
 
     head = NULL;
+    node = NULL;
     str = readline("Type the string: ");
     while (str)
     {

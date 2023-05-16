@@ -6,7 +6,7 @@
 #    By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 12:54:42 by akalimol          #+#    #+#              #
-#    Updated: 2023/05/10 21:22:23 by akalimol         ###   ########.fr        #
+#    Updated: 2023/05/16 14:39:06 by akalimol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	= 	other/ft_atoi.c				\
 			other/ft_isascii.c			\
 			other/ft_isdigit.c			\
 			other/ft_isprint.c			\
+			other/ft_isspace.c			\
 			mem_alloc/ft_bzero.c				\
 			mem_alloc/ft_calloc.c				\
 			mem_alloc/ft_strdup.c				\

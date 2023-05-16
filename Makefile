@@ -35,6 +35,9 @@ clean					:
 fclean					: clean
 			rm -rf ${NAME} $(LIBFT_DIR)/$(LIBFT)
 
+test_add_spaces			: 
+			cc -I includes -Wall -Wextra -Werror tests/test_add_spaces.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c  -lreadline -Llibft -lft && ./a.out && rm a.out
+
 re						: fclean all
 
 .PHONY					: all clean fclean re

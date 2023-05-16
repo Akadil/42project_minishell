@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:34:56 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/09 17:30:12 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/16 14:40:09 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int			ft_isalnum(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 int			ft_isascii(int c);
+int			ft_isspace(char c);
 
 /* ------------------------------------------------------------------------- */
 /* ---------------------------- Memory allocations ------------------------- */

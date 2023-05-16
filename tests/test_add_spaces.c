@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:59:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 15:08:48 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:21:48 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 #include <stdlib.h>
 
 /*
-    Tester:     cc -Wall -Wextra -Werror tests/test_add_spaces.c srcs/parsing/ft_add_spaces.c -lreadline && ./a.out && rm a.out
+    File location:  srcs/parsing/ft_add_spaces.c
+
+    Possible tests:
+            - < Makefile ( cat | ls )
+            - (cat|ls)
+
+    Tester:         make test_add_spaces
 */
 
 char    *ft_add_spaces(char *str);
@@ -28,6 +34,7 @@ int main(void)
     while (1)
     {   
         str = readline("Enter the string: ");
+        printf("\n");
         if (!str)
             break ;
         if (!*str)
@@ -36,7 +43,7 @@ int main(void)
             continue;
         }
         str = ft_add_spaces(str);
-        printf("New string: %s\n", str);
+        printf("New string: %s\nFirst char: %c\n\n", str, str[0]);
         
         // str = readline("Enter the string: ");
         

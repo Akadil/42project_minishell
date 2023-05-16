@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:17 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 15:11:09 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:47:06 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char    *ft_add_spaces(char *str)
 
     string = (char *)malloc(sizeof(char) * (ft_size(str) + 1));
     if (!string)
-        return (NULL); // Protect it!!!
+        return (ft_free(str));
     i = 0;
     j = 0;
     while (str[i])

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:42:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 14:43:35 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:46:14 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,10 @@ int     ft_size(char *str)
         i++;
     }
     return (i + size * 2);
+}
+
+char    *ft_free(char *str)
+{
+    free (str);
+    return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:37:06 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 15:10:50 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:46:45 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ char    *ft_is_metacharacter(char c1, char c2);
 void    ft_put(char *string, int *j, int *i, char *meta);
 void    ft_remove_extra_spaces(char* str);
 int     ft_size(char *str);
+char    *ft_free(char *str);
 
 #endif

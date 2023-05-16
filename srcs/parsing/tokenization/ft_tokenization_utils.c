@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clean.h                                         :+:      :+:    :+:   */
+/*   ft_tokenization_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 17:38:42 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 17:38:48 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/16 16:58:56 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/16 17:36:49 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CLEAN_H
-# define FT_CLEAN_H
+#include "linked_list.h"
+#include <stdlib.h>
+#include "ft_error.h"
+#include "libft.h"
 
-# include "data.h"
+t_list  *ft_token_error(t_list *token)
+{
+    ft_error();
+    ft_lstclear(&token, &free);
+    return (NULL);
+}
 
-void	ft_clean_fds(t_data *my_data);
-void	ft_clean_data(t_data *my_data);
-void	ft_clean_full(t_data *my_data);
-
-#endif
+t_list  *ft_token_perror(char *str, t_list *token)
+{
+    ft_perror(str);
+    ft_lstclear(&token, &free);
+    return (NULL);
+}

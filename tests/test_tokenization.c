@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:11:39 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 15:17:44 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:32:36 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "linked_list.h"
 
 /*
-    tester:     cc -g -I includes -Wall -Wextra -Werror tests/test_tokenization.c srcs/parsing/ft_add_spaces.c srcs/parsing/ft_tokenization.c -lreadline -Llibft -lft; ./a.out; rm a.out  
+    tester:     
+      
 */
 
 t_list    *ft_tokenization(char *str);

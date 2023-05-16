@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:34:56 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 14:39:48 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:39:52 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /* ------------------------------------------------------------------------- */
 
 int			ft_printf(const char *s, ...);
-int			ft_printf_stderr(const char *s, ...);
+int			ft_printf2(const char *s, ...);
 int			ft_putunbr(unsigned int nbr, int std);
 int			ft_putptr(long unsigned int nbr, int std);
 int			ft_puthex(unsigned int nbr, char c, int std);

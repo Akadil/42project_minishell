@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:48:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/15 15:42:23 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:43:57 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "data.h"
 #include "linked_list.h"
+#include "ft_error.h"
 #include <stdio.h>
 
 t_list    *ft_tokenization(char *str);

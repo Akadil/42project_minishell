@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:14:24 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 11:36:42 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:09:44 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,15 @@
 #include <string.h>
 
 /*
-    tester:    
-    cc -g -I includes -Wall -Wextra -Werror tests/test_exec_recursion.c srcs/parsing/ft_add_spaces.c srcs/parsing/ft_tokenization.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/line_execution.c -lreadline -Llibft -lft && ./a.out && rm a.out
+    Source file:    srcs/line_execution.c
+
+    Possible tests: 
+                - (cat||ls)&&pwd
+                - (cat||ls)&&pwd||(echo a|echo b)
+
+    1 case is not working, if right child is the last, and it is whole
+
+    tester:         make test_exec_recursion
 */
 
 int max_level = 0;

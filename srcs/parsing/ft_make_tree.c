@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:25:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 11:35:23 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:16:13 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int ft_isoperator(char *s)
     if (ft_strcmp(s, "&&") == 0)
         return (1);
     if (ft_strcmp(s, "||") == 0)
-        return (1);
-    if (ft_strcmp(s, "|") == 0)
         return (1);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:54 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/16 12:08:27 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:22:10 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ int ft_exec_cmd(t_node *node)
         exit = 1;
     else
         exit = 0;
+    while (token)
+    {
+        printf("%s ", (char *)token->content);
+        token = token->next;
+    }
+    token = node->redirections;
     while (token)
     {
         printf("%s ", (char *)token->content);

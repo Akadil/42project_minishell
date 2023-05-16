@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:42:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 15:46:14 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:15:23 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void    ft_remove_extra_spaces(char* str)
     i = 0;
     while (str[i] && str[i] == ' ')
         i++;
-    ft_strlcpy(str, &str[i], len);
+    ft_strlcpy(str, &str[i], len + 1);
     i = len - 1;
     while (i >= 0 && str[i] == ' ')
     {

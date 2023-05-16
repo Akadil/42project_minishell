@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:59:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 15:21:48 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:05:06 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
             - (cat|ls)
 
     Tester:         make test_add_spaces
+    Debuger:        make debug_add_spaces
 */
 
 char    *ft_add_spaces(char *str);

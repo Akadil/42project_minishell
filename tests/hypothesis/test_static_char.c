@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_scanf.c                                       :+:      :+:    :+:   */
+/*   test_static_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 21:40:27 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/05 21:45:15 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/16 13:34:51 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/16 13:42:59 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "libft.h"
+
+/*
+    What is the nature of statically created str
+
+    Result:     Normal. Ordinary
+*/
 
 int main(void)
 {
-    char *str;
+    char *str = "Akadil";
+    int     i;
 
-    str = NULL;
-    str = get_next_line(1);
-    printf("My string is: \n--%s--", str);
+    i = 0;
+    while (str[i])
+    {
+        printf("%c ", str[i]);
+        i++;
+    }
+    printf("\n\n");
     return (0);
 }

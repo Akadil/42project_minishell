@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:28:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 13:35:52 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:20:34 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
     Go through each value and assign the values
 
     if I see <. then no matter what the next token is infile
+
+    I have to update it:
+    1. Norminette
 */
 void    ft_assign_types(t_list *node)
 {
@@ -26,9 +29,7 @@ void    ft_assign_types(t_list *node)
     is_filename = 0;
     while (node)
     {
-        if (is_filename == 1 && is_filename--)
-            node->type = FILENAME;
-        else if (!ft_strcmp(node->content, "|"))
+        if (!ft_strcmp(node->content, "|"))
             node->type = PIPE;
         else if(!ft_strcmp(node->content, "||"))
             node->type = OR;
@@ -38,16 +39,20 @@ void    ft_assign_types(t_list *node)
             node->type = LEFT_P;
         else if (!ft_strcmp(node->content, ")"))
             node->type = RIGHT_P;
-        else if (!ft_strcmp(node->content, "<") && is_filename++ >= 0)
+        else if (!ft_strcmp(node->content, "<"))
             node->type = REDIRECT_IN;
-        else if (!ft_strcmp(node->content, "<<") && is_filename++ >= 0)
+        else if (!ft_strcmp(node->content, "<<"))
             node->type = HEREDOC;
-        else if (!ft_strcmp(node->content, ">") && is_filename++ >= 0)
+        else if (!ft_strcmp(node->content, ">"))
             node->type = REDIRECT_OUT;
-        else if (!ft_strcmp(node->content, ">>") && is_filename++ >= 0)
+        else if (!ft_strcmp(node->content, ">>"))
             node->type = REDIRECT_OUT2;
+        else if (is_filename == 1 && node->type == 0)
+            node->type = FILENAME;
         else 
             node->type = PARAMETER;
+        if (6 <= node->type && node->type <= 9 && (is_filename = 0) == 0)
+            is_filename = 1;
         node = node->next;
     }
 }

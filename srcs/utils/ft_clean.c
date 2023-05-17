@@ -6,11 +6,11 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 15:31:15 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:35:10 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "struct_data.h"
 #include <stdio.h>
 
 /*

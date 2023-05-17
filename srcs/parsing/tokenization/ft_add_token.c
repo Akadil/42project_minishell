@@ -6,12 +6,12 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:48:41 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 17:37:56 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:36:06 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "linked_list.h"
+#include "struct_list.h"
 #include "libft.h"
 #include "ft_error.h"
 

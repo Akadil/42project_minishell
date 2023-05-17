@@ -6,13 +6,13 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:28:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/15 16:15:43 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:35:52 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include "struct_list.h"
 #include "libft.h"
-#include "data.h"
+#include "struct_data.h"
 
 /*
     Go through each value and assign the values

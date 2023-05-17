@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   struct_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/16 11:04:45 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:26:52 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
 
-# include "linked_list.h"
+# include "struct_list.h"
 
 #define PIPE 1
 #define OR 2
@@ -41,8 +41,8 @@ typedef struct s_node
 
     
 
-    t_list  *params; // If cmd, then all params, else one param only
-    t_list  *redirections; // "content" = filename, "type" = redirection type
+    t_list  *params;
+    t_list  *redirections;
     
     int     type;
     int     in_fd;

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:29:42 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/07 14:47:10 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:19:44 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_list	*ft_lstnew(void *content, int type)
 	node->content = content;
 	node->type = type;
 	node->next = NULL;
+	node->prev = NULL;
 	return (node);
 }

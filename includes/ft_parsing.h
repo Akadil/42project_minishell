@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_parsing.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 12:28:56 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 13:23:33 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/11 14:48:54 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/17 13:26:33 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LINE_PARSING_H
+# define LINE_PARSING_H
 
-void	ft_lstadd_front(t_list **lst, t_list *new_node)
-{
-	if (lst)
-	{
-		if (*lst)
-		{
-			new_node->next = *lst;
-			(*lst)->prev = new_node;
-		}
-		*lst = new_node;
-	}
-}
+#include "struct_data.h"
+#include "struct_list.h"
+#include "ft_error.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+char    *ft_add_spaces(char *str);
+t_list    *ft_tokenization(char *str);
+t_node  *ft_make_tree(t_list *token, t_node *parent);
+
+
+#endif

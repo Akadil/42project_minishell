@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:34:56 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 17:39:52 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:27:11 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,7 @@
 # include <stdint.h>
 # include <stdarg.h>
 # include <limits.h>
-
-typedef struct s_list{
-	void			*content;
-	int				type;
-	struct s_list	*next;
-}	t_list;
+# include "struct_list.h"
 
 /* ------------------------------------------------------------------------- */
 /* ----------------------- String functions -------------------------------- */

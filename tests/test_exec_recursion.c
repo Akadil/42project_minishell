@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:14:24 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 17:15:35 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 20:13:36 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include "struct_list.h"
 #include "libft.h"
-#include "structdata.h"
+#include "struct_data.h"
 #include <string.h>
 
 /*
@@ -41,7 +41,7 @@ void    ft_set_the_level(t_node *node, int level);
 void    ft_print_tree(t_node *node);
 void    ft_print_tree_levels(t_node *node, int level);
 int    ft_exec_recursion(t_node *node, t_node *parent);
-
+int    ft_check_tokens(t_list  *node);
 /*
     right_whole untested
 */
@@ -55,8 +55,7 @@ int main(void)
 
     head = NULL;
     node = NULL;
-    str = readline("Type the string: ");
-    while (str)
+    while ((str = readline("Type the string: ")))
     {
         printf("-----------------------------\n");
         printf("\n");
@@ -65,7 +64,8 @@ int main(void)
 
         head = ft_tokenization(str);
         ft_assign_types(head);
-
+        if (ft_check_tokens(head) == 0)
+            continue;
         node = ft_make_tree(head, NULL);
 
         ft_set_the_level(node, 0);
@@ -85,8 +85,6 @@ int main(void)
         exit_code = ft_exec_recursion(node, NULL);
 
         printf("\n\n");
-        str = readline("Type the string: ");
-        
     }
 
     return (0);

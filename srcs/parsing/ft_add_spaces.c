@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:17 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 17:21:30 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 20:08:34 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
  *          Before:  (cat||ls)|pwd
  *          After:   ( cat || ls ) | pwd
  * 
- * ft_size()				- Calculates the overall size of the string with 
- * 							  spaces
- * ft_is_metacharacter()    - checks if the character is meta
- * ft_put()                 - concantenates the meta characters with spaces
- * ft_remove_extra...()     - removes preeceding, succeeding, and duplicating
- *                       	  spaces  
- * 
- * The files located at utils/ft_add_spaces_utils.c
+ * helper functions: ./utils/ft_add_spaces_utils.c
+ *  - ft_size()				    - Calculates the overall size of the string with 
+ * 							      spaces
+ *  - ft_is_metacharacter()    - checks if the character is meta
+ *  - ft_put()                 - concantenates the meta characters with spaces
+ *  - ft_remove_extra...()     - removes preeceding, succeeding, and duplicating
+ *                       	     spaces  
  * 
  * @param str   string to proceed
  * @return      string with spaces
@@ -40,7 +39,7 @@ char    *ft_add_spaces(char *str)
     int     i;
     int     j;
 
-    string = (char *)malloc(sizeof(char) * (ft_size(str) + 1));
+    string = (char *)malloc(sizeof(char) * (ft_size(str) + 2));
     if (!string)
         return (ft_free(str));
     i = 0;
@@ -56,6 +55,7 @@ char    *ft_add_spaces(char *str)
         i++;
     }
     string[j] = '\0';
+    string[j + 1] = '\0';
     ft_remove_extra_spaces(string);
     free(str);
     return (string);

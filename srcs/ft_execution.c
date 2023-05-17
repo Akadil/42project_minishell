@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:54 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/17 13:35:05 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 20:16:33 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int ft_exec_cmd(t_node *node)
         printf("%s ", (char *)token->content);
         token = token->next;
     }
-    token = node->redirections;
-    while (token)
-    {
-        printf("%s ", (char *)token->content);
-        token = token->next;
-    }
+    // token = node->redirections;
+    // while (token)
+    // {
+    //     printf("%s ", (char *)token->content);
+    //     token = token->next;
+    // }
     printf("\n");
     return (exit);
 }
@@ -61,6 +61,7 @@ int ft_check_operator(int exit_code, char *str)
     return (0);
 }
 
+// Some conditional jjump here
 int    ft_exec_recursion(t_node *node, t_node *parent)
 {
     if (node->type == 1)

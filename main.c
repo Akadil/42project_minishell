@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:31:49 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/11 15:25:21 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 19:46:54 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int main(int argc, char **argv, char **env)
     while (1)
     {
         command = readline("$");
-        ft_parsing(data, command);
-        ft_execution(data);
+        if (ft_parsing(data, command))
+            ft_execution(data);
         free (command);
     }
 }

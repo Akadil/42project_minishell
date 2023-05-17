@@ -6,16 +6,16 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:14:24 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 16:09:44 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:15:35 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <unistd.h>
-#include "linked_list.h"
+#include "struct_list.h"
 #include "libft.h"
-#include "data.h"
+#include "structdata.h"
 #include <string.h>
 
 /*

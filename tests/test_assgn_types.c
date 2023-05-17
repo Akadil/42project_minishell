@@ -6,14 +6,14 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:13:46 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/15 14:26:30 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:15:23 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <unistd.h>
-#include "linked_list.h"
+#include "struct_list.h"
 
 /*
     tester: 

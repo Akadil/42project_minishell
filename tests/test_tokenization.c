@@ -6,17 +6,17 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:11:39 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 17:32:36 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:34:52 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <unistd.h>
-#include "linked_list.h"
+#include "struct_list.h"
 
 /*
-    tester:     
+    tester:     make test_tokenization
       
 */
 

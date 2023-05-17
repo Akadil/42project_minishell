@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clean.h                                         :+:      :+:    :+:   */
+/*   test_array_as_param.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 17:38:42 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 17:16:31 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/17 17:06:21 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/17 17:09:05 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CLEAN_H
-# define FT_CLEAN_H
+#include <stdio.h>
 
-# include "struct_data.h"
+/*
+    Can I statically created string to some other functions
 
-void	ft_clean_fds(t_data *my_data);
-void	ft_clean_data(t_data *my_data);
-void	ft_clean_full(t_data *my_data);
+    Result: Yes I can
+*/
 
-#endif
+char *function(void)
+{
+    return ("Akadil");
+}
+
+void    function2(char *str)
+{
+    printf("%s\n", str);
+}
+
+int main(void)
+{
+    char *str;
+
+    str = function();
+
+    function2(str);
+    return (0);
+}

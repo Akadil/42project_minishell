@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:17 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 15:47:06 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:21:30 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
  * @param str   string to proceed
  * @return      string with spaces
  */
+
+// The problem with a quotes. All metas inside of them, should be skipped.
 char    *ft_add_spaces(char *str)
 {
     char    *string;

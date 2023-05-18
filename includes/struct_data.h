@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/17 13:26:52 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:37:53 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_node
     struct s_node   *parent;
     struct s_node   *left;
     struct s_node   *right;
-    int             right_whole;
+    int             is_micro;
     
 }   t_node;
 

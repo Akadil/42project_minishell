@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:42:20 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/18 11:35:40 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 11:58:42 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,28 @@ char	*ft_check_redirection(t_list *node)
 */
 char	*ft_check_parenthesis(t_list *node, int *p_count)
 {
-	if (node->type == 4) 									// Opening
+	if (node->type == 4) 													// Opening
 	{
 		(*p_count)++;
-		if (!node->next)
+		if (!node->next)													// (
 			return ("newline");
-		if (node->next->type == 5) 							// ()
+		if (node->next->type == 5) 											// ()
 			return ((char *)node->next->content);
-		if (node->prev && node->prev->type != 2 && node->prev->type != 3) // cmd (
-			return ((char *)node->prev->content);
-		if (1 <= node->next->type && node->next->type <= 3) // ( [&&, ||, |]
+		if (node->prev && node->prev->type == 11)	// cmd (
+			return ((char *)node->next->content);
+		if (node->prev && (node->prev->type == 10 || node->prev->type == 1))// filename (
+			return ((char *)node->content);
+		if (1 <= node->next->type && node->next->type <= 3) 				// ( [&&, ||, |]
 			return ((char *)node->next->content);
 	}
-	else 													// closing
+	else 																	// closing
 	{
 		(*p_count)--;
 		if (!node->prev)
 			return ((char *)node->content);
 		if (node->next && node->next->type == 4) 							// )(
 			return ((char *)node->next->content);
-		if (node->next && node->next->type != 2 && node->next->type != 3) // ) [cmd]
+		if (node->next && node->next->type != 2 && node->next->type != 3)	// ) [cmd]
 			return ((char *)node->next->content);
 		if (node->next && node->next->type == 1) 							// ) |
 			return ((char *)node->next->content);

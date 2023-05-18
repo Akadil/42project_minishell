@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:42:20 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 20:14:32 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 11:35:40 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,14 @@ int	ft_check_tokens(t_list *node)
 			result = ft_check_redirection(node);
 		if (result)
 		{
-			ft_perror(result);								// Change it !!! perror gives success
+			ft_merror("bash: syntax error near unexpected token `%s'\n", result);	// Change it !!! perror gives success
 			return (0);
 		}
 		node = node->next;
 	}
 	if (p_count != 0)
 	{
-		ft_perror("bash: unclosed parenthesis");
+		ft_merror("bash: unclosed parenthesis\n", NULL);
 		return (0);
 	}
 	return (1);

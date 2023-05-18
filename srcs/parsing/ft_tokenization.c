@@ -6,13 +6,26 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:49:06 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 17:03:11 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 11:35:46 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "includes/ft_tokenization.h"
 
+/**
+ * @brief               separate each key word into token
+ * 
+ * @example             cat || ls  -> ['cat', '|', 'ls']
+ * 
+ * @ref:ft_is_token()       
+ * @ref:ft_add_token()
+ * @ref:ft_token_error()
+ * @ref:ft_token_merror()
+ * 
+ * @param str           input string to tokenize
+ * @return t_list*      tokens
+ */
 t_list    *ft_tokenization(char *str)
 {
     t_list  *token;
@@ -34,6 +47,6 @@ t_list    *ft_tokenization(char *str)
         i_beg = i_end + 1;
     }
     if (ft_is_token(0, 1) == 0)
-        return (ft_token_perror("BASH: unclosed quotes", token));
+        return (ft_token_merror("BASH: unclosed quotes\n", token));
     return (token);
 }

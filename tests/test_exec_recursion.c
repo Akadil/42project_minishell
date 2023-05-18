@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:14:24 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 20:13:36 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:26:29 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,10 @@ void    ft_print_tree_levels(t_node *node, int level)
                 printf(" ");
             token = token->next;
         }
+        if (node->level == level)
+            printf(" (%d)", node->is_micro);
+        else
+            printf("    ");
         return ;  
     }
 
@@ -136,6 +140,10 @@ void    ft_print_tree_levels(t_node *node, int level)
             printf(" %s ", (char *)ft_memset(ft_strdup(token->content), ' ', strlen((char *)token->content)));
         token = token->next;
     }
+    if (node->level == level)
+        printf("(%d)", node->is_micro);
+    else
+        printf("   ");
 
     ft_print_tree_levels(node->right, level);
 }

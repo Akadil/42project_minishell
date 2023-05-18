@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:25:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/18 19:18:23 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:47:23 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ t_node  *ft_treenode_new(t_list *token, t_node *parent, int type)
     node->left = NULL;
     node->right = NULL;
     node->type = type;
+    node->redirections = NULL;
+    node->in_fd = 0;
+    node->out_fd = 1;
     return (node);
 }
 
@@ -168,18 +171,18 @@ t_node  *ft_make_tree(t_list *token, t_node *parent)
     is_micro = ft_clean_onion(&token);
     left = ft_retrieve_left_tokens(&token);
     if (!token)
-        return (ft_treenode_new(left, parent, 0));
+        return (ft_treenode_new(left, parent, 0));      // Skip this malloc
     right = token->next;
     right->prev = NULL;
     token->next = NULL;
-    node = ft_treenode_new(token, parent, 1);
+    node = ft_treenode_new(token, parent, 1);           // return NULL? without any steps
     if (!parent)
         node->is_micro = 0;
     else if (is_micro == 1)
         node->is_micro = parent->is_micro + 1;
     else
         node->is_micro = parent->is_micro;
-    node->left = ft_make_tree(left, node);
+    node->left = ft_make_tree(left, node);              // 
     node->right = ft_make_tree(right, node);
     return (node);
 }

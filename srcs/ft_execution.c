@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:54 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/18 17:30:40 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:56:25 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 
 // void    ft_line_execution(t_data *data)
 // {
-//     // As a first step, I have to open every heredoc
+//     int exit_code;
 
-//     // ft_open_heredocs(data);
-    
-
+//     ft_preprocessing(data);
+//     ft_open_heredocs(data);
+//     exit_code = ft_exec_recursion(data->node, NULL);
+//     ft_set_code_to_question(exit_code);
 // }
 
 int ft_exec_cmd(t_node *node)

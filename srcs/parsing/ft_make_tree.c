@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:25:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/18 17:25:05 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:18:23 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,55 @@
 #include "struct_data.h"
 #include "libft.h"
 
-int ft_isoperator(char *s)
+t_list  *ft_find_next_parenthesis(t_list *first)
 {
-    if (ft_strcmp(s, "&&") == 0)
-        return (1);
-    if (ft_strcmp(s, "||") == 0)
-        return (1);
-    return (0);
+    t_list  *next_p;
+    int     count_p;
+
+    count_p = 1;
+    next_p = first->next;
+    while (next_p)
+    {
+        if (next_p->type == RIGHT_P && count_p == 1)
+            break;
+        if (next_p->type == RIGHT_P)
+            count_p--;
+        if (next_p->type == LEFT_P)
+            count_p++;
+        next_p = next_p->next;
+    }
+    return (next_p);
+}
+
+/*
+    ret: 1 means cleaned, 0 means no
+    int ft_clean_onion()
+*/
+int ft_clean_onion(t_list **token)
+{
+    t_list  *first;
+    t_list  *i_token;
+    int     res;
+
+    first = *token;
+    res = 0;
+    while (first->type == LEFT_P)
+    {
+        i_token = ft_find_next_parenthesis(first);
+        if (!i_token->next)
+        {
+            res = 1;
+            i_token->prev->next = NULL;
+            free(i_token);
+            *token = (*token)->next;
+            free(first);
+            first = *token;
+            first->prev = NULL;
+        }
+        else
+            break;
+    }
+    return (res);
 }
 
 /*
@@ -32,48 +74,24 @@ int ft_isoperator(char *s)
 t_node  *ft_treenode_new(t_list *token, t_node *parent, int type)
 {
     t_node  *node;
+    int     is_micro;
 
     node = (t_node *)malloc(sizeof(t_node));
     if (!node)
         return (NULL);                                              // handle this case
+    is_micro = ft_clean_onion(&token);
+    if (!parent)
+        node->is_micro = 0;
+    else if (is_micro == 1)
+        node->is_micro = parent->is_micro + 1;
+    else
+        node->is_micro = parent->is_micro;
     node->elems = token;
     node->parent = parent;
     node->left = NULL;
     node->right = NULL;
     node->type = type;
-    if (!parent)
-        node->is_micro = 0;
-    else
-        node->is_micro = parent->is_micro + 1;
     return (node);
-}
-
-/*
-    ret: 1 means cleaned, 0 means no
-    int ft_clean_onion()
-*/
-
-int ft_clean_onion(t_list **token)
-{
-    t_list  *last;
-    t_list  *first;
-    int     res;
-
-    res = 0;
-    first = *token;
-    last = ft_lstlast(*token);
-    while (last->type == 5 && first->type == 4)
-    {
-        res++;
-        last->prev->next = NULL;
-        free(last);
-        last = ft_lstlast(*token);
-        *token = (*token)->next;
-        free(first);
-        first = *token;
-        first->prev = NULL;
-    }
-    return (res);
 }
 
 int ft_is_same_node(t_list  *node_1, t_list *node_2)
@@ -117,9 +135,9 @@ t_list  *ft_retrieve_left_tokens(t_list **token)
             *token = (*token)->next;
             while ((*token)->type != 5 || p_count != 1)
             {
-                if ((*token)->type == 4)
+                if ((*token)->type == LEFT_P)
                     p_count++;
-                if ((*token)->type == 5)
+                if ((*token)->type == RIGHT_P)
                     p_count--;
                 *token = (*token)->next;
             }
@@ -145,8 +163,9 @@ t_node  *ft_make_tree(t_list *token, t_node *parent)
     t_node  *node;
     t_list  *left;
     t_list  *right;
+    int     is_micro;
 
-    ft_clean_onion(&token);
+    is_micro = ft_clean_onion(&token);
     left = ft_retrieve_left_tokens(&token);
     if (!token)
         return (ft_treenode_new(left, parent, 0));
@@ -154,6 +173,12 @@ t_node  *ft_make_tree(t_list *token, t_node *parent)
     right->prev = NULL;
     token->next = NULL;
     node = ft_treenode_new(token, parent, 1);
+    if (!parent)
+        node->is_micro = 0;
+    else if (is_micro == 1)
+        node->is_micro = parent->is_micro + 1;
+    else
+        node->is_micro = parent->is_micro;
     node->left = ft_make_tree(left, node);
     node->right = ft_make_tree(right, node);
     return (node);

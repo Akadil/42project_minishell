@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:54 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/17 20:16:33 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:30:40 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int    ft_exec_recursion(t_node *node, t_node *parent)
             if (ft_check_operator(parent->exit_code, parent->elems->content) == 0)
                 node->exit_code = ft_exec_recursion(node->left, NULL);
         }
-        if (node->right->right_whole == 0 && node->right->type == 1)
+        if (node->right->is_micro == node->is_micro && node->right->type == 1)
             node->exit_code = ft_exec_recursion(node->right, node);
         else
             if (ft_check_operator(node->exit_code, node->elems->content) == 0)

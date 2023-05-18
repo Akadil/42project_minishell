@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:42:20 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/18 11:58:42 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/18 12:36:11 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,13 @@ char	*ft_check_parenthesis(t_list *node, int *p_count)
 	else 																	// closing
 	{
 		(*p_count)--;
+		if (*p_count == -1)													// cat ) ...
+			return ((char *)node->content);
 		if (!node->prev)
 			return ((char *)node->content);
 		if (node->next && node->next->type == 4) 							// )(
 			return ((char *)node->next->content);
-		if (node->next && node->next->type != 2 && node->next->type != 3)	// ) [cmd]
+		if (node->next && node->next->type != 2 && node->next->type != 3 && node->next->type != 5)	// ) [cmd]
 			return ((char *)node->next->content);
 		if (node->next && node->next->type == 1) 							// ) |
 			return ((char *)node->next->content);

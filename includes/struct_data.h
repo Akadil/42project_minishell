@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/19 16:26:27 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:47:18 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ typedef struct s_cmd
     int     in_fd;
     int     out_fd;
 }           t_cmd;
-
 
 #endif

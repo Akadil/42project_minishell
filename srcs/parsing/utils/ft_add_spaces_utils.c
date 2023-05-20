@@ -6,12 +6,13 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:42:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 16:15:23 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 18:57:37 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
+#include "ft_error.h"
 
 char    *ft_is_metacharacter(char c1, char c2)
 {
@@ -101,6 +102,7 @@ int     ft_size(char *str)
 
 char    *ft_free(char *str)
 {
+    ft_error();
     free (str);
     return (NULL);
 }

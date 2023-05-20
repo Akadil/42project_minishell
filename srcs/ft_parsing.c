@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/17 19:50:37 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:01:31 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	I want to restructure it. I want to make a clean, and it should work
 	So I have to pass only specific information
 */
-void    ft_parsing(t_data *data, char *command)
+int    ft_parsing(t_data *data, char *command)
 {
     t_list  *head;
 	t_node	*node;
@@ -24,8 +24,8 @@ void    ft_parsing(t_data *data, char *command)
 
     cmd_line = ft_add_spaces(command);
 	if (!cmd_line)
-		ft_error_clean_exit(data);
-    head = ft_tokenization(cmd_line);
+		return (-1);
+	head = ft_tokenization(cmd_line);
 	if (!head)
 	{
 		free (cmd_line);

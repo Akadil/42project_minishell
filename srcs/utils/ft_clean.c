@@ -6,12 +6,14 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 13:35:10 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:19:39 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct_data.h"
+#include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
 		Close all file descriptors if open
@@ -44,4 +46,31 @@ void	ft_clean_full(t_data *my_data)
 {
 	(void)my_data;
 	printf("ft_clean_full() is on construction :( \n");
+}
+
+void	ft_clean_tokens(t_list **token)
+{
+	ft_lstclear(token, &free);
+}
+
+void	ft_clean_cmds(t_cmd	**cmds_p)
+{
+	t_cmd	*cmds;
+
+	cmds = *cmds_p;
+	ft_lstclear(&cmds->params, &free);
+	ft_lstclear(&cmds->redir, &free);
+	free (cmds);
+}
+
+void	ft_clean_tree(t_node *node)
+{
+	if (node->left)
+	{
+		ft_clean_tree(node->left);
+		ft_clean_tree(node->right);
+	}
+	ft_lstclear(&node->elems, &free);
+	ft_clean_cmds(&node->cmds);
+	free (node);
 }

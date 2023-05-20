@@ -6,11 +6,12 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/20 19:06:20 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:20:42 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_parsing.h"
+#include "ft_clean.h"
 
 /*
 	I want to restructure it. I want to make a clean, and it should work
@@ -31,13 +32,9 @@ int    ft_parsing(t_data *data, char *command)
 		return (-1);
     ft_assign_types(head);
 	if (ft_check_tokens(head) == 0)
-		ft_clean_exit(data);
-	// Check for correct position of each element
-	// This should be inside of ft_assign_types
-	/*
-		At least:
-				1. (). There should be no "no operators" around them
-				2. Think of the redirections for above case
-	*/
+	{
+		ft_clean_tokens(&head);
+		return (-1);
+	}
 	node = ft_make_tree(head, NULL);
 }

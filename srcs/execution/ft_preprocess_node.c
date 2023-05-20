@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 16:18:55 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/20 14:52:22 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:08:50 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int    ft_preprocess_node(t_node *node)
     if (!node->cmds)
     {
         ft_error();
-        return (0); 
+        return (-1); 
     }
     node->count_cmd = count;
     ft_preprocess_cmd(node->cmds, node->elems);

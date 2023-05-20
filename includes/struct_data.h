@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/20 16:59:58 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:47:25 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@
 #define FILENAME 10
 #define PARAMETER 11
 
-typedef struct s_data
-{
-    t_list  *env;
-}   t_data;
+
 
 typedef struct s_cmd
 {
@@ -50,8 +47,6 @@ typedef struct s_node
     int     count_cmd;
     
     int     type;
-    int     in_fd;
-    int     out_fd;
     int     exit_code;
 
     int     level;
@@ -63,9 +58,11 @@ typedef struct s_node
     
 }   t_node;
 
-typedef struct s_operator
+typedef struct s_data
 {
-
-}   t_operator;
+    t_list  *env;
+    t_node  *node;
+    int     exit_code;
+}   t_data;
 
 #endif

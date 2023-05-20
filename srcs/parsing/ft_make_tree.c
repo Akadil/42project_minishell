@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:25:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/18 20:47:23 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:39:30 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "struct_list.h"
 #include "struct_data.h"
 #include "libft.h"
+#include "ft_error.h"
 
 t_list  *ft_find_next_parenthesis(t_list *first)
 {
@@ -91,9 +92,9 @@ t_node  *ft_treenode_new(t_list *token, t_node *parent, int type)
     node->left = NULL;
     node->right = NULL;
     node->type = type;
-    node->redirections = NULL;
-    node->in_fd = 0;
-    node->out_fd = 1;
+    node->cmds = NULL;
+    node->count_cmd = 0;
+    node->exit_code = 0;
     return (node);
 }
 
@@ -176,6 +177,8 @@ t_node  *ft_make_tree(t_list *token, t_node *parent)
     right->prev = NULL;
     token->next = NULL;
     node = ft_treenode_new(token, parent, 1);           // return NULL? without any steps
+    if (!node)
+        return (NULL);
     if (!parent)
         node->is_micro = 0;
     else if (is_micro == 1)
@@ -183,7 +186,17 @@ t_node  *ft_make_tree(t_list *token, t_node *parent)
     else
         node->is_micro = parent->is_micro;
     node->left = ft_make_tree(left, node);              // 
+    if (!node->left)
+    {
+        ft_clean_tree(node);
+        return (NULL);
+    }
     node->right = ft_make_tree(right, node);
+    if (!node->right)
+    {
+        ft_clean_tree(node);
+        return (NULL);
+    }
     return (node);
 }
 

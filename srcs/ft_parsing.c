@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/20 19:41:53 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:44:11 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ int    ft_parsing(t_data *data, char *command)
 		ft_clean_tokens(&head);
 		return (-1);
 	}
+	return (0);
 }

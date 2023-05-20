@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 16:59:31 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/09 18:49:07 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/20 16:51:50 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void    ft_init_data(int argc, char **argv, char **env, t_data *data)
         printf("Error, wrong arguments !");
     
     data->env = NULL;
-    ft_init_env(data, env);   
+    ft_init_env(&data->env, env);
 }

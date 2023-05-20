@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/19 20:00:50 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:59:58 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_cmd
 typedef struct s_node
 {
     t_list  *elems;
-    t_list  *redirections;
     t_cmd   *cmds;
     int     count_cmd;
     

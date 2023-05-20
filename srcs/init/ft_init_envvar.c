@@ -3,47 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_envvar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 17:05:34 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/09 18:48:47 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/20 16:59:14 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "ft_error.h"
 #include "libft.h"
-#include <stdlib.h>
+#include "struct_data.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-void    ft_free(void *content)
+/**
+ * @brief 		Initilize the environment variables.
+ * 
+ * @example		They are going to be saved inside of linked list, where:
+ * 
+ * 					list->content	- full string (ex. "USER=akalimol")
+ *        			list->type      - default or not
+ * 
+ * @param data_env 	Address of env data. &data->env
+ * @param env 		environment variables passed from program
+ * 
+ * @return int 		0	- if everything ok
+ * 					-1	- if malloc failed
+ */
+int	ft_init_env(t_list **data_env, char **env)
 {
-    (void)content;
-    return ;
+	t_list	*token;
+	int		i;
+
+	i = 0;
+	while (env[i])
+	{
+		token = ft_lstnew(env[i], 0);
+		if (!token)
+		{
+			ft_lstclear(&token, NULL);
+			ft_error();
+			return (-1);
+		}
+		ft_lstadd_back(data_env, token);
+		i++;
+	}
+	return (0);
 }
-
-void    ft_error(t_list  **data)
-{
-    ft_lstclear(data, &ft_free);
-}
-
-/*
-    Initializee the environment variables
-        list->content   - full string (ex. "USER=akalimol")
-        list->type      - default or not
-*/
-void    ft_init_env(t_list **data, char **env)
-{
-    t_list  *node;
-    int i;
-
-    i = 0;
-    while (env[i])
-    {
-        node = ft_lstnew(env[i], 0);
-        if (!node)
-            printf ("Error! free all previous env t_lists");
-        ft_lstadd_back(data, node);
-        i++;
-    }
-}
-

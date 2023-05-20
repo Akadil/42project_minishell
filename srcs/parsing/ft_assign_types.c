@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:28:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 18:20:34 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:29:51 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void    ft_assign_types(t_list *node)
             node->type = FILENAME;
         else 
             node->type = PARAMETER;
-        if (6 <= node->type && node->type <= 9 && (is_filename = 0) == 0)
+        is_filename = 0;
+        if (6 <= node->type && node->type <= 9)
             is_filename = 1;
         node = node->next;
     }

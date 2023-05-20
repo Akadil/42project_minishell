@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:34:56 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 13:27:11 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:20:02 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char		*ft_strdup(const char *s1);
 /* ------------------------------------------------------------------------- */
 
 int			ft_lstsize(t_list *lst);
+int			ft_lstremove(t_list **lst, t_list *node, void (*del)(void*));
 void		ft_lstadd_front(t_list **lst, t_list *new_node);
 void		ft_lstadd_back(t_list **lst, t_list *new_node);
 void		ft_lstdelone(t_list *lst, void (*del)(void*));
@@ -82,6 +83,8 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstnew(void *content, int type);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list		*ft_lstretrieve(t_list **lst, t_list *node);
+t_list		*ft_lstfirst(t_list *lst);
 
 /* ------------------------------------------------------------------------- */
 /* -------------------------------- Printf --------------------------------- */

@@ -6,7 +6,7 @@
 #    By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 12:54:42 by akalimol          #+#    #+#              #
-#    Updated: 2023/05/16 14:39:06 by akalimol         ###   ########.fr        #
+#    Updated: 2023/05/20 14:20:50 by akalimol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,21 +39,21 @@ SRCS	= 	other/ft_atoi.c				\
 			print/ft_putunbr.c \
 			print/ft_printf.c \
 			print/ft_printf2.c \
-			string/ft_split.c				\
-			string/ft_strchr.c				\
-			string/ft_striteri.c			\
+			string/ft_split.c			\
+			string/ft_strchr.c			\
+			string/ft_striteri.c		\
 			string/ft_strjoin.c			\
 			string/ft_strlcat.c			\
 			string/ft_strlcpy.c			\
-			string/ft_strlen.c				\
+			string/ft_strlen.c			\
 			string/ft_strmapi.c			\
 			string/ft_strcmp.c			\
 			string/ft_strncmp.c			\
 			string/ft_strnstr.c			\
 			string/ft_strrchr.c			\
 			string/ft_strtrim.c			\
-			string/ft_substr.c				\
-			string/ft_strstr.c	\
+			string/ft_substr.c			\
+			string/ft_strstr.c			\
 			linked_list/ft_lstadd_back.c    	\
 			linked_list/ft_lstadd_front.c		\
 			linked_list/ft_lstclear.c			\
@@ -63,6 +63,9 @@ SRCS	= 	other/ft_atoi.c				\
 			linked_list/ft_lstmap.c				\
 			linked_list/ft_lstnew.c				\
 			linked_list/ft_lstsize.c			\
+			linked_list/ft_lstretrieve.c		\
+			linked_list/ft_lstremove.c			\
+			linked_list/ft_lstfirst.c			\
 		  	get_next_line/get_next_line.c 		\
 			get_next_line/get_next_line_utils.c  \
 

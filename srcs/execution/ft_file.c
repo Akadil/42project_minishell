@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec_command.c                                  :+:      :+:    :+:   */
+/*   ft_file.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 17:52:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/20 22:29:00 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/20 22:41:27 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/20 22:48:21 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct_data.h"
+#include <stdio.h>
 
-void    ft_exec_command(t_data *data, t_node *node)
+void    ft_function(char *str)
 {
-    int i_cmd;
-    int is_success;
-
-    i_cmd = 0;
-    is_success = 0;
-    while (i_cmd < node->count_cmd)
-    {
-        is_success = ft_prepare_pipe(node, i_cmd);
-
-        if (is_success == 1)
-            ft_execute(data, i_cmd);
-        i_cmd++;
-    }
+    
 }

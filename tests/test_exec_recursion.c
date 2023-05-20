@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:14:24 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/18 20:26:29 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 21:17:32 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ t_node  *ft_make_tree(t_list *token, t_node *parent);
 void    ft_set_the_level(t_node *node, int level);
 void    ft_print_tree(t_node *node);
 void    ft_print_tree_levels(t_node *node, int level);
-int    ft_exec_recursion(t_node *node, t_node *parent);
+int    ft_preprocess_tree(t_node *node);
+int    ft_exec_recursion(t_data *data, t_node *node, t_node *parent);
 int    ft_check_tokens(t_list  *node);
+
 /*
     right_whole untested
 */
@@ -71,6 +73,7 @@ int main(void)
         ft_set_the_level(node, 0);
         
         ft_print_tree(node);
+        ft_preprocess_tree(node);
         printf("\n-----------------\n");
 
         int i = 0;
@@ -82,7 +85,7 @@ int main(void)
         }
         printf("\n\n");
 
-        exit_code = ft_exec_recursion(node, NULL);
+        exit_code = ft_exec_recursion(NULL, node, NULL);
 
         printf("\n\n");
     }

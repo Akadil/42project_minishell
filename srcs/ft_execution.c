@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:54 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/20 19:48:18 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 21:14:46 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,27 @@
 #include "ft_clean.h"
 #include <stdio.h>
 
-void    ft_line_execution(t_data *data)
-{
-    int exit_code;
+// void    ft_line_execution(t_data *data)
+// {
+//     int exit_code;
 
-    ft_open_heredocs(data);
-    if (ft_preprocessing(data->node) == -1)
-    {
-        ft_clean_tree(data->node);
-        return ;
-    }
-    exit_code = ft_exec_recursion(data, data->node, NULL);
-    data->exit_code = exit_code;
-}
+//     ft_open_heredocs(data);
+//     if (ft_preprocessing(data->node) == -1)
+//     {
+//         ft_clean_tree(data->node);
+//         return ;
+//     }
+//     exit_code = ft_exec_recursion(data, data->node, NULL);
+//     data->exit_code = exit_code;
+// }
 
 int ft_exec_cmd(t_data *data, t_node *node)
 {
+    (void)data;
     t_list  *token;
     int     exit;
 
-    if (ft_strcmp((char *)token->content, "x") == 0)
-        exit = 1;
-    else
-        exit = 0;
+    
     token = node->elems;
     while (token)
     {
@@ -45,6 +43,10 @@ int ft_exec_cmd(t_data *data, t_node *node)
         token = token->next;
     }
     token = node->cmds->params;
+    if (ft_strcmp((char *)token->content, "x") == 0)
+        exit = 1;
+    else
+        exit = 0;
     while (token)
     {
         printf("%s ", (char *)token->content);

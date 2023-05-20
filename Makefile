@@ -1,7 +1,19 @@
 NAME			= minishell
 LIBFT			= libft.a
 
-SRCS            = main.c
+SRCS_ADD_SPACES		=	parsing/ft_add_spaces.c \
+						parsing/utils/ft_add_spaces_utils.c
+SRCS_TOKENIZATION	=	parsing/ft_tokenization.c \
+						parsing/tokenization/ft_add_token.c \
+						parsing/tokenization/ft_is_token.c \
+						parsing/tokenization/ft_tokenization_utils.c
+SRCS_ASSIGN_TYPES	=	parsing/ft_assign_types.c
+SRCS_MAKE_TREE		=	parsing/ft_make_tree.c
+
+SRCS_PARSING		=	ft_parsing.c $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE)
+SRCS_UTILS			=	utils/ft_clean.c \
+						utils/ft_error_1.c \
+						utils/ft_error_2.c
 
 SRCS_DIR		= ./srcs
 BUILD_DIR       = ./.build
@@ -36,43 +48,49 @@ fclean					: clean
 			rm -rf ${NAME} $(LIBFT_DIR)/$(LIBFT)
 
 test_add_spaces			: 
-			cc -I includes -Wall -Wextra -Werror tests/test_add_spaces.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c  -lreadline -Llibft -lft && ./a.out && rm a.out
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_add_spaces.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_UTILS)) -lreadline -Llibft -lft
+			./a.out
+			rm a.out
 
 test_tokenization		:
-			cc -I includes -Wall -Wextra -Werror tests/test_tokenization.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c -lreadline -Llibft -lft && ./a.out && rm a.out
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_tokenization.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_UTILS)) -lreadline -Llibft -lft
+			./a.out
+			rm a.out
 
 test_assign_types		:
-			cc -I includes -Wall -Wextra -Werror tests/test_assgn_types.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c -lreadline -Llibft -lft
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_assgn_types.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_UTILS)) -lreadline -Llibft -lft
 			valgrind ./a.out
 			rm a.out
 
 test_make_tree			:
-			cc -I includes -Wall -Wextra -Werror tests/test_make_tree.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c -lreadline -Llibft -lft
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_make_tree.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) -lreadline -Llibft -lft
 			valgrind --leak-check=full ./a.out
 			rm a.out
 
 test_preprocessing		:
-			cc -g -I includes -Wall -Wextra -Werror tests/test_preprocessing.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c -lreadline -Llibft -lft
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_preprocessing.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c -lreadline -Llibft -lft
 			./a.out
 			rm a.out
 
 test_exec_recursion		:
-			cc -I includes -Wall -Wextra -Werror tests/test_exec_recursion.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/parsing/ft_check_tokens.c srcs/ft_execution.c -lreadline -Llibft -lft && ./a.out && rm a.out
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_exec_recursion.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/parsing/ft_check_tokens.c srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c srcs/ft_execution.c -lreadline -Llibft -lft && ./a.out && rm a.out
+
+
 
 debug_add_spaces		:
-			cc -g -I includes -Wall -Wextra -Werror tests/test_add_spaces.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c  -lreadline -Llibft -lft
+			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_add_spaces.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c  -lreadline -Llibft -lft
 
 debug_assign_types		:
-			cc -g -I includes -Wall -Wextra -Werror tests/test_assgn_types.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c -lreadline -Llibft -lft
+			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_assgn_types.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c -lreadline -Llibft -lft
 
 debug_make_tree			:
-			cc -g -I includes -Wall -Wextra -Werror tests/test_make_tree.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c -lreadline -Llibft -lft
+			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_make_tree.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c -lreadline -Llibft -lft
 
 debug_preprocessing		:
-			cc -g -I includes -Wall -Wextra -Werror tests/test_preprocessing.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c -lreadline -Llibft -lft
+			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_preprocessing.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c -lreadline -Llibft -lft
 
 debug_exec_recursion	:
-			cc -g -I includes -Wall -Wextra -Werror tests/test_exec_recursion.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/parsing/ft_check_tokens.c srcs/ft_execution.c -lreadline -Llibft -lft
+			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_exec_recursion.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c srcs/parsing/ft_check_tokens.c srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c srcs/ft_execution.c -lreadline -Llibft -lft
 
 
 

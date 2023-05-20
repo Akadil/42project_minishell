@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:17:45 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/20 14:21:51 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:51:50 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_list  *ft_lstretrieve(t_list **lst, t_list *node)
             *lst = i_token->next;
         if (i_token->next)
             i_token->next->prev = i_token->prev;
+        i_token->next = NULL;
+        i_token->prev = NULL;
         return (i_token);
     }
     return (NULL);

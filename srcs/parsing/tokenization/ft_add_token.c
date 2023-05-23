@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:48:41 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 16:54:43 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:50:22 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_list	*ft_add_token(char *str, int i_beg, int i_end, t_list *env)
 	}
 	new_str[i] = '\0';
 	node = ft_expand_token(new_str, env);
-	free(new_str);
 	if (!node)
 		return (NULL);
 	return (node);

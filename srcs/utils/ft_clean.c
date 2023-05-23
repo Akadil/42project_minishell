@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/20 19:33:25 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:48:28 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	ft_clean_full(t_data *my_data)
 	printf("ft_clean_full() is on construction :( \n");
 }
 
-void	ft_clean_tokens(t_list **token)
+void	ft_clean_tokens(t_list **token, void (*del)(void*))
 {
-	ft_lstclear(token, &free);
+	ft_lstclear(token, del);
 }
 
 void	ft_clean_cmds(t_cmd	**cmds_p)

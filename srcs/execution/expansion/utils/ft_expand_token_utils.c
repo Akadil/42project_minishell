@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_expand_token.h                                  :+:      :+:    :+:   */
+/*   ft_expand_token_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 19:01:58 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/22 20:06:44 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/23 12:00:31 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/23 12:01:02 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_EXPAND_TOKEN_H
-# define FT_EXPAND_TOKEN_H
+#include "struct_list.h"
+#include <stdio.h>
 
-# include "struct_list.h"
-# include "libft.h"
-# include <stdlib.h>
+t_list	*ft_free_expand_token(char **words, t_list **head)
+{
+	int	i;
 
-char	*ft_strchr_alt(const char *s, int c);
-int     ft_strlcat_alt(char *dst, const char *src, int dstsize);
-
-#endif
+	i = 0;
+	while (words[i])
+	{
+		free (words[i]);
+		i++;
+	}
+	free (words);
+	ft_lstclear(head, NULL);
+	return (NULL);
+}

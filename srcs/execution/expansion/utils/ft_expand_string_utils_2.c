@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_expand_token.c                                  :+:      :+:    :+:   */
+/*   ft_expand_string_utils_2.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 18:24:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/22 20:06:36 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/23 12:28:52 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/23 12:47:11 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_expand_token.h"
+#include <stdio.h>
+#include "libft.h"
+
+int     ft_strlcat_alt(char *dst, const char *src, int dstsize);
 
 int     ft_size_expanded(char *str, char *value, char *end)
 {
@@ -39,9 +42,8 @@ int     ft_size_expanded(char *str, char *value, char *end)
     return (size);
 }
 
-char    *ft_cat_everything(char *str, char *value, char *end)
+char    *ft_strjoin_big(char *str, char *value, char *end)
 {
-    // I have previous word, the value, and after work
     char    *returner;
     int size;
 
@@ -49,7 +51,7 @@ char    *ft_cat_everything(char *str, char *value, char *end)
     returner = (char *)ft_calloc(sizeof(char), size + 1);
     if (!returner)
         return (NULL);
-    ft_strlcat_alt(returner, str, size + 1);        // Have to stop on $
+    ft_strlcat_alt(returner, str, size + 1);
     ft_strlcat(returner, value, size + 1);
     ft_strlcat(returner, end, size + 1);
     free(str);
@@ -82,29 +84,3 @@ char    *ft_find_value(char *key, int i_pos, t_list *env)
     return (NULL);
 }
 
-/*
-    Inputs:     1. char *str
-*/
-t_list  *ft_expand_token(char *str, t_list *env)
-{
-    t_list  *node;
-    char    *temp;
-    char    *value;
-    int     i_pos;
-
-    node = NULL;
-    temp = ft_strchr_alt(str, '$');     // Alternative because $ in quotes doesn't count
-    if (temp == NULL)
-        return (ft_lstnew(str, 0));
-    while (temp)
-    {
-        // My goal is to create the maximum string without any expansions
-        i_pos = ft_find_key(temp + 1);
-        value = ft_find_value(temp + 1, i_pos, env);
-        str = ft_cat_everything(str, value, temp + i_pos + 1);
-        if (!str)
-            return (NULL);                          // Protect it 
-        temp = ft_strchr_alt(str, '$');
-    }
-    return (ft_lstnew(str, 0));
-}

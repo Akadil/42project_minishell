@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:17 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/20 18:59:41 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:40:19 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief Add space between meta characters
  * 
- * Example:
+ * @example:
  *          Before:  (cat||ls)|pwd
  *          After:   ( cat || ls ) | pwd
  * 

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:28:52 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 14:40:42 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:54:32 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@ char    *ft_strjoin_big(char *str, char *value, char *end)
     returner = (char *)ft_calloc(sizeof(char), size + 1);
     if (!returner)
         return (NULL);
-    ft_strlcat_alt(returner, str, size + 1);
-    ft_strlcat(returner, value, size + 1);
-    ft_strlcat(returner, end, size + 1);
+    if (str)
+        ft_strlcat_alt(returner, str, size + 1);
+    if (value)
+        ft_strlcat(returner, value, size + 1);
+    if (end)
+        ft_strlcat(returner, end, size + 1);
     free(str);
     return (returner);
 }

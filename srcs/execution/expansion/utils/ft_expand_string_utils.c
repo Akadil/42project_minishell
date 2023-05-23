@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_expand_token_utils.c                            :+:      :+:    :+:   */
+/*   ft_expand_string_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:49:36 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/22 19:04:10 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:39:22 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,31 @@ char	*ft_strchr_alt(const char *s, int c)
 	return (NULL);
 }
 
-static int	ft_strlen_alt(const char *s)
+static int	ft_strlen_alt(const char *str)
 {
-	int	counter;
+	char	mode;
+	int		size;
+	int		i;
 
-	counter = 0;
-	while (s[counter] && s[counter] != '\0' && s[counter] != '$')
-		counter ++;
-	return (counter);
+	size = 0;
+    mode = '\0';
+    i = 0;
+    while (str[i])
+    {
+        if (mode == 0 && str[i] == '\'')
+            mode = '\'';
+        else if (mode == 0 && str[i] == '\"')
+            mode = '\"';
+        else if (mode == '\'' && str[i] == '\'')
+            mode = '\0';
+        else if (mode == '\"' && str[i] == '\"')
+            mode = '\0';
+		else if (str[i] == '$' && mode == '\0')
+			break;
+        size++;
+        i++;
+    }
+	return (size);
 }
 
 int	ft_strlcat_alt(char *dst, const char *src, int dstsize)
@@ -62,9 +79,7 @@ int	ft_strlcat_alt(char *dst, const char *src, int dstsize)
 	if (!dst && dstsize == 0)
 		return (ft_strlen_alt(src));
 	i = 0;
-	src_len = 0;
-	while (src && src[src_len] && src[src_len] != '$')
-		src_len++;
+	src_len = ft_strlen_alt(src);
 	dst_len = ft_strlen(dst);
 	if (dst_len > dstsize)
 		return (src_len + dstsize);

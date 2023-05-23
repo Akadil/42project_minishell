@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:28:52 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 12:47:11 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:40:42 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,29 @@ int     ft_strlcat_alt(char *dst, const char *src, int dstsize);
 
 int     ft_size_expanded(char *str, char *value, char *end)
 {
+    char    mode;
     int size;
     int i;
 
     size = 0;
+    mode = '\0';
     i = 0;
-    while (str && str[i] != '$')
+    while (str)
     {
+        if (mode == 0 && str[i] == '\'')
+            mode = '\'';
+        else if (mode == 0 && str[i] == '\"')
+            mode = '\"';
+        else if (mode == '\'' && str[i] == '\'')
+            mode = '\0';
+        else if (mode == '\"' && str[i] == '\"')
+            mode = '\0';
+		else if (str[i] == '$' && mode == '\0')
+			break;
         size++;
         i++;
     }
-    i = 0;
-    while (value && value[i])
-    {
-        size++;
-        i++;
-    }
-    i = 0;
-    while (end && end[i])
-    {
-        size++;
-        i++;
-    }
+    size = size + ft_strlen(value) + ft_strlen(end);
     return (size);
 }
 

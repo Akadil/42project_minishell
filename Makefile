@@ -7,6 +7,13 @@ SRCS_TOKENIZATION	=	parsing/ft_tokenization.c \
 						parsing/tokenization/ft_add_token.c \
 						parsing/tokenization/ft_is_token.c \
 						parsing/tokenization/ft_tokenization_utils.c
+SRCS_EXPANSION		=	execution/expansion/ft_expand_string.c \
+						execution/expansion/ft_expand_token.c \
+						execution/expansion/utils/ft_expand_string_utils.c \
+						execution/expansion/utils/ft_expand_string_utils_2.c \
+						execution/expansion/utils/ft_expand_token_utils.c \
+						execution/expansion/utils/ft_expand_token_utils_2.c \
+						execution/expansion/utils/ft_expand_token_utils_3.c
 SRCS_ASSIGN_TYPES	=	parsing/ft_assign_types.c
 SRCS_MAKE_TREE		=	parsing/ft_make_tree.c
 
@@ -53,17 +60,17 @@ test_add_spaces			:
 			rm a.out
 
 test_tokenization		:
-			$(CC) $(HFLAGS) $(CFLAGS) tests/test_tokenization.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_UTILS)) -lreadline -Llibft -lft
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_tokenization.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_UTILS)) -lreadline -Llibft -lft
 			./a.out
 			rm a.out
 
 test_assign_types		:
-			$(CC) $(HFLAGS) $(CFLAGS) tests/test_assgn_types.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_UTILS)) -lreadline -Llibft -lft
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_assgn_types.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_UTILS)) -lreadline -Llibft -lft
 			valgrind ./a.out
 			rm a.out
 
 test_make_tree			:
-			$(CC) $(HFLAGS) $(CFLAGS) tests/test_make_tree.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) -lreadline -Llibft -lft
+			$(CC) $(HFLAGS) $(CFLAGS) tests/test_make_tree.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) -lreadline -Llibft -lft
 			valgrind --leak-check=full ./a.out
 			rm a.out
 
@@ -78,10 +85,10 @@ test_exec_recursion		:
 
 
 debug_add_spaces		:
-			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_add_spaces.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c  -lreadline -Llibft -lft
+			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_add_spaces.c $(CC) $(HFLAGS) $(CFLAGS) tests/test_add_spaces.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_UTILS)) -lreadline -Llibft -lft
 
 debug_assign_types		:
-			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_assgn_types.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c -lreadline -Llibft -lft
+			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_assgn_types.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_UTILS)) -lreadline -Llibft -lft
 
 debug_make_tree			:
 			$(CC) -g $(HFLAGS) $(CFLAGS) tests/test_make_tree.c srcs/parsing/ft_add_spaces.c srcs/parsing/utils/ft_add_spaces_utils.c srcs/parsing/ft_tokenization.c srcs/parsing/tokenization/ft_add_token.c srcs/parsing/tokenization/ft_is_token.c srcs/parsing/tokenization/ft_tokenization_utils.c srcs/utils/ft_clean.c srcs/utils/ft_error_1.c srcs/utils/ft_error_2.c srcs/parsing/ft_assign_types.c srcs/parsing/ft_make_tree.c -lreadline -Llibft -lft

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:13:46 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/17 17:15:23 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:30:36 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <readline/history.h>
 #include <unistd.h>
 #include "struct_list.h"
+#include "libft.h"
 
 /*
     tester: 
@@ -26,7 +27,7 @@
             
 */
 
-t_list    *ft_tokenization(char *str);
+t_list    *ft_tokenization(char *str, t_list *env);
 void    print_tokens(t_list *token);
 char    *ft_add_spaces(char *str);
 void    ft_assign_types(t_list *node);
@@ -35,6 +36,15 @@ int main(void)
 {
     char    *str;
     t_list  *head;
+    t_list  *env_var;
+    
+    env_var = ft_lstnew("HOME=/my_home", 0);
+    ft_lstadd_back(&env_var, ft_lstnew("USER=akalimol", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("a=z", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("b= ", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("c= -la", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("d=-la ", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("e=main.c error.c", 0));
 
     head = NULL;
     str = readline("Type the string: ");
@@ -45,7 +55,7 @@ int main(void)
         
         str = ft_add_spaces(str);
 
-        head = ft_tokenization(str);
+        head = ft_tokenization(str, env_var);
         ft_assign_types(head);
         print_tokens(head);
         

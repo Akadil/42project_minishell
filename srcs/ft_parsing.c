@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/20 19:44:11 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:20:25 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int    ft_parsing(t_data *data, char *command)
     cmd_line = ft_add_spaces(command);
 	if (!cmd_line)
 		return (-1);
-	head = ft_tokenization(cmd_line);
+	head = ft_tokenization(cmd_line, data->env);
 	free(cmd_line);
 	if (!head)
 		return (-1);

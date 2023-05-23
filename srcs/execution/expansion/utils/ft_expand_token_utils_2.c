@@ -6,36 +6,14 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:02:11 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 16:02:34 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:10:26 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
 
-static int  ft_skip(char const *str, int i, char c)
-{
-    if (c == '\'')
-    {
-        i++;
-        while (str[i] && str[i] != '\'')
-            i++;
-        if (str[i] == '\'')
-            i++;
-    }
-    else if (c == '\"')
-    {
-        i++;
-        while (str[i] && str[i] != '\"')
-            i++;
-        if (str[i] == '\"')
-            i++;
-    }
-    else
-        while (str[i] && str[i] == ' ')
-            i++;
-    return (i);
-}
+int  ft_skip(char const *str, int i, char c);
 
 static int	ft_find_n_word(char const *s, char c)
 {

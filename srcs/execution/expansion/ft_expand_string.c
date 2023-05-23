@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:24:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 12:51:04 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:54:07 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
  */
 char  *ft_expand_string(char *str, t_list *env)
 {
+    char    *ext_str;
     char    *temp;
     char    *value;
     int     pos_key;
@@ -45,7 +46,7 @@ char  *ft_expand_string(char *str, t_list *env)
     {
         pos_key = ft_find_key(temp + 1);
         value = ft_find_value(temp + 1, pos_key, env);
-        str = ft_strjoin_big(str, value, temp + pos_key + 1);
+        ext_str = ft_strjoin_big(str, value, temp + pos_key + 1);
         if (!str)
             return (NULL);                          // Protect it 
         temp = ft_strchr_alt(str, '$');

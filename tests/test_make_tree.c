@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:20:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/18 17:48:46 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 04:48:51 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 int max_level = 0;
 
-t_list    *ft_tokenization(char *str);
+t_list    *ft_tokenization(char *str, t_list *env);
 void    print_tokens(t_list *token);
 char    *ft_add_spaces(char *str);
 void    ft_assign_types(t_list *node);
@@ -39,6 +39,15 @@ int main(void)
     char    *str;
     t_list  *head;
     t_node  *node;
+    t_list  *env_var;
+    
+    env_var = ft_lstnew("HOME=/my_home", 0);
+    ft_lstadd_back(&env_var, ft_lstnew("USER=akalimol", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("a=z", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("b= ", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("c= -la", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("d=-la ", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("e=main.c error.c", 0));
 
     head = NULL;
     node = NULL;
@@ -50,7 +59,7 @@ int main(void)
         
         str = ft_add_spaces(str);
 
-        head = ft_tokenization(str);
+        head = ft_tokenization(str, env_var);
         ft_assign_types(head);
 
         node = ft_make_tree(head, NULL);

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:13:46 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 16:30:36 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 03:55:09 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
             1. (cat|ls)&&pwd
             2. (cat|ls -la < Makefile > outfile.txt)&&pwd
+            3. cat$b"$USER"'$HOME'
             
 */
 

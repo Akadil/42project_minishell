@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:49:06 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 16:19:59 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 04:12:37 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ t_list    *ft_tokenization(char *str, t_list *env)
     }
     if (ft_is_token(0, 1) == 0)
         return (ft_token_merror("BASH: unclosed quotes\n", head));
+    ft_remove_quotes(head);
     return (head);
 }

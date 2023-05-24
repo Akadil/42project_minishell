@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/24 03:31:57 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:13:22 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_node	*ft_parsing(char *command, t_list *env)
 		ft_clean_tokens(&head, &free);
 		return (NULL);
 	}
-	if (ft_open_heredocs() == NULL)
+	if (ft_open_heredocs(head, env) == -1)
 	{
 		ft_clean_tokens(&head, &free);
 		return (NULL);

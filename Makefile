@@ -17,9 +17,10 @@ SRCS_EXPANSION		=	execution/expansion/ft_expand_string.c \
 						execution/expansion/utils/ft_expand_token_utils_3.c
 SRCS_ASSIGN_TYPES	=	parsing/ft_check_tokens.c \
 						parsing/ft_assign_types.c
+SRCS_HEREDOCS		=	parsing/ft_open_heredocs.c
 SRCS_MAKE_TREE		=	parsing/ft_make_tree.c
 
-SRCS_PARSING		=	ft_parsing.c $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_EXPANSION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE)
+SRCS_PARSING		=	ft_parsing.c $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_EXPANSION) $(SRCS_ASSIGN_TYPES) $(SRCS_HEREDOCS) $(SRCS_MAKE_TREE)
 SRCS_UTILS			=	utils/ft_clean.c \
 						utils/ft_error_1.c \
 						utils/ft_error_2.c

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:28:52 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/24 04:03:14 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:55:20 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ int     ft_size_expanded(char *str, char *value, char *end)
             mode = '\'';
         else if (mode == '\'' && str[i] == '\'')
             mode = '\0';
-		else if (str[i] == '$' && mode == '\0')
+        else if (mode == 0 && str[i] == '\"')
+            mode = '\"';
+        else if (mode == '\"' && str[i] == '\"')
+            mode = '\0';
+		else if (str[i] == '$' && (mode == '\0' || mode == '\"'))
 			break;
         size++;
         i++;

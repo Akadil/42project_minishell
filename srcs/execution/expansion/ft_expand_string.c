@@ -6,22 +6,22 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:24:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 17:51:11 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:58:51 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_expand_string.h"
 
 /**
- * @brief           Expand the string if any expansions. Ignores the quotes
+ * @brief           Expand the string if any expansions
  * 
  * @param str   -   string to extend 
  * @param env   -   environment variables
  * @return char*    expanded string. NULL if malloc failed
  * 
  * ----------------------------------------------------------------------------
- * @example         "Login: $USER, Home: "$HOME"" -> 
- *                  "Login: akalimol, Home: "$HOME""
+ * @example			"$USER'$HOME" '$USER"$HOME' ->
+ * 					akalimol'/HOME $USER"$HOME
  * 
  * @def     ft_strchr_alt()	- the same, just ignores the quotes
  * @def		ft_find_key()	- returns the position of the end of expansion var

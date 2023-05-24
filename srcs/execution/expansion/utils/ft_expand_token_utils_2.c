@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:02:11 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 16:10:26 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 04:06:34 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int  ft_skip(char const *str, int i, char c);
 
-static int	ft_find_n_word(char const *s, char c)
+int	ft_find_n_word(char const *s, char c)
 {
 	int	i;
 	int	n;

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:49:36 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 15:39:22 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 04:03:31 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,7 @@ char	*ft_strchr_alt(const char *s, int c)
 	{
         if (mode == 0 && s[i] == '\'')
             mode = '\'';
-        else if (mode == 0 && s[i] == '\"')
-            mode = '\"';
         else if (mode == '\'' && s[i] == '\'')
-            mode = '\0';
-        else if (mode == '\"' && s[i] == '\"')
             mode = '\0';
 		else if (s[i] == c % 256 && mode == '\0')
 			return ((char *)(s + i));
@@ -54,11 +50,7 @@ static int	ft_strlen_alt(const char *str)
     {
         if (mode == 0 && str[i] == '\'')
             mode = '\'';
-        else if (mode == 0 && str[i] == '\"')
-            mode = '\"';
         else if (mode == '\'' && str[i] == '\'')
-            mode = '\0';
-        else if (mode == '\"' && str[i] == '\"')
             mode = '\0';
 		else if (str[i] == '$' && mode == '\0')
 			break;

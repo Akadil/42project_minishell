@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:15:26 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 15:56:38 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 04:08:23 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_list  *ft_expand_token(char *str, t_list *env)
 	exp_string = ft_expand_string(str, env);
 	if (!exp_string)
 		return (NULL);
-	if (exp_string == str)
+	if (ft_find_n_word(exp_string, ' ') == 1)
 		return (ft_lstnew(exp_string, 0));
 	if (!(words = ft_split_alt(exp_string, ' ')))
 		return (NULL);

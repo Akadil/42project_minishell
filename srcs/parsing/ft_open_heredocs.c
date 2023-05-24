@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 03:32:32 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/24 17:10:28 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:40:13 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 #include <unistd.h>
 #include <readline/readline.h>
 
-int    ft_get_heredoc(char *delimiter);
+int    ft_get_heredoc(char *delimiter, t_list *env);
+char  *ft_expand_string(char *str, t_list *env);
+void ft_remove_quotes_string(char *str);
 
-int ft_open_heredocs(t_list *head)
+int ft_open_heredocs(t_list *head, t_list *env)
 {
     t_list  *token;
     void    *temp;
@@ -33,7 +35,7 @@ int ft_open_heredocs(t_list *head)
             fd = (int *)malloc(sizeof(int));
             if (!fd)
                 return (-1);
-            *fd = ft_get_heredoc((char *)temp);
+            *fd = ft_get_heredoc((char *)temp, env);
             if (*fd == -1)
             {
                 free (fd);
@@ -47,7 +49,7 @@ int ft_open_heredocs(t_list *head)
     return (0);
 }
 
-int    ft_get_heredoc(char *delimiter)
+int    ft_get_heredoc(char *delimiter, t_list *env)
 {
 	char    *line;
     int		fd[2];
@@ -60,11 +62,13 @@ int    ft_get_heredoc(char *delimiter)
 	line = readline(">");
 	while (line && ft_strcmp(line, delimiter) != 0)
 	{
-		ft_putstr_fd(line, fd[0]);
+        line = ft_expand_string(line, env);
+        ft_remove_quotes_string(line);
+		ft_putstr_fd(line, fd[1]);
 		free(line);
 		line = readline(">");
 	}
     free(line);
-    close (fd[0]);
-    return (fd[1]);
+    close (fd[1]);
+    return (fd[0]);
 }

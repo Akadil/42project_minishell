@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:54 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/23 18:28:34 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:24:53 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 #include "ft_clean.h"
 #include <stdio.h>
 
+int    ft_exec_recursion(t_data *data, t_node *node, t_node *parent);
+
 void    ft_execution(t_data *data, t_node *node)
 {
-    int exit_code;
-
-    ft_open_heredocs(data);
     if (ft_preprocessing(data->node) == -1)
     {
         ft_clean_tree(data->node);
         return ;
     }
-    exit_code = ft_exec_recursion(data, data->node, NULL);
-    data->exit_code = exit_code;
+    data->exit_code = ft_exec_recursion(data, data->node, NULL);
 }
 
 int ft_exec_cmd(t_data *data, t_node *node)
@@ -34,7 +32,6 @@ int ft_exec_cmd(t_data *data, t_node *node)
     (void)data;
     t_list  *token;
     int     exit;
-
     
     token = node->elems;
     while (token)

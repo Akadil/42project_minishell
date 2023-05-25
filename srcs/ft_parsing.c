@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/24 18:13:22 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:54:48 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_node	*ft_parsing(char *command, t_list *env)
     t_list  *head;
 	char	*cmd_line;
 
-    cmd_line = ft_add_spaces(command);
+    cmd_line = ft_add_spaces(command);	// Check if I free the prev string in case of error
 	if (!cmd_line)
 		return (NULL);
 	head = ft_tokenization(cmd_line, env);

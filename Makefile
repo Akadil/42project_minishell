@@ -8,19 +8,19 @@ SRCS_TOKENIZATION	=	parsing/ft_tokenization.c \
 						parsing/tokenization/ft_is_token.c \
 						parsing/tokenization/ft_tokenization_utils.c \
 						parsing/tokenization/ft_remove_quotes.c
-SRCS_EXPANSION		=	execution/expansion/ft_expand_string.c \
-						execution/expansion/ft_expand_token.c \
-						execution/expansion/utils/ft_expand_string_utils.c \
-						execution/expansion/utils/ft_expand_string_utils_2.c \
-						execution/expansion/utils/ft_expand_token_utils.c \
-						execution/expansion/utils/ft_expand_token_utils_2.c \
-						execution/expansion/utils/ft_expand_token_utils_3.c
+SRCS_EXPANSION		=	parsing/expansion/ft_expand_string.c \
+						parsing/expansion/ft_expand_token.c \
+						parsing/expansion/utils/ft_expand_string_utils.c \
+						parsing/expansion/utils/ft_expand_string_utils_2.c \
+						parsing/expansion/utils/ft_expand_token_utils.c \
+						parsing/expansion/utils/ft_expand_token_utils_2.c \
+						parsing/expansion/utils/ft_expand_token_utils_3.c
 SRCS_ASSIGN_TYPES	=	parsing/ft_check_tokens.c \
 						parsing/ft_assign_types.c
 SRCS_HEREDOCS		=	parsing/ft_open_heredocs.c
 SRCS_MAKE_TREE		=	parsing/ft_make_tree.c
-
 SRCS_PARSING		=	ft_parsing.c $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_EXPANSION) $(SRCS_ASSIGN_TYPES) $(SRCS_HEREDOCS) $(SRCS_MAKE_TREE)
+
 SRCS_UTILS			=	utils/ft_clean.c \
 						utils/ft_error_1.c \
 						utils/ft_error_2.c
@@ -44,8 +44,13 @@ HFLAGS			= -I $(INCLUDES_DIR)
 
 all						: ${NAME}
 
+valgrind				: ${NAME}
+			valgrind --suppressions=ignore.txt -s ./minishell
+
 ${NAME}         		: ${OBJS}
 			${CC} $(OBJS) -o $(NAME) -lreadline -Llibft -lft
+
+
 
 ${BUILD_DIR}/%.o		: $(SRCS_DIR)/%.c $(LIBFT_DIR)/$(LIBFT)
 			${CC} $(HFLAGS) ${CFLAGS} -c $< -o $@ 
@@ -99,7 +104,7 @@ debug_make_tree			:
 			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_make_tree.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) -lreadline -Llibft -lft
 
 debug_preprocessing		:
-			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_preprocessing.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c -lreadline -Llibft -lft
+			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_preprocessing.c $(addprefix $(SRCS_DIR)/, $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT)) srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c -lreadline -Llibft -lft
 
 debug_exec_recursion		:
 			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_exec_recursion.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c srcs/ft_execution.c -lreadline -Llibft -lft	

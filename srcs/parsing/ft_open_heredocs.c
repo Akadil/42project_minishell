@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 03:32:32 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/24 17:40:13 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:15:30 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int ft_open_heredocs(t_list *head, t_list *env)
     {
         if (token->type == 8)
         {
-            temp = token->content;
+            temp = token->next->content;
             fd = (int *)malloc(sizeof(int));
             if (!fd)
                 return (-1);
@@ -41,7 +41,7 @@ int ft_open_heredocs(t_list *head, t_list *env)
                 free (fd);
                 return (-1);
             }
-            token->content = fd;
+            token->next->content = fd;
             free (temp);
         }
         token = token->next;

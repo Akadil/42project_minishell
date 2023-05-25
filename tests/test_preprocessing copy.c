@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:50:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 12:12:36 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:31:23 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,38 +26,46 @@
 
 int max_level = 0;
 
+t_list    *ft_tokenization(char *str);
 void    print_tokens(t_list *token);
+char    *ft_add_spaces(char *str);
+void    ft_assign_types(t_list *node);
+t_node  *ft_make_tree(t_list *token, t_node *parent);
 void    ft_set_the_level(t_node *node, int level);
 void    ft_print_tree(t_node *node);
 void    ft_print_tree_levels(t_node *node, int level);
-
-int	ft_init_env(t_list **data_env, char **env);
-t_node	*ft_parsing(char *command, t_list *env);
 int    ft_preprocess_tree(t_node *node);
+t_node	*ft_parsing(char *command, t_list *env);
 
-
-int main(int argc, char **argv, char **env_p)
+int main(void)
 {
-    (void)argc;
-    (void)argv;
     char    *str;
-    t_list  *env;
+    t_list  *head;
     t_node  *node;
 
-    env = NULL;
+    head = NULL;
     node = NULL;
-    ft_init_env(&env, env_p);
     str = readline("Type the string: ");
     while (str)
     {
-        printf("-----------------------------\n\n");
-        node = ft_parsing(str, env);
+        printf("-----------------------------\n");
+        printf("\n");
+        
+        str = ft_add_spaces(str);
+
+        head = ft_tokenization(str);
+        ft_assign_types(head);
+
+        node = ft_make_tree(head, NULL);
+
         ft_print_tree(node);
+
         ft_preprocess_tree(node);
 
         ft_set_the_level(node, 0);
+        
         printf("\n-----------------\n");
-        printf("e - elements, p - parameters, r - redirection\n\n");
+
         int i = 0;
         while (i < max_level + 1)
         {
@@ -67,8 +75,10 @@ int main(int argc, char **argv, char **env_p)
         }
         printf("\n\n");
         max_level = 0;
-        str = readline("Type the string: ");   
+        str = readline("Type the string: ");
+        
     }
+
     return (0);
 }
 
@@ -100,9 +110,9 @@ void    ft_print_tree_levels(t_node *node, int level)
             while (token)
             {
                 if (node->level == level)
-                    printf("p:%s", (char *)token->content);
+                    printf("%s", (char *)token->content);
                 else
-                    printf("  %s", (char *)ft_memset(ft_strdup(token->content), ' ', strlen((char *)token->content)));
+                    printf("%s", (char *)ft_memset(ft_strdup(token->content), ' ', strlen((char *)token->content)));
                 if (token->next)
                     printf(" ");
                 token = token->next;
@@ -115,30 +125,20 @@ void    ft_print_tree_levels(t_node *node, int level)
             while (token)
             {
                 if (node->level == level)
-                {
-                    if (token->type == 8)
-                        printf("r:%d->%d", *((int *)token->content), token->type);
-                    else
-                        printf("r:%s->%d", (char *)token->content, token->type);
-                }
+                    printf("%s->%d", (char *)token->content, token->type);
                 else
-                    printf("  %s   ", (char *)ft_memset(ft_strdup(token->content), ' ', strlen((char *)token->content)));
+                {
+                    printf("%s", (char *)ft_memset(ft_strdup(token->content), ' ', strlen((char *)token->content)));
+                    printf("   ");
+                }
                 if (token->next)
                     printf(" ");
                 token = token->next;
             }
             if (node->level == level)
-            {
                 printf("]");
-                if (i + 1 < node->count_cmd)
-                    printf(" | ");
-            }
             else
-            {
-                printf(" ");
-                if (i + 1 < node->count_cmd)
-                    printf("   ");
-            }
+                printf("  ");
             i++;
         }
 
@@ -155,9 +155,9 @@ void    ft_print_tree_levels(t_node *node, int level)
     while (token)
     {
         if (node->level == level)
-            printf(" e:%s ", (char *)token->content);
+            printf(" %s ", (char *)token->content);
         else
-            printf("   %s ", (char *)ft_memset(ft_strdup(token->content), ' ', strlen((char *)token->content)));
+            printf(" %s ", (char *)ft_memset(ft_strdup(token->content), ' ', strlen((char *)token->content)));
         token = token->next;
     }
     if (node->level == level)

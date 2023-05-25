@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec_command.c                                  :+:      :+:    :+:   */
+/*   test_if_cond2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 17:52:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 17:34:14 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/25 17:24:45 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/25 17:28:59 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct_data.h"
+#include <stdio.h>
 
-void    ft_exec_command(t_data *data, t_node *node)
+/*
+    Hypothesis:     If function returns some number, can I put "!"?
+
+    Results:         With "!" condition, it will enter, only if 0 was returned 
+*/
+
+int ft_function(void)
 {
-    int i_cmd;
-    int is_success;
+    return (6);
+}
 
-    i_cmd = 0;
-    is_success = 0;
-    while (i_cmd < node->count_cmd)
-    {
-        is_success = ft_prepare_pipe(node, i_cmd);
-        if (is_success == 0)
-            ft_execute(data, i_cmd);
-        i_cmd++;
-    }
+int main(void)
+{
+    if (!ft_function())
+        printf("I was here\n");
+    else
+        printf("I wasn't here\n");
+
+    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 18:48:28 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 17:44:56 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 /*
 		Close all file descriptors if open
 */
-void	ft_clean_fds(t_data *my_data)
+void	ft_clean_fds(t_cmd *cmd)
 {
-	(void)my_data;
-	printf("ft_clean_fds() is on construction :( \n");
+	if (cmd->in_fd != -1)
+		close(cmd->in_fd);
+	if (cmd->out_fd != -1)
+		close(cmd->out_fd);
 }
 
 /*

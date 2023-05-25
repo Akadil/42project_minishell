@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/20 21:06:35 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 17:21:22 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@
 
 #define FILENAME 10
 #define PARAMETER 11
-
-
 
 typedef struct s_cmd
 {

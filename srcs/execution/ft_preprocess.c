@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:31:09 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 14:08:51 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:32:51 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,17 @@
  * 
  * @def     ft_init_cmds()      - each command initialization
  * @def     ft_preprocess_cmd() - preprocess each command 
- * 
  */
-int    ft_preprocessing(t_node *node)
+int    ft_preprocess(t_node *node)
 {
     int res;
 
     res = 1;
     if (node->left)
     {
-        if (ft_preprocess_tree(node->left) == -1)
+        if (ft_preprocess(node->left) == -1)
             return (-1);
-        if (ft_preprocess_tree(node->right) == -1)
+        if (ft_preprocess(node->right) == -1)
             return (-1);
     }
     else
@@ -53,8 +52,6 @@ int    ft_preprocessing(t_node *node)
 
 int    ft_preprocess_node(t_node *node)
 {
-    t_list  *token;
-
     node->count_cmd = ft_count_cmds(node->elems);
     node->cmds = (t_cmd *)malloc(sizeof(t_cmd) * node->count_cmd);
     if (!node->cmds)

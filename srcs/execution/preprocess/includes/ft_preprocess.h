@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:31:52 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 14:02:07 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:32:38 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PREPROCESS_H
 
 # include "struct_data.h"
-# include "ft_clean.h"
+# include "ft_error.h"
 # include <stdio.h>
 # include <stdlib.h>
 

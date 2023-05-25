@@ -27,6 +27,12 @@ SRCS_UTILS			=	utils/ft_clean.c \
 SRCS_INIT			=	init/ft_init_data.c \
 						init/ft_init_envvar.c 
 
+SRCS_PREPROCESS		=	execution/ft_preprocess.c \
+						execution/preprocess/ft_preprocess_cmd.c \
+						execution/preprocess/ft_preprocess_parameter.c \
+						execution/preprocess/ft_preprocess_redirection.c \
+						execution/preprocess/utils/ft_preprocess_utils.c
+
 SRCS				=	main.c $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT)
 
 SRCS_DIR		= ./srcs
@@ -83,7 +89,7 @@ test_make_tree				:	debug_make_tree
 			./a.out
 			rm a.out
 
-test_preprocessing			:	debug_preprocessing			
+test_preprocess				:	debug_preprocess		
 			./a.out
 			rm a.out
 
@@ -103,8 +109,8 @@ debug_assign_types		:
 debug_make_tree			:
 			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_make_tree.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) -lreadline -Llibft -lft
 
-debug_preprocessing		:
-			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_preprocessing.c $(addprefix $(SRCS_DIR)/, $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT)) srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c -lreadline -Llibft -lft
+debug_preprocess		:
+			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_preprocess.c $(addprefix $(SRCS_DIR)/, $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT) $(SRCS_PREPROCESS)) -lreadline -Llibft -lft
 
 debug_exec_recursion		:
 			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_exec_recursion.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c srcs/ft_execution.c -lreadline -Llibft -lft	

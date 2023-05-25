@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:52:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/20 22:29:00 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:27:58 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void    ft_exec_command(t_data *data, t_node *node)
     while (i_cmd < node->count_cmd)
     {
         is_success = ft_prepare_pipe(node, i_cmd);
-
         if (is_success == 1)
             ft_execute(data, i_cmd);
         i_cmd++;

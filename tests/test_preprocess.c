@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_preprocessing.c                               :+:      :+:    :+:   */
+/*   test_preprocess.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:50:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 12:12:36 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:31:50 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    ft_print_tree_levels(t_node *node, int level);
 
 int	ft_init_env(t_list **data_env, char **env);
 t_node	*ft_parsing(char *command, t_list *env);
-int    ft_preprocess_tree(t_node *node);
+int    ft_preprocess(t_node *node);
 
 
 int main(int argc, char **argv, char **env_p)
@@ -53,7 +53,7 @@ int main(int argc, char **argv, char **env_p)
         printf("-----------------------------\n\n");
         node = ft_parsing(str, env);
         ft_print_tree(node);
-        ft_preprocess_tree(node);
+        ft_preprocess(node);
 
         ft_set_the_level(node, 0);
         printf("\n-----------------\n");

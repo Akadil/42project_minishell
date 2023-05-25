@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:36:28 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 14:43:59 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:39:54 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    ft_preprocess_cmd(t_cmd *cmds, t_list *token)
     while (token)
     {
         if (token->type == PARAMETER)
-            token = ft_preprocess_redirection(token, cmds, i_cmd);
+            token = ft_preprocess_parameter(token, cmds, i_cmd);
         else if (6 <= token->type && token->type <= 9)
             token = ft_preprocess_redirection(token, cmds, i_cmd);
         else

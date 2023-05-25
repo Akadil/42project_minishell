@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_compare_strings.c                               :+:      :+:    :+:   */
+/*   ft_preprocess_cmd.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 11:44:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/23 11:48:40 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/25 14:41:33 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/25 14:43:16 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-    Hypothesis: 
-*/
+#ifndef FT_PREPROCESS_CMD_H
+# define FT_PREPROCESS_CMD_H
 
-int main(void)
-{
-    char    *str1;
-    char    *str2;
+# include "struct_data.h"
+# include "struct_list.h"
+# include "libft.h"
+# include <stdio.h>
+# include <stdlib.h>
 
-    if (str1 == str2)
+t_list  *ft_preprocess_parameter(t_list *token, t_cmd *cmd, int i_cmd);
+t_list  *ft_preprocess_redirection(t_list *token,  t_cmd *cmd, int i_cmd);
 
-    return (0);
-}
+#endif

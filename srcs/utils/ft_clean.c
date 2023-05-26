@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 17:44:56 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:52:23 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 /*
 		Close all file descriptors if open
+
+		Add condition that if it is 0, 1, then skip
 */
 void	ft_clean_fds(t_cmd *cmd)
 {

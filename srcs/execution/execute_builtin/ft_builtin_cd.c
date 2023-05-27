@@ -27,23 +27,24 @@ char    *ft_find_home(t_data *data);
     input cases:
         1. Doesn't consider bad inputs
 
-    
+    1. add env to paraleters
+    2. 
 */
-void    ft_buildin_cd(t_data *data, int i_cmd)
+void    ft_buildin_cd(t_list *params, t_list *env)
 {
-    int		num_param;
+    int		count;
     char    *str;
 
-    num_param = ft_find_params(data, i_cmd);
-    if (num_param == 0)
+    count = ft_lstsize(params);
+    if (size == 0)
     {
-        str = ft_find_home(data);
+        str = ft_find_home(env);
         if (!str)
             ft_merror("Bash: cd: HOME not set", NULL);
         chdir(str);
     }
-    else if (num_param > 1)
-        ft_merror("Bash: cd: HOME not set", NULL);
+    else if (size > 1)
+        ft_merror("Bash: cd: Too many arguments", NULL);
     else
         chdir(data->cmds[i_cmd].params->str);
 }

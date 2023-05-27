@@ -33,7 +33,27 @@ SRCS_PREPROCESS		=	execution/ft_preprocess.c \
 						execution/preprocess/ft_preprocess_redirection.c \
 						execution/preprocess/utils/ft_preprocess_utils.c
 
-SRCS				=	main.c $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT)
+SRCS_PREPARE_PIPE	=	execution/ft_prepare_pipe.c \
+						execution/prepare_pipe/ft_open_all_files.c
+
+SRCS_EXEC_PROGRAM	=	execution/ft_execute_program.c \
+						execution/execute_program/ft_construct_command.c \
+						execution/execute_program/ft_find_path.c \
+						execution/execute_program/utils/ft_find_path_utils.c \
+						execution/execute_program/utils/ft_exec_command_utils.c
+
+SRCS_EXEC_BUILTIN	=	execution/ft_execute_builtin.c \
+						execution/execute_builtin/ft_builtin_cd.c \
+						execution/execute_builtin/ft_builtin_echo.c \
+						execution/execute_builtin/ft_builtin_env.c \
+						execution/execute_builtin/ft_builtin_exit.c \
+						execution/execute_builtin/ft_builtin_export.c \
+						execution/execute_builtin/ft_builtin_pwd.c \
+						execution/execute_builtin/ft_builtin_unset.c
+
+SRCS_EXECUTION		=	ft_exec_1recursion.c ft_exec_2command.c $(SRCS_PREPROCESS) $(SRCS_PREPARE_PIPE) $(SRCS_EXEC_PROGRAM) $(SRCS_EXEC_BUILTIN)
+
+SRCS				=	main.c $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT) $(SRCS_EXECUTION)
 
 SRCS_DIR		= ./srcs
 BUILD_DIR       = ./.build

@@ -6,11 +6,11 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/25 11:54:48 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:22:05 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_parsing.h"
+#include "includes/ft_parsing.h"
 
 /*
 	I want to restructure it. I want to make a clean, and it should work

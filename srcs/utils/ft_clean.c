@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/26 11:52:23 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:30:50 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,17 @@ void	ft_clean_tree(t_node *node)
 	if (node->cmds)
 		ft_clean_cmds(&node->cmds);
 	free (node);
+}
+
+void	ft_clean_darray(char **trash)
+{
+	int	i;
+
+	i = 0;
+	while (trash[i])
+	{
+		free (trash[i]);
+		i++;
+	}
+	free (trash);
 }

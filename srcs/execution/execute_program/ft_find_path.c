@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execute_program_utils.c                         :+:      :+:    :+:   */
+/*   ft_find_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:56:26 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/26 12:51:29 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:39:00 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct_list.h"
-#include "struct_data.h"
-#include "libft.h"
-#include "ft_error.h"
-#include <stdio.h>
+#include "includes/ft_find_path.h"
 
 char    *ft_find_path(char *cmd, t_list *env)
 {
@@ -22,14 +18,8 @@ char    *ft_find_path(char *cmd, t_list *env)
     char    **paths;
     int     i;
 
-    while (env)
-    {
-        str = (char *)env->content;
-        if (ft_strncmp("PATH", str, 4) == 0 && str[4] == '=')
-            break;
-        env = env->next;
-    }
-    if (!env)
+    str = ft_find_all_paths(env);
+    if (!str)
         return (NULL);
     paths = ft_split(str, ':');
     if (!paths)
@@ -39,21 +29,12 @@ char    *ft_find_path(char *cmd, t_list *env)
     {
         str = ft_strjoin(paths[i], cmd);
         if (!str)
-        {
-            ft_clean_darray(paths);
-            ft_error();
-            return (NULL);
-        }
+            return (ft_clean_darray(paths), ft_error(), NULL);
         if (access(str, X_OK) == 0)
             return (str);   // Free the string first
         if (errno != 2)
             ft_perror(cmd);
         i++;    
     }
-    if (cmd[0] == '\\')
-		ft_perror(cmd);
-	else
-		ft_perror(cmd);
-    ft_clean_darray(paths);
-    return (NULL);
+    return (ft_clean_darray(paths), ft_perror(cmd), NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 20:54:22 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 21:02:38 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int    ft_exec_command(t_node *node, t_list **env)
     int i_executed;
     int pid;
     int is_success;
-    int status;
 
     i_executed = 0;
     is_success = -1;
     i_cmd = 0;
-    status = 0;
+    pid = 0;
     while (i_cmd < node->count_cmd)
     {
         is_success = ft_prepare_pipe(node, i_cmd);
@@ -32,16 +31,24 @@ int    ft_exec_command(t_node *node, t_list **env)
             pid = ft_execute(&node->cmds[i_cmd], env, node);
         i_cmd++;
     }
-    i_cmd = 0;
-    while (i_cmd < i_executed)
+    ft_wait_child_processes(&is_success, i_executed, pid);
+    return (is_success);
+}
+
+void    ft_wait_child_processes(int *is_success, int size, int pid)
+{
+    int i;
+    int status;
+
+    i = 0;
+    while (i < size)
     {
         if (wait(&status) == pid)
-            is_success = status;
-        i_cmd++;
+            *is_success = status;
+        i++;
     }
-    if (is_success != 0 && is_success != -1)
-        return (-1);
-    return (is_success);
+    if (*is_success != 0)
+        *is_success = -1;
 }
 
 /*

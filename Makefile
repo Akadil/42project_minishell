@@ -40,6 +40,7 @@ SRCS_EXEC_PROGRAM	=	execution/ft_execute_program.c \
 						execution/execute_program/ft_construct_command.c \
 						execution/execute_program/ft_find_path.c \
 						execution/execute_program/utils/ft_find_path_utils.c \
+						execution/execute_program/utils/ft_split_alt2.c \
 						execution/execute_program/utils/ft_exec_command_utils.c
 
 SRCS_EXEC_BUILTIN	=	execution/ft_execute_builtin.c \
@@ -114,6 +115,10 @@ test_preprocess				:	debug_preprocess
 			rm a.out
 
 test_exec_recursion		:	debug_exec_recursion			
+			./a.out
+			rm a.out
+
+test_execute			:	debug_execute
 			./a.out
 			rm a.out
 

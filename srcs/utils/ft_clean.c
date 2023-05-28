@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/27 17:30:50 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:05:27 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 */
 void	ft_clean_fds(t_cmd *cmd)
 {
-	if (cmd->in_fd != -1)
+	if (cmd->in_fd != -1 && cmd->in_fd != 0)
 		close(cmd->in_fd);
-	if (cmd->out_fd != -1)
+	if (cmd->out_fd != -1 && cmd->out_fd != 1)
 		close(cmd->out_fd);
 }
 
@@ -62,8 +62,10 @@ void	ft_clean_cmds(t_cmd	**cmds_p)
 	t_cmd	*cmds;
 
 	cmds = *cmds_p;
-	ft_lstclear(&cmds->params, &free);
-	ft_lstclear(&cmds->redir, &free);
+	if (cmds->params)
+		ft_lstclear(&cmds->params, &free);
+	if (cmds->redir)
+		ft_lstclear(&cmds->redir, &free);
 	free (cmds);
 }
 
@@ -90,4 +92,9 @@ void	ft_clean_darray(char **trash)
 		i++;
 	}
 	free (trash);
+}
+
+void	ft_clean_env(t_list *env)
+{
+	ft_lstclear_safe(env, &free);
 }

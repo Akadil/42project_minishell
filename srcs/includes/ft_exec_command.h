@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_command.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:20:12 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 16:34:33 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/28 18:06:28 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include "struct_data.h"
 # include <unistd.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include "ft_clean.h"
+# include "ft_error.h"
 
 int ft_prepare_pipe(t_node *node, int i_cmd);
 int ft_execute(t_cmd *cmd, t_list **env, t_node *node);

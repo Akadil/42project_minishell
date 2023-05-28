@@ -6,7 +6,7 @@
 #    By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 12:54:42 by akalimol          #+#    #+#              #
-#    Updated: 2023/05/20 14:20:50 by akalimol         ###   ########.fr        #
+#    Updated: 2023/05/28 18:04:30 by akalimol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS	= 	other/ft_atoi.c				\
 			linked_list/ft_lstadd_back.c    	\
 			linked_list/ft_lstadd_front.c		\
 			linked_list/ft_lstclear.c			\
+			linked_list/ft_lstclear_safe.C		\
 			linked_list/ft_lstdelone.c			\
 			linked_list/ft_lstiter.c			\
 			linked_list/ft_lstlast.c			\

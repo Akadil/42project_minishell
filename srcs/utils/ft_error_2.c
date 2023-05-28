@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:27 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 17:38:20 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:05:45 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
  * 
  * @param my_data   my_data
  */
-void	ft_error_clean_exit(t_data *my_data)
+void	ft_error_clean_exit(t_node *node, t_list *env, int exit_code)
 {
 	ft_error();
-	ft_clean_full(my_data);
-	exit(-1);
+	ft_clean_tree(node);
+	ft_clean_env(env);
+	exit(exit_code);
 }
 
 /**

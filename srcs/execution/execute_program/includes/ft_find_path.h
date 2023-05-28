@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_path.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:37:44 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 14:11:04 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/28 17:45:51 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 #include <stdio.h>
 
 char    *ft_find_all_paths(t_list *env);
+char	**ft_split_alt2(char const *s, char c);
 
 #endif

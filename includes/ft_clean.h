@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clean.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:38:42 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 14:15:41 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/28 18:05:33 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	ft_clean_tree(t_node *node);
 void	ft_clean_cmds(t_cmd	**cmds_p);
 void	ft_clean_tokens(t_list **token, void (*del)(void*));
 void	ft_clean_darray(char **trash);
+void	ft_clean_env(t_list *env);
 
 #endif

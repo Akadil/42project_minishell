@@ -5,6 +5,10 @@
 #include <readline/history.h>
 #include <readline/readline.h>
 
+/*
+    To test:        make test_execute
+*/
+
 int ft_execute(t_cmd *cmd, t_list **env, t_node *node);
 
 int main(void)
@@ -24,10 +28,10 @@ int main(void)
     ft_lstadd_back(&env_var, ft_lstnew("a=z", 0));
     ft_lstadd_back(&env_var, ft_lstnew("b= ", 0));
     ft_lstadd_back(&env_var, ft_lstnew("c= -la", 0));
-    ft_lstadd_back(&env_var, ft_lstnew("d=-la ", 0));
+    ft_lstadd_back(&env_var, ft_lstnew("PATH=/mnt/nfs/homes/akalimol/sgoinfre/miniconda3/bin:/mnt/nfs/homes/akalimol/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin", 0));
     ft_lstadd_back(&env_var, ft_lstnew("e=main.c error.c", 0));
-
-    str = readline("Entter: ");
+    
+    str = readline("Enter: ");
     while (str)
     {
         params = ft_split(str, ' ');
@@ -37,8 +41,8 @@ int main(void)
             ft_lstadd_back(&node.cmds->params, ft_lstnew(params[i], 0));
             i++;
         }
-        str = readline("Entter: ");
+        ft_execute(node.cmds, &env_var, &node);
+        str = readline("Enter: ");
     }
-    printf("%d", ft_execute(node.cmds, &env_var, &node));
     return (0);
 }

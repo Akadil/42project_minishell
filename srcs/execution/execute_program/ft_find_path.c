@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:56:26 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/27 17:39:00 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:11:55 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ char    *ft_find_path(char *cmd, t_list *env)
     int     i;
 
     str = ft_find_all_paths(env);
-    if (!str)
-        return (NULL);
-    paths = ft_split(str, ':');
+    paths = ft_split_alt2(str, ':');
     if (!paths)
-        return (NULL);
+        return (cmd);
     i = 0;
     while (paths[i])
     {

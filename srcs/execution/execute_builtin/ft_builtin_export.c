@@ -6,13 +6,13 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:45:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/29 01:04:09 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/29 01:17:24 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct_data.h"
 #include "ft_error.h"
 #include "libft.h"
+#include "struct_data.h"
 #include "struct_list.h"
 
 void	ft_print_export(t_list *env)
@@ -24,13 +24,13 @@ void	ft_print_export(t_list *env)
 	}
 }
 
-int    ft_execute_export(t_list *params, t_list **env)
+int	ft_execute_export(t_list *params, t_list **env)
 {
 	t_list	*token;
 	char	*new_value;
 
 	if (!params)
-		return (ft_print_export(*env), 0);		
+		return (ft_print_export(*env), 0);
 	new_value = ft_strdup((char *)params->content);
 	if (!new_value)
 		return (-1);
@@ -40,4 +40,3 @@ int    ft_execute_export(t_list *params, t_list **env)
 	ft_lstadd_front(env, token);
 	return (0);
 }
-// Remove if exist!

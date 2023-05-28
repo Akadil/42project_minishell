@@ -28,6 +28,18 @@
             "MIMode": "gdb"
         },
         {
+            "name": "(gdb) Launch minishell",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/minishell",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",

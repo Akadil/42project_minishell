@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 18:14:58 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:32:34 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,14 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
     if (pid == 0)
     {
         if (dup2(cmd->in_fd, STDIN_FILENO) == -1)
-			ft_error_clean_exit(node, *env, -1);
+			ft_error_exit(-1);
 		if (dup2(cmd->out_fd, STDOUT_FILENO) == -1)
-			ft_error_clean_exit(node, *env, -1);
+            ft_error_exit(-1);
         ft_clean_fds(cmd);
         if (cmd->params && ft_is_builtin(cmd->params) == 1)
             printf("I was here!"); //ft_execute_builtin(cmd, env);
         else if (cmd->params && ft_is_builtin(cmd->params) != 1)
-            if (ft_execute_program(cmd, *env, node) == -1);
-                ft_error_clean_exit(node, *env, -1);
+            ft_execute_program(cmd, *env, node);
         exit(0);
     }
     else

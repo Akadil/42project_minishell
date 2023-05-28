@@ -32,17 +32,13 @@ int main(void)
     ft_lstadd_back(&env_var, ft_lstnew("e=main.c error.c", 0));
     
     str = readline("Enter: ");
-    while (str)
+    params = ft_split(str, ' ');
+    i = 0;
+    while (params[i])
     {
-        params = ft_split(str, ' ');
-        i = 0;
-        while (params[i])
-        {
-            ft_lstadd_back(&node.cmds->params, ft_lstnew(params[i], 0));
-            i++;
-        }
-        ft_execute(node.cmds, &env_var, &node);
-        str = readline("Enter: ");
+        ft_lstadd_back(&node.cmds->params, ft_lstnew(params[i], 0));
+        i++;
     }
+    ft_execute(node.cmds, &env_var, &node);
     return (0);
 }

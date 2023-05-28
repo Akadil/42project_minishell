@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 18:05:27 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:02:07 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	ft_clean_darray(char **trash)
 
 void	ft_clean_env(t_list *env)
 {
-	ft_lstclear_safe(env, &free);
+	ft_lstclear_safe(&env, &free);
 }

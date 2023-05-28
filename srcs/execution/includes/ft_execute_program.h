@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute_program.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:05:29 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/28 14:08:55 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/28 18:50:02 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include "ft_error.h"
 
 char    *ft_find_path(char *cmd, t_list *env);
-char    **ft_construct_params(t_list *params);
+char    **ft_construct_command(t_list *params);
 
 #endif

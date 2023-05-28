@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:27 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 18:05:45 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:47:35 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,20 @@ void	ft_clean_exit(t_data *my_data)
 	exit(-1);
 }
 
-void	ft_error_exit(void)
+void	ft_error_exit(int exit_code)
 {
 	ft_error();
-	exit(-1);
+	exit(exit_code);
+}
+
+void	ft_perror_exit(char *str, int exit_code)
+{
+	ft_perror(str);
+	exit (exit_code);
+}
+
+void    ft_merror_exit(char *str, char *param, int exit_code)
+{
+	ft_merror(str, param);
+	exit (exit_code);
 }

@@ -6,28 +6,35 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 18:32:34 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 20:00:37 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_exec_command.h"
+#include <sys/wait.h>
 
-// int    ft_exec_command(t_node *node, t_list **env)
-// {
-//     int i_cmd;
-//     int is_success;
+int    ft_exec_command(t_node *node, t_list **env)
+{
+    int i_cmd;
+    int is_success;
 
-//     i_cmd = 0;
-//     is_success = 0;
-//     while (i_cmd < node->count_cmd)
-//     {
-//         is_success = ft_prepare_pipe(node, i_cmd);
-//         if (is_success == 0)
-//             ft_execute(&node->cmds[i_cmd], env, node);
-//         i_cmd++;
-//     }
-//     return (0);
-// }
+    i_cmd = 0;
+    is_success = 0;
+    while (i_cmd < node->count_cmd)
+    {
+        is_success = ft_prepare_pipe(node, i_cmd);
+        if (is_success == 0)
+            ft_execute(&node->cmds[i_cmd], env, node);
+        i_cmd++;
+    }
+    i_cmd = 0;
+    while (i_cmd < node->count_cmd)
+    {
+        wait(NULL);
+        i_cmd++;
+    }
+    return (0);
+}
 
 /*
     Add a moment when there can be only one command and it is builtin
@@ -53,6 +60,7 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
         exit(0);
     }
     else
-        close(cmd->in_fd);
+        if (cmd->in_fd != 0)
+            close(cmd->in_fd);
     return (0);
 }

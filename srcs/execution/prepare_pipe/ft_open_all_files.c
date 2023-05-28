@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:27:12 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 17:07:18 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:42:22 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int ft_open(t_list *token, int fd)
     {
         if (fd != 1)
             close (fd);
-        fd = open((char *)token->content, O_WRONLY | O_CREAT | O_APPEND);
+        fd = open((char *)token->content, O_WRONLY | O_CREAT | O_APPEND, 0666);
     }
     else if (token->type == REDIRECT_OUT)
     {
         if (fd != 1)
             close (fd);
-        fd = open((char *)token->content, O_WRONLY | O_CREAT | O_TRUNC);
+        fd = open((char *)token->content, O_WRONLY | O_CREAT | O_TRUNC, 0666);
     }
     else
     {

@@ -122,6 +122,10 @@ test_execute			:	debug_execute
 			./a.out
 			rm a.out
 
+test_exec_program			:	debug_exec_program
+			./a.out
+			rm a.out
+
 debug_add_spaces			: 
 			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_add_spaces.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_UTILS)) -lreadline -Llibft -lft
 
@@ -142,6 +146,10 @@ debug_exec_recursion		:
 
 debug_execute			:
 			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_execute.c  $(addprefix $(SRCS_DIR)/, ft_exec_2command.c $(SRCS_UTILS) $(SRCS_EXEC_PROGRAM)) -lreadline -Llibft -lft
+
+debug_exec_program			:
+			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_exec_command.c  $(addprefix $(SRCS_DIR)/, ft_exec_2command.c $(SRCS_UTILS) $(SRCS_EXEC_PROGRAM) $(SRCS_PREPARE_PIPE)) -lreadline -Llibft -lft
+
 
 re						: fclean all
 

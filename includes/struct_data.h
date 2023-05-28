@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/25 17:21:22 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 20:07:52 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_cmd
     t_list  *redir;
     int     in_fd;
     int     out_fd;
+    int     out_pipe_fd;
 }           t_cmd;
 
 typedef struct s_node

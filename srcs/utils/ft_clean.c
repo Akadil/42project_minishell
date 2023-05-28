@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 19:02:07 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 20:08:54 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_clean_fds(t_cmd *cmd)
 		close(cmd->in_fd);
 	if (cmd->out_fd != -1 && cmd->out_fd != 1)
 		close(cmd->out_fd);
+	if (cmd->out_pipe_fd != -1 && cmd->out_pipe_fd != 1)
+		close(cmd->out_pipe_fd);
 }
 
 /*

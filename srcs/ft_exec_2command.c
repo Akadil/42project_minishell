@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 20:00:37 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 20:54:22 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,32 @@
 int    ft_exec_command(t_node *node, t_list **env)
 {
     int i_cmd;
+    int i_executed;
+    int pid;
     int is_success;
+    int status;
 
+    i_executed = 0;
+    is_success = -1;
     i_cmd = 0;
-    is_success = 0;
+    status = 0;
     while (i_cmd < node->count_cmd)
     {
         is_success = ft_prepare_pipe(node, i_cmd);
-        if (is_success == 0)
-            ft_execute(&node->cmds[i_cmd], env, node);
+        if (is_success == 0 && i_executed++ >= 0)
+            pid = ft_execute(&node->cmds[i_cmd], env, node);
         i_cmd++;
     }
     i_cmd = 0;
-    while (i_cmd < node->count_cmd)
+    while (i_cmd < i_executed)
     {
-        wait(NULL);
+        if (wait(&status) == pid)
+            is_success = status;
         i_cmd++;
     }
-    return (0);
+    if (is_success != 0 && is_success != -1)
+        return (-1);
+    return (is_success);
 }
 
 /*
@@ -62,5 +70,5 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
     else
         if (cmd->in_fd != 0)
             close(cmd->in_fd);
-    return (0);
+    return (pid);
 }

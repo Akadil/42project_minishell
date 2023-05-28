@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:04:18 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 20:15:48 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 20:43:03 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,17 @@ int main(void)
     char    **params;
     int     i;
     int     j;
+    int count;
     
-    node.cmds = (t_cmd *)ft_calloc(sizeof(t_cmd), 2);
-    node.count_cmd = 2;
+    count = ft_atoi(readline("Enter amount: "));
+    node.cmds = (t_cmd *)ft_calloc(sizeof(t_cmd), count);
+    node.count_cmd = count;
     env_var = ft_lstnew("USER=akalimol", 0);
     ft_lstadd_back(&env_var, ft_lstnew("a=z", 0));
     ft_lstadd_back(&env_var, ft_lstnew("PATH=/mnt/nfs/homes/akalimol/sgoinfre/miniconda3/bin:/mnt/nfs/homes/akalimol/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin", 0));
     
     j = 0;
-    while (j < 2)
+    while (j < count)
     {
         node.cmds[j].redir = NULL;
         str = readline("Enter params: ");
@@ -68,6 +70,6 @@ int main(void)
         node.cmds[j].out_pipe_fd = -1;
         j++;
     }
-    ft_exec_command(&node, &env_var);
+    printf("The exit code is %d\n", ft_exec_command(&node, &env_var));
     return (0);
 }

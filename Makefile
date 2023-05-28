@@ -33,8 +33,7 @@ SRCS_PREPROCESS		=	execution/ft_preprocess.c \
 						execution/preprocess/ft_preprocess_redirection.c \
 						execution/preprocess/utils/ft_preprocess_utils.c
 
-SRCS_PREPARE_PIPE	=	execution/ft_prepare_pipe.c \
-						execution/prepare_pipe/ft_open_all_files.c
+SRCS_PREPARE_PIPE	=	execution/ft_prepare_pipe.c
 
 SRCS_EXEC_PROGRAM	=	execution/ft_execute_program.c \
 						execution/execute_program/ft_construct_command.c \

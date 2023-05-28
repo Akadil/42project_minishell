@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 19:54:24 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 20:34:38 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 22:37:05 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ int ft_prepare_pipe(t_node *node, int i_cmd)
     int     fd[2];
     char    *err;
 
+    if (i_cmd != 0)
+        close(node->cmds[i_cmd - 1].out_fd);
     if (i_cmd < node->count_cmd - 1)
     {
         if (pipe(fd) == -1)
-        {
-            ft_error();
-            return (-1);
-        }
+            return (ft_error(), -1);
         node->cmds[i_cmd].out_fd = fd[1];
         node->cmds[i_cmd].out_pipe_fd = fd[0];
         node->cmds[i_cmd + 1].in_fd = fd[0];

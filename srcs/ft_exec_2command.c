@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 21:02:38 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 23:49:13 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,6 @@ int    ft_exec_command(t_node *node, t_list **env)
     return (is_success);
 }
 
-void    ft_wait_child_processes(int *is_success, int size, int pid)
-{
-    int i;
-    int status;
-
-    i = 0;
-    while (i < size)
-    {
-        if (wait(&status) == pid)
-            *is_success = status;
-        i++;
-    }
-    if (*is_success != 0)
-        *is_success = -1;
-}
-
 /*
     Add a moment when there can be only one command and it is builtin
 */
@@ -69,7 +53,7 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
             ft_error_exit(-1);
         ft_clean_fds(cmd);
         if (cmd->params && ft_is_builtin(cmd->params) == 1)
-            printf("I was here!"); //ft_execute_builtin(cmd, env);
+            exit(ft_execute_builtin(cmd, env, node));
         else if (cmd->params && ft_is_builtin(cmd->params) != 1)
             ft_execute_program(cmd, *env, node);
         exit(0);
@@ -78,4 +62,20 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
         if (cmd->in_fd != 0)
             close(cmd->in_fd);
     return (pid);
+}
+
+void    ft_wait_child_processes(int *is_success, int size, int pid)
+{
+    int i;
+    int status;
+
+    i = 0;
+    while (i < size)
+    {
+        if (wait(&status) == pid)
+            *is_success = status;
+        i++;
+    }
+    if (*is_success != 0)
+        *is_success = -1;
 }

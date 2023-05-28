@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:31:49 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/27 18:43:02 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 22:51:18 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,7 @@ int main(int argc, char **argv, char **env)
         	ft_execution(&data, cmd);
         	ft_clean_tree(cmd);
         }
-        // if (cmd)
-		// {
-        //     printf("My command\n");
-		// 	ft_clean_tree(cmd);
-		// }
-		// else
-        //     printf("not exist\n");
     }
-	ft_clean_tokens(&data.env, NULL);
+	ft_clean_env(data.env);
     return (0);
 }

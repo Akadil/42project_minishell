@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:42:57 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/20 18:57:37 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 22:46:30 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void    ft_remove_extra_spaces(char* str)
             str[j++] = str[i];
         i++;
     }
-    str[j] = '\0';
+    ft_memset(str + j, '\0', len - j + 1);
 }
 
 int     ft_size(char *str)

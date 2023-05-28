@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:07:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/26 13:14:28 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 23:11:13 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
     Results:    Good printing and valgrind free
 */
-void    ft_buildin_pwd()
+void    ft_execute_pwd()
 {
     char    *response;
 

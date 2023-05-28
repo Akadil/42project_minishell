@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:36:28 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 15:39:54 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 22:57:57 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void    ft_preprocess_cmd(t_cmd *cmds, t_list *token)
             temp = token->next;
             ft_lstdelone(token, &free);
             token = temp;
+            token->prev = NULL;
         }
     }
 }

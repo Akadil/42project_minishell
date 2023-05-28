@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:42:02 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 14:00:47 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 22:00:14 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void    ft_init_cmds(t_cmd *cmds, int num_cmds)
         cmds[i_cmd].redir = NULL;
         cmds[i_cmd].in_fd = 0;
         cmds[i_cmd].out_fd = 1;
+        cmds[i_cmd].out_pipe_fd = -1;
         i_cmd++;
     }
 }

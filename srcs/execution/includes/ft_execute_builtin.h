@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_builtin_export.c                                :+:      :+:    :+:   */
+/*   ft_execute_builtin.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 21:45:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/29 00:03:25 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/28 23:10:19 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/28 23:57:22 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_EXECUTE_BUILTIN
+# define FT_EXECUTE_BUILTIN
+
+# include "struct_list.h"
 #include "struct_data.h"
-#include "ft_error.h"
 #include "libft.h"
-#include "struct_list.h"
 
-int    ft_builtin_export(char *key_value, t_list **env)
-{
-	t_list	*token;
-	char	*new_value;
+void    ft_execute_pwd();
+void    ft_execute_unset(t_list **env, char *cmd);
+int    ft_builtin_exit(t_list **env, t_node *node, char *str);
+void    ft_builtin_env(t_list *env);
+void    ft_execute_echo(t_list *token);
+int    ft_builtin_export(char *key_value, t_list **env);
+int    ft_buildin_cd(t_list *params, t_list *env);
 
-	new_value = ft_strdup(key_value);
-	if (!new_value)
-		return (-1);
-	token = ft_lstnew(key_value, 1);
-	if (!token)
-		return (-1);
-	ft_lstadd_front(env, token);
-	return (0);
-}
+#endif

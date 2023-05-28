@@ -6,15 +6,15 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:07:09 by akalimol          #+#    #+#             */
-/*   Updated: 2023/04/26 16:00:46 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 23:50:43 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_data.h"
+#include "struct_list.h"
 #include "ft_error.h"
+#include "libft.h"
 
-int ft_find_params(t_data *data, int i_cmd);
-char    *ft_find_home(t_data *data);
+char    *ft_find_home(t_list *env);
 
 /*
     Description:    cd command
@@ -30,50 +30,33 @@ char    *ft_find_home(t_data *data);
     1. add env to paraleters
     2. 
 */
-void    ft_buildin_cd(t_list *params, t_list *env)
+int    ft_buildin_cd(t_list *params, t_list *env)
 {
     int		count;
     char    *str;
 
     count = ft_lstsize(params);
-    if (size == 0)
+    if (count == 0)
     {
         str = ft_find_home(env);
         if (!str)
-            ft_merror("Bash: cd: HOME not set", NULL);
+            return (ft_merror("Bash: cd: HOME not set", NULL), -1);
         chdir(str);
     }
-    else if (size > 1)
-        ft_merror("Bash: cd: Too many arguments", NULL);
+    else if (count > 1)
+        return (ft_merror("Bash: cd: Too many arguments", NULL), -1);
     else
-        chdir(data->cmds[i_cmd].params->str);
+        chdir((char *)params->content);
+    return (0);
 }
 
-int ft_find_params(t_data *data, int i_cmd)
+char    *ft_find_home(t_list *env)
 {
-    int         count;
-    t_list_alt  *temp;
-
-    temp = data->cmds[i_cmd].params;
-    count = 0;
-    while (temp)
+    while (env)
     {
-        count++;
-        temp = temp->next;
-    }
-    return (count);
-}
-
-char    *ft_find_home(t_data *data)
-{
-    t_env   *temp;
-
-    temp = data->env;
-    while (temp)
-    {
-        if (ft_strncmp(temp->str, "HOME=", 5))
-            return (ft_strchar(temp->str + 5));
-        temp = temp->next;
+        if (ft_strncmp((char *)env->content, "HOME=", 5))
+            return (ft_strchar((char *)env->content + 5));
+        env = env->next;
     }
     return (NULL);
 }

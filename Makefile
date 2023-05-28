@@ -31,7 +31,7 @@ SRCS_PREPROCESS		=	execution/ft_preprocess.c \
 						execution/preprocess/ft_preprocess_cmd.c \
 						execution/preprocess/ft_preprocess_parameter.c \
 						execution/preprocess/ft_preprocess_redirection.c \
-						execution/preprocess/utils/ft_preprocess_utils.c
+						execution/preprocess/ft_preprocess_utils.c
 
 SRCS_PREPARE_PIPE	=	execution/ft_prepare_pipe.c
 
@@ -51,7 +51,7 @@ SRCS_EXEC_BUILTIN	=	execution/ft_execute_builtin.c \
 						execution/execute_builtin/ft_builtin_pwd.c \
 						execution/execute_builtin/ft_builtin_unset.c
 
-SRCS_EXECUTION		=	ft_exec_1recursion.c ft_exec_2command.c $(SRCS_PREPROCESS) $(SRCS_PREPARE_PIPE) $(SRCS_EXEC_PROGRAM) $(SRCS_EXEC_BUILTIN)
+SRCS_EXECUTION		=	ft_exec_1recursion.c utils/ft_exec_recursion_utils.c ft_exec_2command.c $(SRCS_PREPROCESS) $(SRCS_PREPARE_PIPE) $(SRCS_EXEC_PROGRAM)
 
 SRCS				=	main.c $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT) $(SRCS_EXECUTION)
 
@@ -79,7 +79,7 @@ ${NAME}         		: ${OBJS}
 
 
 ${BUILD_DIR}/%.o		: $(SRCS_DIR)/%.c $(LIBFT_DIR)/$(LIBFT)
-			${CC} $(HFLAGS) ${CFLAGS} -c $< -o $@ 
+			${CC} -g3 $(HFLAGS) ${CFLAGS} -c $< -o $@ 
 
 $(LIBFT_DIR)/$(LIBFT)	:
 			make -C $(LIBFT_DIR)

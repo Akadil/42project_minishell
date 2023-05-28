@@ -6,33 +6,48 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 23:49:13 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/29 01:01:36 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_exec_command.h"
 #include <sys/wait.h>
+#include "libft.h"
 
 int    ft_exec_command(t_node *node, t_list **env)
 {
     int i_cmd;
-    int i_executed;
+    int count;
     int pid;
-    int is_success;
+    int result;
 
-    i_executed = 0;
-    is_success = -1;
+    count = 0;
+    result = -1;
     i_cmd = 0;
     pid = 0;
     while (i_cmd < node->count_cmd)
     {
-        is_success = ft_prepare_pipe(node, i_cmd);
-        if (is_success == 0 && i_executed++ >= 0)
+        result = ft_prepare_pipe(node, i_cmd);
+        if (check(&node->cmds[i_cmd], node->count_cmd, result) && count++ >= 0)
             pid = ft_execute(&node->cmds[i_cmd], env, node);
+        else if (result == 0 && node->count_cmd == 1)
+            result = ft_execute_builtin(&node->cmds[i_cmd], env, node);
         i_cmd++;
     }
-    ft_wait_child_processes(&is_success, i_executed, pid);
-    return (is_success);
+    ft_wait_child_processes(&result, count, pid);
+    return (result);
+}
+
+int check(t_cmd *cmd, int count, int result)
+{
+    if (result == 0)
+    {
+        if (count != 1)
+            return (1);
+        if (cmd->params && ft_is_builtin(cmd->params) != 1)
+            return (1);
+    }
+    return (0);
 }
 
 /*
@@ -44,7 +59,7 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
 
     pid = fork();
     if (pid < -1)
-        printf("Error!");   // Wow, that is tricky error handling
+        ft_error_exit(-1);
     if (pid == 0)
     {
         if (dup2(cmd->in_fd, STDIN_FILENO) == -1)
@@ -54,7 +69,7 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
         ft_clean_fds(cmd);
         if (cmd->params && ft_is_builtin(cmd->params) == 1)
             exit(ft_execute_builtin(cmd, env, node));
-        else if (cmd->params && ft_is_builtin(cmd->params) != 1)
+        else if (cmd->params)
             ft_execute_program(cmd, *env, node);
         exit(0);
     }

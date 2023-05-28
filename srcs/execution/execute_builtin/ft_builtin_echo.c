@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 23:21:31 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 23:28:20 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/29 00:45:24 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void    ft_execute_echo(t_list *token)
     }
     while (token)
     {   
-        ft_printf("%s ", (char *)token->content);
+        ft_printf("%s", (char *)token->content);
+        if (token->next)
+            ft_printf(" ");
         token = token->next;
     }
     if (is_n == 0)

@@ -51,7 +51,7 @@ SRCS_EXEC_BUILTIN	=	execution/ft_execute_builtin.c \
 						execution/execute_builtin/ft_builtin_pwd.c \
 						execution/execute_builtin/ft_builtin_unset.c
 
-SRCS_EXECUTION		=	ft_exec_1recursion.c utils/ft_exec_recursion_utils.c ft_exec_2command.c $(SRCS_PREPROCESS) $(SRCS_PREPARE_PIPE) $(SRCS_EXEC_PROGRAM)
+SRCS_EXECUTION		=	ft_exec_1recursion.c utils/ft_exec_recursion_utils.c ft_exec_2command.c $(SRCS_PREPROCESS) $(SRCS_PREPARE_PIPE) $(SRCS_EXEC_PROGRAM) $(SRCS_EXEC_BUILTIN)
 
 SRCS				=	main.c $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT) $(SRCS_EXECUTION)
 

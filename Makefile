@@ -135,6 +135,9 @@ debug_preprocess		:
 debug_exec_recursion		:
 			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_exec_recursion.c $(addprefix $(SRCS_DIR)/, $(SRCS_ADD_SPACES) $(SRCS_EXPANSION) $(SRCS_TOKENIZATION) $(SRCS_ASSIGN_TYPES) $(SRCS_MAKE_TREE) $(SRCS_UTILS)) srcs/execution/ft_preprocess_node.c srcs/execution/ft_preprocess_tree.c srcs/ft_execution.c -lreadline -Llibft -lft	
 
+debug_execute			:
+			$(CC) -g3 $(HFLAGS) $(CFLAGS) tests/test_execute.c  $(addprefix $(SRCS_DIR)/, ft_exec_2command.c $(SRCS_UTILS) $(SRCS_EXEC_PROGRAM)) -lreadline -Llibft -lft
+
 re						: fclean all
 
 .PHONY					: all clean fclean re

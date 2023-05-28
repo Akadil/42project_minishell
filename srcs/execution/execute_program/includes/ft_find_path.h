@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_path.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:37:44 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/27 17:38:33 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 14:11:04 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #include "ft_error.h"
 #include <stdio.h>
 
-char    *ft_all_paths(t_list *env);
+char    *ft_find_all_paths(t_list *env);
 
 #endif

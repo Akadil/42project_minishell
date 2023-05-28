@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_command.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:20:12 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/27 18:38:07 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 16:34:33 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int ft_prepare_pipe(t_node *node, int i_cmd);
 int ft_execute(t_cmd *cmd, t_list **env, t_node *node);
 int ft_is_builtin(t_list *token);
 //void    ft_execute_builtin(t_cmd *cmd, t_data *data);
-void    ft_execute_program(t_cmd *cmd, t_node *node, t_list *env);
+void    ft_execute_program(t_cmd *cmd, t_list *env, t_node *node);
 
 #endif

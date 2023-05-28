@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_1recursion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:54 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/27 18:45:12 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 13:39:01 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,28 @@ void    ft_execution(t_data *data, t_node *node)
         ft_clean_tree(data->node);
         return ;
     }
-    data->exit_code = ft_exec_recursion(data, data->node, NULL);
+    data->exit_code = ft_exec_recursion(node, &data->env, NULL);
 }
 
-int    ft_exec_recursion(t_data *data, t_node *node, t_node *parent)
+int    ft_exec_recursion(t_node *node, t_list **env, t_node *parent)
 {
     if (node->type == 1)
     {
         if (!parent)
-            node->exit_code = ft_exec_recursion(data, node->left, NULL);
+            node->exit_code = ft_exec_recursion(node->left, env, NULL);
         else
         {
             node->exit_code = 0;
             if (!ft_check_operator(parent->exit_code, parent->elems->content))
-                node->exit_code = ft_exec_recursion(data, node->left, NULL);
+                node->exit_code = ft_exec_recursion(node->left, env, NULL);
         }
         if (node->right->is_micro == node->is_micro && node->right->type == 1)
-            node->exit_code = ft_exec_recursion(data, node->right, node);
+            node->exit_code = ft_exec_recursion(node->right, env, node);
         else
             if (!ft_check_operator(node->exit_code, node->elems->content))
-                node->exit_code = ft_exec_recursion(data, node->right, node);
+                node->exit_code = ft_exec_recursion(node->right, env, node);
     }
     else
-        return (ft_exec_command(data, node));
+        return (ft_exec_command(node, env));
     return (node->exit_code);
 }

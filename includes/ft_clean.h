@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clean.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:38:42 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/27 17:31:01 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 14:15:41 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "struct_data.h"
 # include "struct_list.h"
 
-void	ft_clean_fds(t_data *my_data);
+void	ft_clean_fds(t_cmd *cmd);
 void	ft_clean_data(t_data *my_data);
 void	ft_clean_full(t_data *my_data);
 void	ft_clean_tree(t_node *node);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_2command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/27 18:36:33 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 14:16:44 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_exec_command.h"
 
-void    ft_exec_command(t_data *data, t_node *node)
+int    ft_exec_command(t_node *node, t_list **env)
 {
     int i_cmd;
     int is_success;
@@ -23,9 +23,10 @@ void    ft_exec_command(t_data *data, t_node *node)
     {
         is_success = ft_prepare_pipe(node, i_cmd);
         if (is_success == 0)
-            ft_execute(&node->cmds[i_cmd], &data->env, node);
+            ft_execute(&node->cmds[i_cmd], env, node);
         i_cmd++;
     }
+    return (0);
 }
 
 /*
@@ -47,10 +48,11 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
         ft_clean_fds(cmd);
         if (cmd->params && ft_is_builtin(cmd->params) == 1)
             printf("I was here!"); //ft_execute_builtin(cmd, env);
-        else if (cmd->params && ft_is_builtin(cmd) != 1)
-            ft_execute_program(cmd, env, node);
+        else if (cmd->params && ft_is_builtin(cmd->params) != 1)
+            ft_execute_program(cmd, *env, node);
         exit(0);
     }
     else
         close(cmd->in_fd);
+    return (0);
 }

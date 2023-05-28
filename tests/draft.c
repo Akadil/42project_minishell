@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 14:06:58 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/07 15:29:28 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/27 21:11:24 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "struct_data.h"
 #include <stdio.h>
 
 typedef struct s_list

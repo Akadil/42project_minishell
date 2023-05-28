@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_path_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:32:52 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/27 17:36:37 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/28 14:10:57 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char    *ft_all_paths(t_list *env)
+char    *ft_find_all_paths(t_list *env)
 {
     char    *str;
 

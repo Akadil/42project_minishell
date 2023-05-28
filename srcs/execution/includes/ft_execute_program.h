@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec_recursion.h                                :+:      :+:    :+:   */
+/*   ft_execute_program.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 11:29:09 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 13:39:46 by akadilkalim      ###   ########.fr       */
+/*   Created: 2023/05/28 14:05:29 by akadilkalim       #+#    #+#             */
+/*   Updated: 2023/05/28 14:08:55 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_EXEC_RECURSION_H
-# define FT_EXEC_RECURSION_H
+#ifndef FT_EXECUTE_PROGRAM_H
+# define FT_EXECUTE_PROGRAM_H
 
+# include "struct_list.h"
 # include "struct_data.h"
 # include "libft.h"
-# include "ft_clean.h"
-# include <stdio.h>
+# include "ft_error.h"
 
-int    ft_exec_recursion(t_node *node, t_list **env, t_node *parent);
-int		ft_check_operator(int exit_code, char *str);
-int    ft_preprocess(t_node *node);
-int    ft_exec_command(t_node *node, t_list **env);
+char    *ft_find_path(char *cmd, t_list *env);
+char    **ft_construct_params(t_list *params);
 
 #endif

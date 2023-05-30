@@ -71,7 +71,7 @@ HFLAGS			= -I $(INCLUDES_DIR)
 all						: ${NAME}
 
 valgrind				: ${NAME}
-			valgrind --suppressions=ignore.txt -s ./minishell
+			valgrind --leak-check=full --show-leak-kinds=all --suppressions=./ignore.txt ./minishell
 
 ${NAME}         		: ${OBJS}
 			${CC} $(OBJS) -o $(NAME) -lreadline -Llibft -lft

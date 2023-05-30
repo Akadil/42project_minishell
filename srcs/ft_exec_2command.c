@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/29 01:01:36 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:48:16 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ int check(t_cmd *cmd, int count, int result)
 int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
 {
     int pid;
+    int exit_code;
 
     pid = fork();
+    exit_code = 0;
     if (pid < -1)
         ft_error_exit(-1);
     if (pid == 0)
@@ -68,14 +70,15 @@ int ft_execute(t_cmd *cmd, t_list **env, t_node *node)
             ft_error_exit(-1);
         ft_clean_fds(cmd);
         if (cmd->params && ft_is_builtin(cmd->params) == 1)
-            exit(ft_execute_builtin(cmd, env, node));
+            exit_code = ft_execute_builtin(cmd, env, node);
         else if (cmd->params)
-            ft_execute_program(cmd, *env, node);
-        exit(0);
+            exit_code = ft_execute_program(cmd, *env, node);
+        ft_clean_tree(node);
+        ft_clean_env(*env);
+        exit(exit_code);
     }
-    else
-        if (cmd->in_fd != 0)
-            close(cmd->in_fd);
+    else if (cmd->in_fd != 0)
+        close(cmd->in_fd);
     return (pid);
 }
 

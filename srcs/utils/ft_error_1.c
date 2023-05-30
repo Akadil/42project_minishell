@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:15 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/16 17:40:26 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:09:57 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_error(void)
 
 void	ft_perror(char *str)
 {
+	ft_printf2("bash: ");
 	perror(str);
 }
 

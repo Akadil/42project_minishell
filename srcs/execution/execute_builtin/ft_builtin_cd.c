@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:07:09 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/29 00:13:27 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:06:58 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ int    ft_execute_cd(t_list *params, t_list *env)
         str = ft_find_home(env);
         if (!str)
             return (ft_merror("Bash: cd: HOME not set\n", NULL), -1);
-        chdir(str);
+        if (chdir(str) == -1)
+            return (ft_merror("Bash: cd: HOME not set properly\n", NULL), -1);
     }
     else if (count > 1)
         return (ft_merror("Bash: cd: Too many arguments\n", NULL), -1);
     else
-        chdir((char *)params->content);
+        if (chdir((char *)params->content) == -1)
+            return (ft_perror((char *)params->content), -1);
     return (0);
 }
 

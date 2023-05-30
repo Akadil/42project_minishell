@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 17:05:34 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/20 16:59:14 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:45:55 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,24 @@
 int	ft_init_env(t_list **data_env, char **env)
 {
 	t_list	*token;
+	char	*str;
 	int		i;
 
 	i = 0;
 	while (env[i])
 	{
-		token = ft_lstnew(env[i], 0);
+		str = ft_strdup(env[i]);
+		if (!str)
+		{
+			ft_lstclear(data_env, &free);
+			ft_error();
+			return (-1);
+		}
+		token = ft_lstnew(str, 0);
 		if (!token)
 		{
-			ft_lstclear(&token, NULL);
+			free (str);
+			ft_lstclear(&token, &free);
 			ft_error();
 			return (-1);
 		}

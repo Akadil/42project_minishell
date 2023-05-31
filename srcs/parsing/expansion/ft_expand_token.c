@@ -6,11 +6,12 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:15:26 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/29 01:29:13 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/30 19:04:07 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_expand_token.h"
+#include "struct_data.h"
 
 /**
  * @brief 			Expands (env var expansion) the string and create tokens. 
@@ -28,7 +29,7 @@
  * @return t_list*	=	NULL - some malloc problems
  * 					=	list - with all variables
  */
-t_list  *ft_expand_token(char *str, t_list *env)
+t_list  *ft_expand_token(char *str, t_list *env, t_data *data)
 {
 	t_list	*head;
 	t_list	*token;
@@ -36,7 +37,7 @@ t_list  *ft_expand_token(char *str, t_list *env)
 	char	**words;
 	int		i;
 
-	exp_string = ft_expand_string(str, env);
+	exp_string = ft_expand_string(str, env, data);
 	if (!exp_string)
 		return (NULL);
 	if (ft_find_n_word(exp_string, ' ') <= 1)

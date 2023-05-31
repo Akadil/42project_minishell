@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:45:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/29 01:17:24 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:31:29 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "struct_data.h"
 #include "struct_list.h"
+#include <stdlib.h>
 
 void	ft_print_export(t_list *env)
 {
@@ -21,6 +22,27 @@ void	ft_print_export(t_list *env)
 	{
 		ft_printf("export %s\n", (char *)env->content);
 		env = env->next;
+	}
+}
+
+void	ft_remove_if_exist(t_list **env, char *new_value)
+{
+	t_list	*token;
+	t_list	*temp;
+	char	*str;
+	int		i;
+
+	token = *env;
+	while (token)
+	{
+		i = 0;
+		str = (char *)token->content;
+		while (str[i] && new_value[i] && str[i] != '=')
+			i++;
+		temp = token->next;
+		if (str[i] == '=' && new_value[i] == '=')
+			ft_lstremove(env, token, &free);
+		token = temp;
 	}
 }
 
@@ -37,6 +59,7 @@ int	ft_execute_export(t_list *params, t_list **env)
 	token = ft_lstnew(new_value, 1);
 	if (!token)
 		return (-1);
+	ft_remove_if_exist(env, new_value);
 	ft_lstadd_front(env, token);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:31:09 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/30 16:06:32 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:53:35 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,37 @@
  * @param node      head node
  * @return int      0 if everything is ok, -1  if malloc fails
  * 
- * ------------------------------------------------------------------------------
+
+	* ------------------------------------------------------------------------------
  * 
  * @def     ft_init_cmds()      - each command initialization
  * @def     ft_preprocess_cmd() - preprocess each command 
  */
-int    ft_preprocess(t_node *node)
+int	ft_preprocess(t_node *node)
 {
-    int res;
+	int	res;
 
-    res = 1;
-    if (node->left)
-    {
-        if (ft_preprocess(node->left) == -1)
-            return (-1);
-        if (ft_preprocess(node->right) == -1)
-            return (-1);
-    }
-    else
-        if (ft_preprocess_node(node) == -1)
-            return (-1);
-    return (0);
+	res = 1;
+	if (node->left)
+	{
+		if (ft_preprocess(node->left) == -1)
+			return (-1);
+		if (ft_preprocess(node->right) == -1)
+			return (-1);
+	}
+	else if (ft_preprocess_node(node) == -1)
+		return (-1);
+	return (0);
 }
 
-int    ft_preprocess_node(t_node *node)
+int	ft_preprocess_node(t_node *node)
 {
-    node->count_cmd = ft_count_cmds(node->elems);
-    node->cmds = (t_cmd *)malloc(sizeof(t_cmd) * node->count_cmd);
-    if (!node->cmds)
-        return (ft_error(), -1); 
-    ft_init_cmds(node->cmds, node->count_cmd);
-    ft_preprocess_cmd(node->cmds, node->elems);
-    node->elems = NULL;
-    return (0);
+	node->count_cmd = ft_count_cmds(node->elems);
+	node->cmds = (t_cmd *)malloc(sizeof(t_cmd) * node->count_cmd);
+	if (!node->cmds)
+		return (ft_error(), -1);
+	ft_init_cmds(node->cmds, node->count_cmd);
+	ft_preprocess_cmd(node->cmds, node->elems);
+	node->elems = NULL;
+	return (0);
 }

@@ -6,12 +6,12 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:44:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 17:45:40 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:52:01 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 static int	ft_find_n_word(char const *s, char c)
 {
@@ -49,7 +49,7 @@ static char	*ft_add_word(char const *s, char c, int *pos)
 		*pos = *pos + 1;
 	while (s[*pos + word_len] && s[*pos + word_len] != c)
 		word_len++;
-	word = (char *) malloc(sizeof(char) * (word_len + 2));
+	word = (char *)malloc(sizeof(char) * (word_len + 2));
 	if (!word)
 		return (NULL);
 	i = 0;
@@ -60,7 +60,7 @@ static char	*ft_add_word(char const *s, char c, int *pos)
 		i++;
 	}
 	word[i] = '/';
-    word[i + 1] = '\0';
+	word[i + 1] = '\0';
 	return (word);
 }
 
@@ -85,7 +85,7 @@ char	**ft_split_alt2(char const *s, char c)
 	if (!s)
 		return (NULL);
 	n_word = ft_find_n_word(s, c);
-	returner = (char **) malloc(sizeof(char *) * (n_word + 1));
+	returner = (char **)malloc(sizeof(char *) * (n_word + 1));
 	if (!returner)
 		return (NULL);
 	i = 0;

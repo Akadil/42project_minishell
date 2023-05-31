@@ -2,7 +2,8 @@ NAME			= minishell
 LIBFT			= libft.a
 
 SRCS_ADD_SPACES		=	parsing/ft_add_spaces.c \
-						parsing/utils/ft_add_spaces_utils.c
+						parsing/utils/ft_add_spaces_utils.c \
+						parsing/utils/ft_add_spaces_utils_2.c
 SRCS_TOKENIZATION	=	parsing/ft_tokenization.c \
 						parsing/tokenization/ft_add_token.c \
 						parsing/tokenization/ft_is_token.c \
@@ -21,7 +22,8 @@ SRCS_HEREDOCS		=	parsing/ft_open_heredocs.c
 SRCS_MAKE_TREE		=	parsing/ft_make_tree.c
 SRCS_PARSING		=	ft_parsing.c $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_EXPANSION) $(SRCS_ASSIGN_TYPES) $(SRCS_HEREDOCS) $(SRCS_MAKE_TREE)
 
-SRCS_UTILS			=	utils/ft_clean.c \
+SRCS_UTILS			=	utils/ft_clean_1.c \
+						utils/ft_clean_2.c \
 						utils/ft_error_1.c \
 						utils/ft_error_2.c
 SRCS_INIT			=	init/ft_init_data.c \
@@ -53,7 +55,7 @@ SRCS_EXEC_BUILTIN	=	execution/ft_execute_builtin.c \
 
 SRCS_EXECUTION		=	ft_exec_1recursion.c utils/ft_exec_recursion_utils.c ft_exec_2command.c $(SRCS_PREPROCESS) $(SRCS_PREPARE_PIPE) $(SRCS_EXEC_PROGRAM) $(SRCS_EXEC_BUILTIN)
 
-SRCS				=	main.c $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT) $(SRCS_EXECUTION)
+SRCS				=	main.c init/ft_signal.c $(SRCS_PARSING) $(SRCS_UTILS) $(SRCS_INIT) $(SRCS_EXECUTION)
 
 SRCS_DIR		= ./srcs
 BUILD_DIR       = ./.build
@@ -71,7 +73,7 @@ HFLAGS			= -I $(INCLUDES_DIR)
 all						: ${NAME}
 
 valgrind				: ${NAME}
-			valgrind --leak-check=full --show-leak-kinds=all --suppressions=./ignore.txt ./minishell
+			valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all --suppressions=./ignore.txt ./minishell
 
 ${NAME}         		: ${OBJS}
 			${CC} $(OBJS) -o $(NAME) -lreadline -Llibft -lft

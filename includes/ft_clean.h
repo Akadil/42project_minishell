@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:38:42 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/30 16:09:46 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:37:45 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include "struct_list.h"
 
 void	ft_clean_fds(t_cmd *cmd);
-void	ft_clean_data(t_data *my_data);
-void	ft_clean_full(t_data *my_data);
 void	ft_clean_tree(t_node *node);
 void	ft_clean_cmds(t_cmd	*cmds_p, int size);
 void	ft_clean_tokens(t_list **token, void (*del)(void*));

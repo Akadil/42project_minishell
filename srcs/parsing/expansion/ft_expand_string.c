@@ -6,49 +6,36 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:24:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/24 17:58:51 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:35:14 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_expand_string.h"
+#include "struct_data.h"
 
-/**
- * @brief           Expand the string if any expansions
- * 
- * @param str   -   string to extend 
- * @param env   -   environment variables
- * @return char*    expanded string. NULL if malloc failed
- * 
- * ----------------------------------------------------------------------------
- * @example			"$USER'$HOME" '$USER"$HOME' ->
- * 					akalimol'/HOME $USER"$HOME
- * 
- * @def     ft_strchr_alt()	- the same, just ignores the quotes
- * @def		ft_find_key()	- returns the position of the end of expansion var
- * 								or its length
- * @def		ft_find_value()	- find the value of expansion variable
- * @def		ft_strjoin_big()- joins beginning, the expansion value and end of 
- * 								string
- * 
- * 	functions located in a ./utils/${filename}_utils.c file
- */
-char  *ft_expand_string(char *str, t_list *env)
+char	*ft_expand_string(char *str, t_list *env, t_data *data)
 {
-    char    *temp;
-    char    *value;
-    int     pos_key;
+	char	*temp;
+	char	*value;
+	int     pos_key;
+	int		status;
 
-    temp = ft_strchr_alt(str, '$');
-    if (!temp)
-        return (str);
-    while (temp)
-    {
-        pos_key = ft_find_key(temp + 1);
-        value = ft_find_value(temp + 1, pos_key, env);
-        str = ft_strjoin_big(str, value, temp + pos_key + 1);
-        if (!str)
-            return (NULL);                          // Protect it 
-        temp = ft_strchr_alt(str, '$');
-    }
-    return (str);
+	temp = ft_strchr_alt(str, '$');
+	status = 0;
+	if (!temp)
+		return (str);
+	while (temp)
+	{
+		pos_key = ft_find_key(temp + 1);
+		value = ft_find_value(temp + 1, pos_key, env, data);
+		if (temp[1] == '?' && (temp[2] == ' ' || temp[2] == '\0'))
+			status = 1;
+		str = ft_strjoin_big(str, value, temp + pos_key + 1);
+		if (status == 1)
+			free (value);
+		if (!str)
+			return (NULL);
+		temp = ft_strchr_alt(str, '$');
+	}
+	return (str);
 }

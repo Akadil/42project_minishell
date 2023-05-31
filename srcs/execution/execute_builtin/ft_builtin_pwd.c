@@ -6,14 +6,14 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:07:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/28 23:11:13 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:59:49 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /*
     ----------------- Description -------------------    
@@ -30,11 +30,11 @@
 
     Results:    Good printing and valgrind free
 */
-void    ft_execute_pwd()
+void	ft_execute_pwd(void)
 {
-    char    *response;
+	char	*response;
 
-    response = getcwd(NULL, 0);
-    ft_printf("%s\n", response);
-    free (response);
+	response = getcwd(NULL, 0);
+	ft_printf("%s\n", response);
+	free(response);
 }

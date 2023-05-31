@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_preprocess_parameter.c                          :+:      :+:    :+:   */
+/*   ft_clean_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 14:25:34 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/31 17:57:11 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/31 19:15:04 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/31 19:23:56 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "struct_data.h"
-#include "struct_list.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-t_list	*ft_preprocess_parameter(t_list *token, t_cmd *cmd, int i_cmd)
+void	ft_clean_fds(t_cmd *cmd)
 {
-	t_list	*temp;
+	if (cmd->in_fd != -1 && cmd->in_fd != 0)
+		close(cmd->in_fd);
+	if (cmd->out_fd != -1 && cmd->out_fd != 1)
+		close(cmd->out_fd);
+	if (cmd->out_pipe_fd != -1)
+		close(cmd->out_pipe_fd);
+}
 
-	temp = token->next;
-	token = ft_lstretrieve(&token, token);
-	ft_lstadd_back(&(cmd[i_cmd].params), token);
-	return (temp);
+void	ft_clean_darray(char **trash)
+{
+	int	i;
+
+	i = 0;
+	while (trash[i])
+	{
+		free(trash[i]);
+		i++;
+	}
+	free(trash);
 }

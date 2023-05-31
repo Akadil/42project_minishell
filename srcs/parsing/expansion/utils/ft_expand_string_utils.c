@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:49:36 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/24 17:54:33 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:16:55 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strchr_alt(const char *s, int c)
             mode = '\"';
         else if (mode == '\"' && s[i] == '\"')
             mode = '\0';
-		else if (s[i] == c % 256 && (mode == '\0' || mode == '\"'))
+		else if (s[i] == c % 256 && (ft_isalnum(s[i + 1]) || s[i + 1] == '?') && (mode == '\0' || mode == '\"'))
 			return ((char *)(s + i));
 		i++;
 	}

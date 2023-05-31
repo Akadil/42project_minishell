@@ -6,12 +6,13 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:28:52 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/24 17:55:20 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:21:29 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
+#include "struct_data.h"
 
 int     ft_strlcat_alt(char *dst, const char *src, int dstsize);
 
@@ -67,6 +68,8 @@ int ft_find_key(char *str)
     int i;
 
     i = 0;
+    if (str[i] == '?' && str[i + 1] == '\0')
+        return (i + 1);
     while (str[i])
     {
         if (ft_isalnum(str[i]) != 1 && str[i] != '_')
@@ -76,8 +79,12 @@ int ft_find_key(char *str)
     return (i);
 }
 
-char    *ft_find_value(char *key, int i_pos, t_list *env)
+char    *ft_find_value(char *key, int i_pos, t_list *env, t_data *data)
 {
+    if ((*key) == '?')
+    {
+       return (ft_itoa(data->exit_code));
+    }
     while (env)
     {
         if (ft_strncmp((char* )env->content, key, i_pos) == 0)

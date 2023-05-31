@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 13:24:48 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/27 21:22:05 by akadilkalim      ###   ########.fr       */
+/*   Updated: 2023/05/31 21:48:41 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef MAIN_H
+# define MAIN_H
 
+# include "ft_clean.h"
+# include "struct_data.h"
+# include <readline/history.h>
+# include <readline/readline.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include "struct_data.h"
-# include "ft_clean.h"
 
-void    ft_init_data(int argc, char **argv, char **env, t_data *data);
-t_node  *ft_parsing(char *command, t_list *env);
-void    ft_execution(t_data *data, t_node *node);
+void	ft_init_data(int argc, char **argv, char **env, t_data *data);
+int		ft_parsing(char *command, t_list *env, t_data *data);
+void	ft_execution(t_data *data, t_node *node);
 
 #endif

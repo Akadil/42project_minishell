@@ -6,15 +6,15 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:31:52 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/25 15:32:38 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:52:00 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PREPROCESS_H
 # define FT_PREPROCESS_H
 
-# include "struct_data.h"
 # include "ft_error.h"
+# include "struct_data.h"
 # include <stdio.h>
 # include <stdlib.h>
 

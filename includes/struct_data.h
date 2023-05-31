@@ -6,14 +6,16 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/28 20:07:52 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:42:45 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#ifndef STRUCT_DATA_H
+# define STRUCT_DATA_H
 
 # include "struct_list.h"
+
+extern int my_signal;
 
 #define PIPE 1
 #define OR 2
@@ -63,5 +65,8 @@ typedef struct s_data
     t_node  *node;
     int     exit_code;
 }   t_data;
+
+void	ft_signal_handler2(int signal);
+void    ft_signal_handler(int signal);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 17:05:34 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/30 16:45:55 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:06:05 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ int	ft_init_env(t_list **data_env, char **env)
 		token = ft_lstnew(str, 0);
 		if (!token)
 		{
-			free (str);
+			free(str);
 			ft_lstclear(&token, &free);
-			ft_error();
-			return (-1);
+			return (ft_error(), -1);
 		}
 		ft_lstadd_back(data_env, token);
 		i++;

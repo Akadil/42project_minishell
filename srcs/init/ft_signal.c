@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_preprocess_parameter.c                          :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 14:25:34 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/31 17:57:11 by akalimol         ###   ########.fr       */
+/*   Created: 2023/05/30 17:21:53 by akalimol          #+#    #+#             */
+/*   Updated: 2023/05/31 19:04:57 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "struct_data.h"
-#include "struct_list.h"
+#include <readline/history.h>
+#include <readline/readline.h>
+#include <stdlib.h>
+#include <sys/signal.h>
 
-t_list	*ft_preprocess_parameter(t_list *token, t_cmd *cmd, int i_cmd)
+void	ft_signal_handler2(int signal)
 {
-	t_list	*temp;
+	if (signal == SIGQUIT)
+		exit(131);
+	if (signal == SIGINT)
+		exit(130);
+}
 
-	temp = token->next;
-	token = ft_lstretrieve(&token, token);
-	ft_lstadd_back(&(cmd[i_cmd].params), token);
-	return (temp);
+void	ft_signal_handler(int signal)
+{
+	if (signal == SIGINT)
+	{
+		ft_printf("\n");
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+	}
 }

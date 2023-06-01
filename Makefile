@@ -17,9 +17,11 @@ SRCS_EXPANSION		=	parsing/expansion/ft_expand_string.c \
 						parsing/expansion/utils/ft_expand_token_utils_2.c \
 						parsing/expansion/utils/ft_expand_token_utils_3.c
 SRCS_ASSIGN_TYPES	=	parsing/ft_check_tokens.c \
+						parsing/check_tokens/ft_check_tokens_utils.c \
 						parsing/ft_assign_types.c
 SRCS_HEREDOCS		=	parsing/ft_open_heredocs.c
-SRCS_MAKE_TREE		=	parsing/ft_make_tree.c
+SRCS_MAKE_TREE		=	parsing/ft_make_tree.c \
+						parsing/make_tree/ft_make_tree_utils.c
 SRCS_PARSING		=	ft_parsing.c $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_EXPANSION) $(SRCS_ASSIGN_TYPES) $(SRCS_HEREDOCS) $(SRCS_MAKE_TREE)
 
 SRCS_UTILS			=	utils/ft_clean_1.c \
@@ -50,6 +52,7 @@ SRCS_EXEC_BUILTIN	=	execution/ft_execute_builtin.c \
 						execution/execute_builtin/ft_builtin_env.c \
 						execution/execute_builtin/ft_builtin_exit.c \
 						execution/execute_builtin/ft_builtin_export.c \
+						execution/execute_builtin/utils/ft_builtin_export_utils.c \
 						execution/execute_builtin/ft_builtin_pwd.c \
 						execution/execute_builtin/ft_builtin_unset.c
 

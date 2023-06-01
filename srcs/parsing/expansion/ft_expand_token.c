@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:15:26 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/30 19:04:07 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:59:28 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
  * @return t_list*	=	NULL - some malloc problems
  * 					=	list - with all variables
  */
-t_list  *ft_expand_token(char *str, t_list *env, t_data *data)
+t_list	*ft_expand_token(char *str, t_list *env, t_data *data)
 {
 	t_list	*head;
 	t_list	*token;
@@ -42,18 +42,18 @@ t_list  *ft_expand_token(char *str, t_list *env, t_data *data)
 		return (NULL);
 	if (ft_find_n_word(exp_string, ' ') <= 1)
 		return (ft_lstnew(exp_string, 0));
-	if (!(words = ft_split_alt(exp_string, ' ')))
+	words = ft_split_alt(exp_string, ' ');
+	if (!words)
 		return (NULL);
 	i = 0;
 	head = NULL;
 	while (words[i])
 	{
-		token = ft_lstnew(words[i], 0);
+		token = ft_lstnew(words[i], 11);
 		if (!token)
 			return (ft_free_expand_token(words, &head));
 		ft_lstadd_back(&head, token);
 		i++;
 	}
-	free(words);
-	return (head);
+	return (free(words), head);
 }

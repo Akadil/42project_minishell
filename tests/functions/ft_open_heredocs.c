@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 03:32:32 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/31 05:25:44 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:11:39 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void    ft_signal_handler3(int sig)
 {
     if (sig == SIGINT)
     {
-        my_signal = 1;
+        g_signal = 1;
         write(1, "\n", 1);
         rl_replace_line("", 0);
         rl_redisplay();

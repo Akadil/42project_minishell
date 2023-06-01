@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/06/01 15:13:10 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:43:58 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_exec_command(t_node *node, t_data *data)
 		i_cmd++;
 	}
 	ft_wait_child_processes(&result, num, pid);
-	signal(SIGINT, &ft_signal_main);
+	signal(SIGINT, &ft_signal);
 	return (result);
 }
 
@@ -96,12 +96,10 @@ int	ft_execute(t_cmd *cmd, t_data *data, t_node *node)
 			exit_c = ft_execute_program(cmd, data->env, node);
 		return (ft_clean_tree(node), ft_clean_env(data->env), exit(exit_c), 0);
 	}
-	else if (cmd->in_fd != 0)	
+	else if (cmd->in_fd != 0)
 		close(cmd->in_fd);
-	signal(SIGINT, SIG_IGN);
-	return (pid);
+	return (signal(SIGINT, SIG_IGN), pid);
 }
-
 
 void	ft_wait_child_processes(int *is_success, int size, int pid)
 {

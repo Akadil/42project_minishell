@@ -6,34 +6,35 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:49:36 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/31 22:16:55 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:05:51 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strchr_alt(const char *s, int c)
 {
-	int	i;
-    char mode;
+	int		i;
+	char	mode;
 
-    mode = '\0';
+	mode = '\0';
 	i = 0;
 	if (c < 0)
 		return (NULL);
 	while (s[i])
 	{
-        if (mode == 0 && s[i] == '\'')
-            mode = '\'';
-        else if (mode == '\'' && s[i] == '\'')
-            mode = '\0';
+		if (mode == 0 && s[i] == '\'')
+			mode = '\'';
+		else if (mode == '\'' && s[i] == '\'')
+			mode = '\0';
 		else if (mode == 0 && s[i] == '\"')
-            mode = '\"';
-        else if (mode == '\"' && s[i] == '\"')
-            mode = '\0';
-		else if (s[i] == c % 256 && (ft_isalnum(s[i + 1]) || s[i + 1] == '?') && (mode == '\0' || mode == '\"'))
-			return ((char *)(s + i));
+			mode = '\"';
+		else if (mode == '\"' && s[i] == '\"')
+			mode = '\0';
+		else if (mode == '\0' || mode == '\"')
+			if (s[i] == c % 256 && (ft_isalnum(s[i + 1]) || s[i + 1] == '?'))
+				return ((char *)(s + i));
 		i++;
 	}
 	if (c == 0)
@@ -48,23 +49,23 @@ static int	ft_strlen_alt(const char *str)
 	int		i;
 
 	size = 0;
-    mode = '\0';
-    i = 0;
-    while (str[i])
-    {
-        if (mode == 0 && str[i] == '\'')
-            mode = '\'';
-        else if (mode == '\'' && str[i] == '\'')
-            mode = '\0';
+	mode = '\0';
+	i = 0;
+	while (str[i])
+	{
+		if (mode == 0 && str[i] == '\'')
+			mode = '\'';
+		else if (mode == '\'' && str[i] == '\'')
+			mode = '\0';
 		else if (mode == 0 && str[i] == '\"')
-            mode = '\"';
-        else if (mode == '\"' && str[i] == '\"')
-            mode = '\0';
+			mode = '\"';
+		else if (mode == '\"' && str[i] == '\"')
+			mode = '\0';
 		else if (str[i] == '$' && (mode == '\0' || mode == '\"'))
-			break;
-        size++;
-        i++;
-    }
+			break ;
+		size++;
+		i++;
+	}
 	return (size);
 }
 

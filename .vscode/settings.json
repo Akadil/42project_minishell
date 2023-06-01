@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "ft_exec_command.h": "c",
+        "ft_add_spaces.h": "c"
+    }
+}

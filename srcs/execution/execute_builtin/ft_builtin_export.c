@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:45:25 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/31 19:31:29 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:12:47 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,66 @@
 #include "struct_list.h"
 #include <stdlib.h>
 
+void	ft_print_export_token(char *str)
+{
+	char	*equal_sign;
+	char	*value;
+
+	ft_printf("export ");
+	equal_sign = ft_strchr(str, '=');
+	if (equal_sign != NULL)
+	{
+		*equal_sign = '\0';
+		value = equal_sign + 1;
+		ft_printf("%s=\"%s\"\n", str, value);
+		*equal_sign = '=';
+	}
+	else
+		ft_printf("%s\n", str);
+}
+
+void	ft_swap(t_list *a, t_list *b)
+{
+    void *temp;
+	
+	temp = a->content;
+    a->content = b->content;
+    b->content = temp;
+}
+
+void	ft_bubble_sort_list(t_list *head)
+{
+    int swapped = 1;
+    t_list	*ptr1;
+    t_list	*ptr2;
+
+	ptr2 = NULL;
+	if (head == NULL)
+        return;
+    while (swapped)
+	{
+        swapped = 0;
+        ptr1 = head;
+
+        while (ptr1->next != ptr2)
+		{
+            if (ft_strcmp(ptr1->content, ptr1->next->content) > 0)
+			{
+                ft_swap(ptr1, ptr1->next);
+                swapped = 1;
+            }
+            ptr1 = ptr1->next;
+        }
+        ptr2 = ptr1;
+    }
+}
+
 void	ft_print_export(t_list *env)
 {
+	ft_bubble_sort_list(env);
 	while (env)
 	{
-		ft_printf("export %s\n", (char *)env->content);
+		ft_print_export_token((char *)env->content);
 		env = env->next;
 	}
 }
@@ -40,8 +95,10 @@ void	ft_remove_if_exist(t_list **env, char *new_value)
 		while (str[i] && new_value[i] && str[i] != '=')
 			i++;
 		temp = token->next;
-		if (str[i] == '=' && new_value[i] == '=')
-			ft_lstremove(env, token, &free);
+		if (str[i] == '=' || str[i] == '\0')
+			if (new_value[i] == '=' || new_value[i] == '\0')
+				if (ft_strncmp(str, new_value, i) == 0)
+					ft_lstremove(env, token, &free);
 		token = temp;
 	}
 }

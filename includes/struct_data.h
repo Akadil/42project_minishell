@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:52:27 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/31 19:42:45 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:12:33 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ typedef struct s_data
 }   t_data;
 
 void	ft_signal_handler2(int signal);
-void    ft_signal_handler(int signal);
+void    ft_signal_main(int signal);
 
 #endif

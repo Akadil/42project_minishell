@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prepare_pipe.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 19:54:24 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/31 22:47:19 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:20:06 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ char	*ft_open_all_files(t_list *token, t_cmd *cmd)
 
 int	ft_open_in(t_list *token, int fd)
 {
-	int	return_fd;
-
-	return_fd = fd;
 	if (token->type == REDIRECT_IN)
 	{
 		if (fd != 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_preprocess.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:31:09 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/31 17:53:35 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:20:13 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@
  */
 int	ft_preprocess(t_node *node)
 {
-	int	res;
-
-	res = 1;
 	if (node->left)
 	{
 		if (ft_preprocess(node->left) == -1)

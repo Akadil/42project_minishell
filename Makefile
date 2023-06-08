@@ -71,7 +71,7 @@ SRCS			:= $(addprefix $(SRCS_DIR)/, $(SRCS))
 
 CC				= cc
 CFLAGS          = -Wall -Werror -Wextra
-HFLAGS			= -I $(INCLUDES_DIR)
+HFLAGS			= -I $(INCLUDES_DIR) -I /usr/local/opt/readline/include
 
 all						: ${NAME}
 
@@ -79,7 +79,7 @@ valgrind				: ${NAME}
 			valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all --suppressions=./ignore.txt ./minishell
 
 ${NAME}         		: ${OBJS}
-			${CC} $(OBJS) -o $(NAME) -lreadline -Llibft -lft
+			${CC} $(OBJS) -o $(NAME) -L /usr/local/opt/readline/lib -lreadline -Llibft -lft
 
 
 

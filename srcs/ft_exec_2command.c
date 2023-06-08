@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_2command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:18:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/06/01 19:43:58 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:19:58 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,8 @@ void	ft_wait_child_processes(int *is_success, int size, int pid)
 {
 	int	i;
 	int	status;
-	int	code;
 
 	i = 0;
-	code = 0;
 	while (i < size)
 	{
 		if (wait(&status) == pid)

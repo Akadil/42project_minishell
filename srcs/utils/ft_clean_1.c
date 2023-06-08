@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clean_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/05/31 23:08:09 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:40:29 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	ft_clean_cmds(t_cmd *cmds_p, int size)
 
 void	ft_clean_tree(t_node *node)
 {
+	if (!node)
+		return ;
 	while (node->parent)
 		node = node->parent;
 	if (node->left)

@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:30:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/06/01 20:17:35 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:33:36 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	ft_clean_cmds(t_cmd *cmds_p, int size)
 
 void	ft_clean_tree(t_node *node)
 {
+	if (!node)
+		return ;
+	while (node->parent)
+		node = node->parent;
 	if (node->left)
 		ft_clean_tree(node->left);
 	if (node->right)

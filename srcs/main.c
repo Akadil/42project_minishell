@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:31:49 by akalimol          #+#    #+#             */
-/*   Updated: 2023/06/01 20:15:04 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:32:59 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv, char **env)
 {
 	t_data	data;
 	char	*command;
-	int		exit_code;
 
 	command = NULL;
 	ft_init_data(argc, argv, env, &data);
@@ -27,13 +26,17 @@ int	main(int argc, char **argv, char **env)
 		command = readline("$");
 		if (!command)
 			break ;
-		add_history(command);
-		exit_code = ft_parsing(command, data.env, &data);
-		if (exit_code == 0)
+		if (g_signal == 1)
 		{
-			ft_execution(&data);
-			ft_clean_tree(data.node);
+			g_signal = 0;
+			data.exit_code = 130;
+			continue;
 		}
+		add_history(command);
+		data.exit_code = ft_parsing(command, data.env, &data);
+		if (data.exit_code == 0)
+			ft_execution(&data);
+		ft_clean_tree(data.node);
 	}
 	ft_clean_env(data.env);
 	return (data.exit_code);

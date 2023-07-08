@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/07/08 18:54:24 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:31:52 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_parsing(char *command, t_list *env, t_data *data)
 	char	*cmd_line;
 	int		code;
 
+	data->node = NULL;
 	cmd_line = ft_add_spaces(command);
 	if (!cmd_line)
 		return (data->exit_code = 255, 255);

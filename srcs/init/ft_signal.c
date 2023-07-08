@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akadilkalimoldayev <akadilkalimoldayev@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:21:53 by akalimol          #+#    #+#             */
-/*   Updated: 2023/06/01 19:43:13 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:41:15 by akadilkalim      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_signal(int signal)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
+		g_signal = 1;
 	}
 }
 

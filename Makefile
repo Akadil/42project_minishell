@@ -19,10 +19,11 @@ SRCS_EXPANSION		=	parsing/expansion/ft_expand_string.c \
 SRCS_ASSIGN_TYPES	=	parsing/ft_check_tokens.c \
 						parsing/check_tokens/ft_check_tokens_utils.c \
 						parsing/ft_assign_types.c
+#SRCS_WILDCARDS		=	parsing/ft_extend_wildcards.c
 SRCS_HEREDOCS		=	parsing/ft_open_heredocs.c
 SRCS_MAKE_TREE		=	parsing/ft_make_tree.c \
 						parsing/make_tree/ft_make_tree_utils.c
-SRCS_PARSING		=	ft_parsing.c $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_EXPANSION) $(SRCS_ASSIGN_TYPES) $(SRCS_HEREDOCS) $(SRCS_MAKE_TREE)
+SRCS_PARSING		=	ft_parsing.c $(SRCS_ADD_SPACES) $(SRCS_TOKENIZATION) $(SRCS_EXPANSION) $(SRCS_ASSIGN_TYPES) $(SRCS_WILDCARDS) $(SRCS_HEREDOCS) $(SRCS_MAKE_TREE)
 
 SRCS_UTILS			=	utils/ft_clean_1.c \
 						utils/ft_clean_2.c \

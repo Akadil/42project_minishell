@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:04:10 by akadilkalim       #+#    #+#             */
-/*   Updated: 2023/05/31 21:44:31 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/07/08 18:54:24 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 */
 int	ft_parsing(char *command, t_list *env, t_data *data)
 {
-	t_node	*node;
 	t_list	*head;
 	char	*cmd_line;
 	int		code;
@@ -34,12 +33,14 @@ int	ft_parsing(char *command, t_list *env, t_data *data)
 	ft_assign_types(head);
 	if (ft_check_tokens(head) == 0)
 		return (data->exit_code = 2, ft_clean_tokens(&head, &free), 2);
+	// code = ft_extend_wildcard(&head);
+	// if (code == 0)
+		// return (data->exit_code = code, ft_clean_tokens(&head, &free), code);
 	code = ft_open_heredocs(head, env);
 	if (code != 0)
 		return (data->exit_code = code, ft_clean_tokens(&head, &free), code);
-	node = ft_make_tree(head, NULL);
-	if (!node)
+	data->node = ft_make_tree(head, NULL);
+	if (!data->node)
 		return (data->exit_code = 255, ft_clean_tokens(&head, &free), 255);
-	data->node = node;
 	return (0);
 }

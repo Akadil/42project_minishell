@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:31:49 by akalimol          #+#    #+#             */
-/*   Updated: 2023/06/01 13:07:53 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/06/01 20:15:04 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **env)
 		exit_code = ft_parsing(command, data.env, &data);
 		if (exit_code == 0)
 		{
-			ft_execution(&data, data.node);
+			ft_execution(&data);
 			ft_clean_tree(data.node);
 		}
 	}

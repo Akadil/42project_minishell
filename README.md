@@ -13,18 +13,11 @@ synchronisation using the C programmming language.
 
 ## Installation & Usage
 
-### Requirements
-The only requirements are:
-- GNU make (v3.81)
-- GCC (v4.2.1)
-
-Those versions are the ones used during development.
-
 ### Building the program
 
 1. Download/Clone this repo
 
-        git clone https://github.com/r4meau/minishell
+        git clone https://github.com/Akadil/42project_minishell
 2. `cd` into the root directory and run `make`
 
         cd minishell
@@ -41,9 +34,7 @@ After building the source, run `./minishell` from the project root.
 - Can only use C
 - Must respect the school imposed coding style ([The Norme][norme-pdf])
 - No memory leaks
-- Implement a series of builtins: `echo`, `cd`, `setenv`, `unsetenv`, `env`, `exit`
-- Manage the errors without using `errno`, by displaying a message adapted
-to the error output
+- Implement a series of builtins: `echo`, `cd`, `export`, `unset`, `env`, `exit`, `pwd`
 - Can only use these standard library functions:
     - malloc, free
     - access
@@ -57,7 +48,7 @@ to the error output
     - exit
 - Must have a Makefile to build the program
 - The binary file must be named `minishell`
-- Can use [Libft][libft-url]
+- Can use Libft
 - Handle program interruption (Ctrl + D)
 - [Click here][1] for the rest
 
@@ -80,7 +71,6 @@ to the error output
 
 Enjoy!
 
-[1]: https://github.com/R4meau/minishell/blob/master/minishell.en.pdf
+[1]: https://github.com/Akadil/42project_minishell/blob/main/en.subject.pdf
 [quick-demo]: https://raw.githubusercontent.com/R4meau/minishell/master/minishell-quick-demo.gif?token=ADzLiR-sTesle5g6_4CQnHz4RFe69TgDks5ZK6oGwA%3D%3D
-[libft-url]: https://github.com/R4meau/libft
 [norme-pdf]: https://github.com/R4meau/minishell/blob/master/norme.en.pdf

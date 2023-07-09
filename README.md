@@ -1,6 +1,7 @@
 # Minishell - @42Born2Code
 
-As beautiful as a shell
+As beautiful as a shell 
+
 In collaboration with [Jean-Emmanuel Perramant](https://github.com/Jean-EmmanuelP)
 
 ![Quick Demo][quick-demo]
